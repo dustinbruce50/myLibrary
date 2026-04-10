@@ -1,4 +1,7 @@
 {
   "name": "myLibrary",
-  "displayName": "myLibrary"
+  "displayName": "myLibrary",
+  "plugins": [
+    "expo-font"
+  ]
 }

@@ -11,6 +11,18 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		6C8AAEB7AE164C8AB878AFAC /* CormorantGaramond-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 044B4B55A96E4376BBE5F89F /* CormorantGaramond-Bold.ttf */; };
+		566EE8E54F704CC099D87AE5 /* CormorantGaramond-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 427BECC7E9FE4F2499CDCCBD /* CormorantGaramond-BoldItalic.ttf */; };
+		31C7272E855F4AB2BA5F2651 /* CormorantGaramond-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 118C751BA7F745549EE57B78 /* CormorantGaramond-Italic-VariableFont_wght.ttf */; };
+		F77B293B2E7B4CCAAF55ED3D /* CormorantGaramond-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A8FAAFB895F04F58BD9B67DA /* CormorantGaramond-Italic.ttf */; };
+		677FD71BDA704F039C20F9AA /* CormorantGaramond-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4D3A369DD6454D75A738DAEE /* CormorantGaramond-Light.ttf */; };
+		587F1B38310A4A1D8811309D /* CormorantGaramond-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F18A0EBF83E64333A7BD598B /* CormorantGaramond-LightItalic.ttf */; };
+		590C56C0EDF44561A6BA00AD /* CormorantGaramond-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 690D8AE45BC44BDC9D8BB1A0 /* CormorantGaramond-Medium.ttf */; };
+		4E42BD498B594E9E846018FA /* CormorantGaramond-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C2259912865407A803B2E6B /* CormorantGaramond-MediumItalic.ttf */; };
+		1FE3AB238E1242F79EEC6C93 /* CormorantGaramond-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C158560011545B5864633C1 /* CormorantGaramond-Regular.ttf */; };
+		92B7AB5398AB4F6A8BCBE470 /* CormorantGaramond-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58D8E6F1CF4946A294AE1163 /* CormorantGaramond-SemiBold.ttf */; };
+		9129BFA2D53E44FB9073CDA3 /* CormorantGaramond-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A7AECCB32E384A729B5ADA2C /* CormorantGaramond-SemiBoldItalic.ttf */; };
+		E03A4AA4E5654EF9B51E8C50 /* CormorantGaramond-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5561B71D70884060B5DDF198 /* CormorantGaramond-VariableFont_wght.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +36,18 @@
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = myLibrary/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = myLibrary/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		044B4B55A96E4376BBE5F89F /* CormorantGaramond-Bold.ttf */ = {isa = PBXFileReference; name = "CormorantGaramond-Bold.ttf"; path = "../assets/fonts/CormorantGaramond/CormorantGaramond-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		427BECC7E9FE4F2499CDCCBD /* CormorantGaramond-BoldItalic.ttf */ = {isa = PBXFileReference; name = "CormorantGaramond-BoldItalic.ttf"; path = "../assets/fonts/CormorantGaramond/CormorantGaramond-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		118C751BA7F745549EE57B78 /* CormorantGaramond-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; name = "CormorantGaramond-Italic-VariableFont_wght.ttf"; path = "../assets/fonts/CormorantGaramond/CormorantGaramond-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A8FAAFB895F04F58BD9B67DA /* CormorantGaramond-Italic.ttf */ = {isa = PBXFileReference; name = "CormorantGaramond-Italic.ttf"; path = "../assets/fonts/CormorantGaramond/CormorantGaramond-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4D3A369DD6454D75A738DAEE /* CormorantGaramond-Light.ttf */ = {isa = PBXFileReference; name = "CormorantGaramond-Light.ttf"; path = "../assets/fonts/CormorantGaramond/CormorantGaramond-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F18A0EBF83E64333A7BD598B /* CormorantGaramond-LightItalic.ttf */ = {isa = PBXFileReference; name = "CormorantGaramond-LightItalic.ttf"; path = "../assets/fonts/CormorantGaramond/CormorantGaramond-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		690D8AE45BC44BDC9D8BB1A0 /* CormorantGaramond-Medium.ttf */ = {isa = PBXFileReference; name = "CormorantGaramond-Medium.ttf"; path = "../assets/fonts/CormorantGaramond/CormorantGaramond-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5C2259912865407A803B2E6B /* CormorantGaramond-MediumItalic.ttf */ = {isa = PBXFileReference; name = "CormorantGaramond-MediumItalic.ttf"; path = "../assets/fonts/CormorantGaramond/CormorantGaramond-MediumItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1C158560011545B5864633C1 /* CormorantGaramond-Regular.ttf */ = {isa = PBXFileReference; name = "CormorantGaramond-Regular.ttf"; path = "../assets/fonts/CormorantGaramond/CormorantGaramond-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		58D8E6F1CF4946A294AE1163 /* CormorantGaramond-SemiBold.ttf */ = {isa = PBXFileReference; name = "CormorantGaramond-SemiBold.ttf"; path = "../assets/fonts/CormorantGaramond/CormorantGaramond-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A7AECCB32E384A729B5ADA2C /* CormorantGaramond-SemiBoldItalic.ttf */ = {isa = PBXFileReference; name = "CormorantGaramond-SemiBoldItalic.ttf"; path = "../assets/fonts/CormorantGaramond/CormorantGaramond-SemiBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5561B71D70884060B5DDF198 /* CormorantGaramond-VariableFont_wght.ttf */ = {isa = PBXFileReference; name = "CormorantGaramond-VariableFont_wght.ttf"; path = "../assets/fonts/CormorantGaramond/CormorantGaramond-VariableFont_wght.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +98,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				FB1FDF91E8B6442AB2F49746 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -96,6 +121,26 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		FB1FDF91E8B6442AB2F49746 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				044B4B55A96E4376BBE5F89F /* CormorantGaramond-Bold.ttf */,
+				427BECC7E9FE4F2499CDCCBD /* CormorantGaramond-BoldItalic.ttf */,
+				118C751BA7F745549EE57B78 /* CormorantGaramond-Italic-VariableFont_wght.ttf */,
+				A8FAAFB895F04F58BD9B67DA /* CormorantGaramond-Italic.ttf */,
+				4D3A369DD6454D75A738DAEE /* CormorantGaramond-Light.ttf */,
+				F18A0EBF83E64333A7BD598B /* CormorantGaramond-LightItalic.ttf */,
+				690D8AE45BC44BDC9D8BB1A0 /* CormorantGaramond-Medium.ttf */,
+				5C2259912865407A803B2E6B /* CormorantGaramond-MediumItalic.ttf */,
+				1C158560011545B5864633C1 /* CormorantGaramond-Regular.ttf */,
+				58D8E6F1CF4946A294AE1163 /* CormorantGaramond-SemiBold.ttf */,
+				A7AECCB32E384A729B5ADA2C /* CormorantGaramond-SemiBoldItalic.ttf */,
+				5561B71D70884060B5DDF198 /* CormorantGaramond-VariableFont_wght.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -159,6 +204,18 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				6C8AAEB7AE164C8AB878AFAC /* CormorantGaramond-Bold.ttf in Resources */,
+				566EE8E54F704CC099D87AE5 /* CormorantGaramond-BoldItalic.ttf in Resources */,
+				31C7272E855F4AB2BA5F2651 /* CormorantGaramond-Italic-VariableFont_wght.ttf in Resources */,
+				F77B293B2E7B4CCAAF55ED3D /* CormorantGaramond-Italic.ttf in Resources */,
+				677FD71BDA704F039C20F9AA /* CormorantGaramond-Light.ttf in Resources */,
+				587F1B38310A4A1D8811309D /* CormorantGaramond-LightItalic.ttf in Resources */,
+				590C56C0EDF44561A6BA00AD /* CormorantGaramond-Medium.ttf in Resources */,
+				4E42BD498B594E9E846018FA /* CormorantGaramond-MediumItalic.ttf in Resources */,
+				1FE3AB238E1242F79EEC6C93 /* CormorantGaramond-Regular.ttf in Resources */,
+				92B7AB5398AB4F6A8BCBE470 /* CormorantGaramond-SemiBold.ttf in Resources */,
+				9129BFA2D53E44FB9073CDA3 /* CormorantGaramond-SemiBoldItalic.ttf in Resources */,
+				E03A4AA4E5654EF9B51E8C50 /* CormorantGaramond-VariableFont_wght.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

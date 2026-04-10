@@ -1,0 +1,56 @@
+
+export const searchBooks = async (query, page = 1, limit = 20) => {
+  const response = await axios.get(BASE_URL, {
+    params: {
+      q: query,
+      page,
+      limit,
+    },
+    headers: {
+      'User-Agent': 'MyLibraryApp (your@email.com)',
+    },
+  });
+
+  return response.data;
+};
+
+const [query, setQuery] = useState('');
+const [books, setBooks] = useState([]);
+const [page, setPage] = useState(1);
+const [loading, setLoading] = useState(false);
+const [hasMore, setHasMore] = useState(true);
+
+const fetchBooks = async (searchQuery, pageToLoad = 1) => {
+  if (!searchQuery.trim()) return;
+
+  try {
+    setLoading(true);
+
+    const data = await searchBooks(searchQuery, pageToLoad, 20);
+
+    if (pageToLoad === 1) {
+      setBooks(data.docs);
+    } else {
+      setBooks(prev => [...prev, ...data.docs]);
+    }
+
+    const loadedSoFar = pageToLoad * 20;
+    setHasMore(loadedSoFar < data.numFound);
+    setPage(pageToLoad);
+  } catch (err) {
+    console.error('Error fetching books:', err);
+  } finally {
+    setLoading(false);
+  }
+};
+
+const handleSearch = async () => {
+  setPage(1);
+  setHasMore(true);
+  await fetchBooks(query, 1);
+};
+
+const handleLoadMore = async () => {
+  if (loading || !hasMore) return;
+  await fetchBooks(query, page + 1);
+};
