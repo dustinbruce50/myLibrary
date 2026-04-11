@@ -64,9 +64,15 @@ const db = SQLite.openDatabase('localsql');
 
 export async function initDB() {
     return new Promise((resolve, reject) => {
+        //PRAGMA ON
+        db.transaction(tx => {
+            tx.executeSql(`PRAGMA foreign_keys = ON;`);
+        });
+        // Drop book table if it exists
         db.transaction(tx => {
             tx.executeSql(`DROP TABLE IF EXISTS books;`);
         });
+        // Create books table
         db.transaction(tx => {
             tx.executeSql(
                 `CREATE TABLE IF NOT EXISTS books (
@@ -74,7 +80,8 @@ export async function initDB() {
                     title TEXT NOT NULL,
                     author TEXT NOT NULL,
                     year INTEGER,
-                    coverUri TEXT
+                    coverUri TEXT,
+                    rating FLOAT
                 );`,
                 [],
                 () => resolve(true),
@@ -84,8 +91,47 @@ export async function initDB() {
                 },
             );
         });
-    });
-}
+        db.transaction(tx => {
+            tx.executeSql(`DROP TABLE IF EXISTS tags;`);
+        });
+        // Create tags table
+        db.transaction(tx => {
+            tx.executeSql(
+                `CREATE TABLE IF NOT EXISTS tags (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    name TEXT NOT NULL UNIQUE
+                );`,
+                [],
+                () => resolve(true),
+                (_tx, error) => {
+                    reject(error);
+                    return false;
+                },
+            );
+        });
+        //drop books_tags table if it exists
+        db.transaction(tx => {
+            tx.executeSql(`DROP TABLE IF EXISTS books_tags;`);
+        });
+        // Create book_tags table
+        db.transaction(tx => {
+            tx.executeSql(
+                `CREATE TABLE IF NOT EXISTS book_tags (
+                    book_id INTEGER NOT NULL,
+                    tag_id INTEGER NOT NULL,
+                    PRIMARY KEY (book_id, tag_id),
+                    FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE,
+                    FOREIGN KEY (tag_id) REFERENCES tags(id) ON DELETE CASCADE
+                );`,
+                [],
+                () => resolve(true),
+                (_tx, error) => {
+                    reject(error);
+                    return false;
+                },
+            );
+        });
+});}
 export async function seedDB() {
     const gatsbyUri = await copyCoverFromAssets('tgg.jpg');
     const mockingbirdUri = await copyCoverFromAssets('tkam.jpg');
@@ -124,31 +170,42 @@ export async function seedDB() {
     });
 }
 
+
 export async function addBook(
     title: string,
     author: string,
     cover_i: number,
     year?: number,
+    tags: string[] = [],
     
 ) {
+    let id: number | null = null;
     console.log(`all arguments passed to addBook:
         title: ${title},
         author: ${author},
         cover_i: ${cover_i},
         year: ${year},
+        tags: ${tags}
     `);
+
+    
     return new Promise(async (resolve, reject) => {
         const filepath = await downloadCoverFromUrl(
             `https://covers.openlibrary.org/b/id/${cover_i}-M.jpg`,
             `cover_${cover_i}.jpg`,
         );
-        
+
+        //PRAGMA ON
+        db.transaction(tx => {
+            tx.executeSql(`PRAGMA foreign_keys = ON;`);
+        });
+        // Insert book into books table
         db.transaction(tx => {
             tx.executeSql(
                 `INSERT INTO books (title, author, year, coverUri) VALUES (?, ?, ?, ?);`,
                 [title, author, year ? year : 0, filepath],
-                () => {
-                    
+                (_tx, result) => {
+                    id = result.insertId;
                     resolve(true);
                 },
                 (_tx, error) => {
@@ -165,11 +222,49 @@ export async function addBook(
                 },
             );
         });
+        //insert tags into tags table and book_tags table
+        if (tags.length > 0) {
+            db.transaction(tx => {
+                tags.forEach(tag => {
+                    tx.executeSql(
+                        `INSERT OR IGNORE INTO tags (name) VALUES (?);`,
+                        [tag],
+                        () => {
+                            tx.executeSql(
+                            `SELECT id FROM tags WHERE name = ?;`,
+                            [tag],
+                            (_tx, result) => {
+                                if (result.rows.length === 0) {
+                                    console.log('Failed to retrieve tag ID after insertion for tag:', tag);
+                                    return;
+                                }
+                            const tagId = result.rows.item(0).id;
+                            tx.executeSql(
+                                `INSERT INTO book_tags (book_id, tag_id) VALUES (?, ?);`,
+                                [id, tagId],
+                                () => {},
+                                (_tx, error) => {
+                                    console.log('Failed to add book_tag to DB:', error);
+                                    return false;
+                                },
+                            );
+                        },
+                        (_tx, error) => {
+                            console.log('Failed to add tag to DB:', error);
+                            return false;
+                        },
+                    );});
+                });
+            });
+        };
     });
 }
 
 export async function getBooks() {
     return new Promise((resolve, reject) => {
+        db.transaction(tx => {
+            tx.executeSql(`PRAGMA foreign_keys = ON;`);
+        });
         db.transaction(tx => {
             tx.executeSql(
                 `SELECT * FROM books;`,
@@ -185,7 +280,7 @@ export async function getBooks() {
                 (_tx, error) => {
                     reject(error);
                     return false;
-                },
+                }
             );
         });
     });

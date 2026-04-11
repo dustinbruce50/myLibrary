@@ -66,6 +66,7 @@ const openCamera = async () => {
 };
 
 const BASE_API_URL = 'https://openlibrary.org/search.json?q=';
+const BASE_API_URL_TAGS = 'https://openlibrary.org';
 
 const AddB = () => {
   const [searchResults, setSearchResults] = React.useState<any[]>([]);
@@ -75,10 +76,75 @@ const AddB = () => {
   const [cachePages, setCachePages] = React.useState<{
     [key: number]: any[];
   }>({});
+  const [isLoading, setIsLoading] = React.useState(false);
 
   React.useEffect(() => {
     console.log('Search results updated: ', searchResults);
   }, [searchResults]);
+
+  const fetchTags = async (key: string) => {
+    let result;
+    let tags: string[] = [];
+     try {
+      result = await axios.get(
+        `${BASE_API_URL_TAGS}${key}.json`,
+        {
+          params: {
+            fields:
+              'title,subject_places,subject_people,subject_times,subjects,',
+          },
+          headers: {
+            'User-Agent': 'myLibrary (Dustin Bruce, dustinbruce50@gmail.com)',
+          },
+        },
+      );
+    } catch (error) {
+      console.error('Error fetching tags: ', error);
+    }
+    finally {
+      if (result?.status === 200) {
+        console.log('Tag API response: ', result);
+      }
+    }
+    for (const field of [
+      'subject_places',
+      'subject_people',
+      'subject_times',
+      'subjects',
+    ]) {
+      console.log(`Checking for tags in field: ${field}`);
+      if (result?.data?.[field]) {
+        tags = tags.concat(result.data[field]);
+      }
+    }
+    console.log('Extracted tags: ', tags);
+
+    //clean tags
+    //remove (year-year) from tags or (year- ) or (year)
+    //remove date ranges without parenthesis
+    //remove anything in parentheses
+    //remove anything after --
+    tags = tags.map((tag: string) =>
+      tag
+    .replace(/\(\d{4}-\d{4}\)/g, '')
+    .replace(/\(\d{4}-\s*\)/g, '')
+    .replace(/\(\d{4}\)/g, '')
+    .replace(/\(.*?\)/g, '')
+    .replace(/--.*/g, '')
+    .replace(/\d{4}-\d{4}/g, '')
+    .replace(/\d{4}-\s*/g, '')
+    .replace(/\d{4}/g, '')
+    //.replace(/\(.*?\)/g, '')
+    .trim(), 
+    );
+    //take anything seperated by a : ; or , and split into separate tags
+    tags = tags.flatMap((tag: string) => tag.split(/[:;,]+/).map((t: string) => t.trim()));
+    //dedup and remove empty tags
+    tags = Array.from(new Set(tags)).filter((tag: string) => tag.length > 0);
+
+    console.log('Tags after cleaning: ', tags);
+    return tags;
+  };
 
   const fetchBooks = async (
     searchTerm: string,
@@ -93,32 +159,48 @@ const AddB = () => {
       setCurrentPage(1);
       return;
     }
+
     console.log('action: ', action);
+
+    //caching and page num logic
     if (action == 'forward') {
-        console.log('Current page before forward: ', currentPage);
-        console.log('page before forward: ', page);
+      if (!cachePages[page]) {
+        console.log('Caching current page: ', currentPage);
+        setCachePages(prev => ({ ...prev, [currentPage]: searchResults }));
+      }
       page = currentPage + 1;
-      console.log('Current page after forward: ', currentPage);
-        console.log('page after forward: ', page);
     } else if (action == 'backward') {
+      if (!cachePages[page]) {
+        console.log('Caching current page: ', currentPage);
+        setCachePages(prev => ({ ...prev, [currentPage]: searchResults }));
+      }
       page = currentPage - 1;
     } else {
       page = currentPage;
     }
+    //cache loading
+    if (cachePages[page]) {
+      console.log('Loading page from cache: ', page);
+      setSearchResults(cachePages[page]);
+      setCurrentPage(page);
+      return;
+    } else {
+      setIsLoading(true);
+    }
+
     console.log(
       'fetch books called with searchTerm: ',
       searchTerm,
       ' page: ',
       page,
     );
-
-    let result;
     console.log(
       'Search URL: ',
       `${BASE_API_URL}${encodeURIComponent(
         searchTerm,
       )}&page=${page}&limit=${limit}`,
     );
+    let result;
     try {
       result = await axios.get(
         `${BASE_API_URL}${encodeURIComponent(
@@ -129,8 +211,8 @@ const AddB = () => {
             q: searchTerm,
             page,
             limit,
-            fields: 'key,title,subtitle,author_name,cover_i,first_publish_year,ratings_average,ratings_count,subject,person,place,time,number_of_pages_median,',
-
+            fields:
+              'key,description,title,subtitle,author_name,cover_i,first_publish_year,ratings_average,ratings_count,subject,person,place,time,number_of_pages_median,',
           },
           headers: {
             'User-Agent': 'myLibrary (Dustin Bruce, dustinbruce50@gmail.com)',
@@ -144,12 +226,13 @@ const AddB = () => {
     if (result?.status === 200) {
       setCurrentPage(page);
       setSearchResults(result?.data?.docs || []);
+      setIsLoading(false);
     }
     console.log('Search results: ', searchResults);
   };
 
   return (
-    <SafeAreaView style={styles.screenContainer}>
+    <SafeAreaView style={[styles.screenContainer]}>
       <Text
         style={{
           fontFamily: 'CormorantGaramond-Bold',
@@ -169,6 +252,7 @@ const AddB = () => {
             position: 'relative',
             justifyContent: 'center',
             height: '100%',
+            opacity: isLoading ? 0.1 : 1,
           },
         ]}
       >
@@ -350,11 +434,13 @@ const AddB = () => {
                         ? book.author_name.join(', ')
                         : book.author_name ?? 'Unknown';
                       try {
+                        let tags: any = await fetchTags(book.key);
                         await addBook(
                           String(book.title),
                           String(author),
                           book.cover_i,
                           book.first_publish_year,
+                          tags,
                         );
                       } catch (error) {
                         console.error('Error adding book:', error);

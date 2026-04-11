@@ -1,2101 +1,513 @@
 {
-    "numFound": 406,
-    "start": 0,
-    "numFoundExact": true,
-    "num_found": 406,
-    "documentation_url": "https://openlibrary.org/dev/docs/api/search",
-    "q": "Watchmen",
-    "offset": null,
-    "docs": [
-        {
-            "author_key": [
-                "OL440715A",
-                "OL62672A",
-                "OL324142A"
-            ],
-            "author_name": [
-                "Alan Moore",
-                "Dave Gibbons",
-                "John Higgins"
-            ],
-            "cover_i": 7774899,
-            "ebook_access": "borrowable",
-            "edition_count": 34,
-            "first_publish_year": 1987,
-            "has_fulltext": true,
-            "ia": [
-                "watchmen00moor_0",
-                "watchmen00moor",
-                "watchmen0000moor",
-                "watchmen0000moor_e6p3",
-                "watchmen00moor_0"
-            ],
-            "ia_collection": [
-                "americana",
-                "americanuniversity-ol",
-                "barryuniversity-ol",
-                "belmont-ol",
-                "cua-ol",
-                "dartmouthlibrary-ol",
-                "delawarecountydistrictlibrary",
-                "delawarecountydistrictlibrary-ol",
-                "denverpubliclibrary-ol",
-                "drakeuniversity-ol",
-                "goffstownlibrary-ol",
-                "gwulibraries-ol",
-                "hamiltonpubliclibrary-ol",
-                "inlibrary",
-                "internetarchivebooks",
-                "ithacacollege-ol",
-                "johnshopkins-ol",
-                "library_of_atlantis",
-                "openlibrary-d-ol",
-                "printdisabled",
-                "riceuniversity-ol",
-                "spokanepubliclibrary-ol",
-                "stmaryscountylibrary",
-                "tulsacc-ol",
-                "uhmauicollege-ol",
-                "unb-ol",
-                "uni-ol",
-                "universityofarizona-ol",
-                "universityofcoloradoboulder-ol",
-                "wilsoncollege-ol",
-                "worthingtonlibraries-ol"
-            ],
-            "key": "/works/OL2897798W",
-            "language": [
-                "por",
-                "ger",
-                "eng",
-                "fre",
-                "spa"
-            ],
-            "lending_edition_s": "OL28692051M",
-            "lending_identifier_s": "watchmen00moor_0",
-            "public_scan_b": false,
-            "title": "Watchmen"
-        },
-        {
-            "author_key": [
-                "OL62672A",
-                "OL548344A"
-            ],
-            "author_name": [
-                "Dave Gibbons",
-                "Chip Kidd"
-            ],
-            "cover_edition_key": "OL23123623M",
-            "cover_i": 10002793,
-            "ebook_access": "no_ebook",
-            "edition_count": 3,
-            "first_publish_year": 2008,
-            "has_fulltext": false,
-            "key": "/works/OL763128W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Watching the watchmen"
-        },
-        {
-            "author_key": [
-                "OL576372A"
-            ],
-            "author_name": [
-                "Michael Allegretto"
-            ],
-            "cover_edition_key": "OL24755111M",
-            "cover_i": 6808869,
-            "ebook_access": "borrowable",
-            "edition_count": 6,
-            "first_publish_year": 1991,
-            "has_fulltext": true,
-            "ia": [
-                "watchmen00alle",
-                "watchmen00alle"
-            ],
-            "ia_collection": [
-                "americana",
-                "inlibrary",
-                "internetarchivebooks",
-                "openlibrary-d-ol",
-                "printdisabled",
-                "universityofarizona-ol",
-                "universityofcoloradoboulder-ol"
-            ],
-            "key": "/works/OL15845820W",
-            "language": [
-                "eng"
-            ],
-            "lending_edition_s": "OL1543504M",
-            "lending_identifier_s": "watchmen00alle",
-            "public_scan_b": false,
-            "title": "The watchmen"
-        },
-        {
-            "author_key": [
-                "OL24461A",
-                "OL2641012A"
-            ],
-            "author_name": [
-                "Rudyard Kipling",
-                "Elliot"
-            ],
-            "cover_edition_key": "OL3782701M",
-            "cover_i": 7119564,
-            "ebook_access": "public",
-            "edition_count": 55,
-            "first_publish_year": 1899,
-            "has_fulltext": true,
-            "ia": [
-                "departmentalditt01kipluoft",
-                "collectedverseof00kipluoft",
-                "sevenseas01kipluoft",
-                "rudyardkipling00kipl",
-                "rudyardkiplingse0000rudy",
-                "rudyardkipling0000kipl_d1y6",
-                "rudyardkipling180000kipl",
-                "rudyardkiplingso0000kipl",
-                "rudyardkipling0000kipl_t9x9",
-                "rudyardkipling0000kipl",
-                "rudyardkiplingil00kipl",
-                "rudyardkipling0000kipl_j8y5",
-                "100grandesescrit0000dano",
-                "choiceofkiplings0000kipl_u7a2",
-                "rudyardkipling0000kipl_d3v8",
-                "completeverse00kipl"
-            ],
-            "ia_collection": [
-                "americana",
-                "inlibrary",
-                "internetarchivebooks",
-                "kellylibrary",
-                "printdisabled",
-                "toronto",
-                "trent_university",
-                "university_of_toronto"
-            ],
-            "key": "/works/OL15217334W",
-            "language": [
-                "eng",
-                "spa",
-                "und"
-            ],
-            "lending_edition_s": "OL7067717M",
-            "lending_identifier_s": "departmentalditt01kipluoft",
-            "public_scan_b": true,
-            "title": "Poems"
-        },
-        {
-            "author_key": [
-                "OL3064596A"
-            ],
-            "author_name": [
-                "Peter Aperlo"
-            ],
-            "cover_edition_key": "OL25175898M",
-            "cover_i": 8150340,
-            "ebook_access": "borrowable",
-            "edition_count": 1,
-            "first_publish_year": 2009,
-            "has_fulltext": true,
-            "ia": [
-                "watchmenfilmcomp00aper_0"
-            ],
-            "ia_collection": [
-                "inlibrary",
-                "internetarchivebooks",
-                "printdisabled"
-            ],
-            "key": "/works/OL16469784W",
-            "language": [
-                "eng"
-            ],
-            "lending_edition_s": "OL25175898M",
-            "lending_identifier_s": "watchmenfilmcomp00aper_0",
-            "public_scan_b": false,
-            "title": "Watchmen"
-        },
-        {
-            "author_key": [
-                "OL668699A"
-            ],
-            "author_name": [
-                "Helen Cresswell"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 6,
-            "first_publish_year": 1969,
-            "has_fulltext": false,
-            "key": "/works/OL3784466W",
-            "language": [
-                "eng",
-                "und"
-            ],
-            "public_scan_b": false,
-            "title": "The night-watchmen"
-        },
-        {
-            "author_key": [
-                "OL2750742A"
-            ],
-            "author_name": [
-                "John Altman"
-            ],
-            "cover_edition_key": "OL7657831M",
-            "cover_i": 319452,
-            "ebook_access": "no_ebook",
-            "edition_count": 4,
-            "first_publish_year": 2005,
-            "has_fulltext": false,
-            "key": "/works/OL8267261W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "The Watchmen"
-        },
-        {
-            "author_key": [
-                "OL6999752A"
-            ],
-            "author_name": [
-                "Clay Enos"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2009,
-            "has_fulltext": false,
-            "key": "/works/OL16150115W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Watchmen"
-        },
-        {
-            "author_key": [
-                "OL543786A"
-            ],
-            "author_name": [
-                "Matthew Lynn"
-            ],
-            "cover_edition_key": "OL10766798M",
-            "cover_i": 2585899,
-            "ebook_access": "no_ebook",
-            "edition_count": 2,
-            "first_publish_year": 1998,
-            "has_fulltext": false,
-            "key": "/works/OL3349956W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "The Watchmen"
-        },
-        {
-            "author_key": [
-                "OL2677218A"
-            ],
-            "author_name": [
-                "Bova"
-            ],
-            "cover_edition_key": "OL7667205M",
-            "cover_i": 409451,
-            "ebook_access": "borrowable",
-            "edition_count": 1,
-            "first_publish_year": 1994,
-            "has_fulltext": true,
-            "ia": [
-                "watchmen0000bova"
-            ],
-            "ia_collection": [
-                "inlibrary",
-                "internetarchivebooks",
-                "printdisabled"
-            ],
-            "key": "/works/OL8050258W",
-            "language": [
-                "eng"
-            ],
-            "lending_edition_s": "OL7667205M",
-            "lending_identifier_s": "watchmen0000bova",
-            "public_scan_b": false,
-            "title": "The Watchmen"
-        },
-        {
-            "author_key": [
-                "OL8091750A",
-                "OL6976522A",
-                "OL2705247A"
-            ],
-            "author_name": [
-                "Drew Morton",
-                "Henry Jenkins",
-                "Suzanne Scott"
-            ],
-            "cover_edition_key": "OL40203666M",
-            "cover_i": 14709146,
-            "ebook_access": "no_ebook",
-            "edition_count": 4,
-            "first_publish_year": 2022,
-            "has_fulltext": false,
-            "key": "/works/OL27939051W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "After Midnight"
-        },
-        {
-            "cover_edition_key": "OL25842211M",
-            "cover_i": 7377422,
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2009,
-            "has_fulltext": false,
-            "key": "/works/OL17269148W",
-            "language": [
-                "spa"
-            ],
-            "public_scan_b": false,
-            "title": "Watchmen"
-        },
-        {
-            "author_key": [
-                "OL440715A"
-            ],
-            "author_name": [
-                "Alan Moore"
-            ],
-            "cover_edition_key": "OL26993623M",
-            "cover_i": 8588099,
-            "ebook_access": "no_ebook",
-            "edition_count": 2,
-            "first_publish_year": 2014,
-            "has_fulltext": false,
-            "key": "/works/OL19781748W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Watchmen"
-        },
-        {
-            "author_key": [
-                "OL6497742A"
-            ],
-            "author_name": [
-                "Andrew Hoberek"
-            ],
-            "cover_edition_key": "OL27538609M",
-            "cover_i": 8994437,
-            "ebook_access": "no_ebook",
-            "edition_count": 4,
-            "first_publish_year": 2014,
-            "has_fulltext": false,
-            "key": "/works/OL20331362W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Considering Watchmen"
-        },
-        {
-            "author_key": [
-                "OL5688488A"
-            ],
-            "author_name": [
-                "NECF Malaysia Watchmen's Forum."
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2000,
-            "has_fulltext": false,
-            "key": "/works/OL12710296W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "NECF Malaysia Watchmen's Forum"
-        },
-        {
-            "cover_edition_key": "OL47302200M",
-            "cover_i": 13766821,
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "has_fulltext": false,
-            "key": "/works/OL34942769W",
-            "public_scan_b": false,
-            "title": "Watchmen"
-        },
-        {
-            "author_key": [
-                "OL1399592A"
-            ],
-            "author_name": [
-                "Brian Azzarello"
-            ],
-            "cover_edition_key": "OL27554633M",
-            "cover_i": 9010056,
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2014,
-            "has_fulltext": false,
-            "key": "/works/OL20344946W",
-            "public_scan_b": false,
-            "title": "Before Watchmen"
-        },
-        {
-            "author_key": [
-                "OL11981521A"
-            ],
-            "author_name": [
-                "David F. Ruppert"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 2,
-            "first_publish_year": 2009,
-            "has_fulltext": false,
-            "key": "/works/OL33029056W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "The seven watchmen"
-        },
-        {
-            "cover_edition_key": "OL31727833M",
-            "cover_i": 10527594,
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2020,
-            "has_fulltext": false,
-            "key": "/works/OL24029666W",
-            "public_scan_b": false,
-            "title": "watchmen"
-        },
-        {
-            "author_key": [
-                "OL10026767A"
-            ],
-            "author_name": [
-                "Shaun Swedenburg"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2020,
-            "has_fulltext": false,
-            "key": "/works/OL26647747W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Watchmen"
-        },
-        {
-            "author_key": [
-                "OL78885A"
-            ],
-            "author_name": [
-                "Brian Freemantle"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2011,
-            "has_fulltext": false,
-            "key": "/works/OL27435920W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Watchmen"
-        },
-        {
-            "cover_edition_key": "OL26390598M",
-            "cover_i": 8085298,
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2017,
-            "has_fulltext": false,
-            "key": "/works/OL17801056W",
-            "public_scan_b": false,
-            "title": "Watchmen"
-        },
-        {
-            "cover_edition_key": "OL26471200M",
-            "cover_i": 8206886,
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2015,
-            "has_fulltext": false,
-            "key": "/works/OL17893481W",
-            "public_scan_b": false,
-            "title": "Watchmen"
-        },
-        {
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 1986,
-            "has_fulltext": false,
-            "key": "/works/OL14131927M",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Watchmen."
-        },
-        {
-            "author_key": [
-                "OL440715A"
-            ],
-            "author_name": [
-                "Alan Moore"
-            ],
-            "ebook_access": "printdisabled",
-            "edition_count": 1,
-            "first_publish_year": 1986,
-            "has_fulltext": true,
-            "ia": [
-                "bwb_KU-761-540"
-            ],
-            "ia_collection": [
-                "internetarchivebooks",
-                "printdisabled"
-            ],
-            "key": "/works/OL43047244W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "WatchMen"
-        },
-        {
-            "author_key": [
-                "OL2710839A"
-            ],
-            "author_name": [
-                "DC Comics"
-            ],
-            "cover_edition_key": "OL7536427M",
-            "cover_i": 285437,
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 1987,
-            "has_fulltext": false,
-            "key": "/works/OL8134832W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Watchmen"
-        },
-        {
-            "author_key": [
-                "OL668699A"
-            ],
-            "author_name": [
-                "Helen Cresswell"
-            ],
-            "cover_edition_key": "OL9886693M",
-            "cover_i": 1184318,
-            "ebook_access": "borrowable",
-            "edition_count": 1,
-            "first_publish_year": 1999,
-            "has_fulltext": true,
-            "ia": [
-                "nightwatchmen0000cres_y7b1"
-            ],
-            "ia_collection": [
-                "inlibrary",
-                "internetarchivebooks",
-                "printdisabled"
-            ],
-            "key": "/works/OL24472960W",
-            "lending_edition_s": "OL9886693M",
-            "lending_identifier_s": "nightwatchmen0000cres_y7b1",
-            "public_scan_b": false,
-            "title": "The night-watchmen"
-        },
-        {
-            "author_key": [
-                "OL2123184A"
-            ],
-            "author_name": [
-                "Gordon, Patrick"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 1996,
-            "has_fulltext": false,
-            "key": "/works/OL34325616W",
-            "public_scan_b": false,
-            "title": "Watchmen"
-        },
-        {
-            "author_key": [
-                "OL1399592A"
-            ],
-            "author_name": [
-                "Brian Azzarello"
-            ],
-            "cover_edition_key": "OL35422120M",
-            "cover_i": 12263823,
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2019,
-            "has_fulltext": false,
-            "key": "/works/OL26262337W",
-            "public_scan_b": false,
-            "title": "Watchmen Baslangic"
-        },
-        {
-            "cover_edition_key": "OL8320862M",
-            "cover_i": 13794085,
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 1987,
-            "has_fulltext": false,
-            "key": "/works/OL34953375W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Watchmen"
-        },
-        {
-            "author_key": [
-                "OL1438783A"
-            ],
-            "author_name": [
-                "Darwyn Cooke"
-            ],
-            "cover_edition_key": "OL35416361M",
-            "cover_i": 12258295,
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2020,
-            "has_fulltext": false,
-            "key": "/works/OL26257144W",
-            "public_scan_b": false,
-            "title": "Watchmen Baslangiç"
-        },
-        {
-            "author_key": [
-                "OL622131A"
-            ],
-            "author_name": [
-                "Len Wein"
-            ],
-            "cover_edition_key": "OL35400475M",
-            "cover_i": 12242738,
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2019,
-            "has_fulltext": false,
-            "key": "/works/OL26242506W",
-            "public_scan_b": false,
-            "title": "Watchmen Baslangic"
-        },
-        {
-            "author_key": [
-                "OL1399592A",
-                "OL2944063A",
-                "OL9110139A"
-            ],
-            "author_name": [
-                "Brian Azzarello",
-                "Lee Bermejo",
-                "Felip Tobar Pastor"
-            ],
-            "cover_edition_key": "OL37020382M",
-            "cover_i": 12600130,
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2021,
-            "has_fulltext": false,
-            "key": "/works/OL27277278W",
-            "public_scan_b": false,
-            "title": "Antes de Watchmen"
-        },
-        {
-            "author_key": [
-                "OL7779408A"
-            ],
-            "author_name": [
-                "Samuel Fadojutimi"
-            ],
-            "cover_edition_key": "OL27774944M",
-            "cover_i": 9182425,
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2018,
-            "has_fulltext": false,
-            "key": "/works/OL20533274W",
-            "public_scan_b": false,
-            "title": "Watchmen"
-        },
-        {
-            "author_key": [
-                "OL440715A"
-            ],
-            "author_name": [
-                "Alan Moore"
-            ],
-            "cover_edition_key": "OL8960960M",
-            "cover_i": 14613329,
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2005,
-            "has_fulltext": false,
-            "key": "/works/OL8665966W",
-            "public_scan_b": false,
-            "title": "Absolute Watchmen"
-        },
-        {
-            "author_key": [
-                "OL78885A"
-            ],
-            "author_name": [
-                "Brian Freemantle"
-            ],
-            "cover_edition_key": "OL3953452M",
-            "cover_i": 176658,
-            "ebook_access": "printdisabled",
-            "edition_count": 2,
-            "first_publish_year": 2002,
-            "has_fulltext": true,
-            "ia": [
-                "watchmen00free"
-            ],
-            "ia_collection": [
-                "internetarchivebooks",
-                "printdisabled"
-            ],
-            "key": "/works/OL891506W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "The watchmen"
-        },
-        {
-            "author_key": [
-                "OL440715A"
-            ],
-            "author_name": [
-                "Alan Moore"
-            ],
-            "cover_edition_key": "OL27724392M",
-            "cover_i": 9150700,
-            "ebook_access": "borrowable",
-            "edition_count": 1,
-            "first_publish_year": 2016,
-            "has_fulltext": true,
-            "ia": [
-                "watchmennoir0000moor"
-            ],
-            "ia_collection": [
-                "inlibrary",
-                "internetarchivebooks",
-                "printdisabled"
-            ],
-            "key": "/works/OL20492616W",
-            "lending_edition_s": "OL27724392M",
-            "lending_identifier_s": "watchmennoir0000moor",
-            "public_scan_b": false,
-            "title": "Watchmen Noir"
-        },
-        {
-            "author_key": [
-                "OL78919A"
-            ],
-            "author_name": [
-                "Altman, John"
-            ],
-            "cover_edition_key": "OL3692128M",
-            "cover_i": 259145,
-            "ebook_access": "borrowable",
-            "edition_count": 2,
-            "first_publish_year": 2004,
-            "has_fulltext": true,
-            "ia": [
-                "isbn_9780399151736"
-            ],
-            "ia_collection": [
-                "americana",
-                "delawarecountydistrictlibrary",
-                "inlibrary",
-                "internetarchivebooks",
-                "library_of_atlantis",
-                "printdisabled",
-                "spokanepubliclibrary-ol"
-            ],
-            "key": "/works/OL891887W",
-            "language": [
-                "eng"
-            ],
-            "lending_edition_s": "OL3692128M",
-            "lending_identifier_s": "isbn_9780399151736",
-            "public_scan_b": false,
-            "title": "The watchmen"
-        },
-        {
-            "author_key": [
-                "OL440715A",
-                "OL62672A"
-            ],
-            "author_name": [
-                "Alan Moore",
-                "Dave Gibbons"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2019,
-            "has_fulltext": false,
-            "key": "/works/OL21658679W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Watchmen Companion"
-        },
-        {
-            "author_key": [
-                "OL6812841A",
-                "OL7863711A"
-            ],
-            "author_name": [
-                "William Irwin",
-                "Mark D. White"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 4,
-            "first_publish_year": 2009,
-            "has_fulltext": false,
-            "key": "/works/OL21417384W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Watchmen and Philosophy"
-        },
-        {
-            "author_key": [
-                "OL78885A"
-            ],
-            "author_name": [
-                "Brian Freemantle"
-            ],
-            "cover_edition_key": "OL18915311M",
-            "cover_i": 11437969,
-            "ebook_access": "printdisabled",
-            "edition_count": 1,
-            "first_publish_year": 2002,
-            "has_fulltext": true,
-            "ia": [
-                "watchmen0000free"
-            ],
-            "ia_collection": [
-                "internetarchivebooks",
-                "printdisabled"
-            ],
-            "key": "/works/OL10530484W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "The watchmen"
-        },
-        {
-            "author_key": [
-                "OL3217054A",
-                "OL440715A"
-            ],
-            "author_name": [
-                "DAVE GIBBONS",
-                "Alan Moore"
-            ],
-            "cover_edition_key": "OL9164686M",
-            "cover_i": 13908902,
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2006,
-            "has_fulltext": false,
-            "key": "/works/OL34965946W",
-            "language": [
-                "por"
-            ],
-            "public_scan_b": false,
-            "title": "Watchmen - 4"
-        },
-        {
-            "author_key": [
-                "OL13708483A"
-            ],
-            "author_name": [
-                "Tierney Farrell"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2016,
-            "has_fulltext": false,
-            "key": "/works/OL38141486W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Watchmen 20"
-        },
-        {
-            "author_key": [
-                "OL10423699A"
-            ],
-            "author_name": [
-                "Carey Shaemun Webster"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2022,
-            "has_fulltext": false,
-            "key": "/works/OL27937894W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Watchmen's Playbook"
-        },
-        {
-            "author_key": [
-                "OL13102923A"
-            ],
-            "author_name": [
-                "Ben Bova"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2014,
-            "has_fulltext": false,
-            "key": "/works/OL39732788W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Star Watchmen"
-        },
-        {
-            "author_key": [
-                "OL584226A"
-            ],
-            "author_name": [
-                "Doug Atkinson"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2016,
-            "has_fulltext": false,
-            "key": "/works/OL41026870W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Annotated Watchmen"
-        },
-        {
-            "author_key": [
-                "OL7727008A",
-                "OL10929371A"
-            ],
-            "author_name": [
-                "Bernard Boulton",
-                "Terrance Frederick"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2017,
-            "has_fulltext": false,
-            "key": "/works/OL40183476W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Watchmen Revolution"
-        },
-        {
-            "author_key": [
-                "OL3004693A"
-            ],
-            "author_name": [
-                "Mark Cahill"
-            ],
-            "cover_edition_key": "OL30093529M",
-            "cover_i": 10421419,
-            "ebook_access": "borrowable",
-            "edition_count": 1,
-            "first_publish_year": 2012,
-            "has_fulltext": true,
-            "ia": [
-                "watchmen0000cahi"
-            ],
-            "ia_collection": [
-                "inlibrary",
-                "internetarchivebooks",
-                "printdisabled"
-            ],
-            "key": "/works/OL22058260W",
-            "language": [
-                "eng"
-            ],
-            "lending_edition_s": "OL30093529M",
-            "lending_identifier_s": "watchmen0000cahi",
-            "public_scan_b": false,
-            "title": "The watchmen"
-        },
-        {
-            "author_key": [
-                "OL7231953A"
-            ],
-            "author_name": [
-                "Tim O'Rourke"
-            ],
-            "cover_edition_key": "OL28417432M",
-            "cover_i": 10317197,
-            "ebook_access": "borrowable",
-            "edition_count": 1,
-            "first_publish_year": 2014,
-            "has_fulltext": true,
-            "ia": [
-                "vampirewatchmen0000orou"
-            ],
-            "ia_collection": [
-                "inlibrary",
-                "internetarchivebooks",
-                "printdisabled"
-            ],
-            "key": "/works/OL20980562W",
-            "language": [
-                "eng"
-            ],
-            "lending_edition_s": "OL28417432M",
-            "lending_identifier_s": "vampirewatchmen0000orou",
-            "public_scan_b": false,
-            "title": "Vampire watchmen"
-        },
-        {
-            "author_key": [
-                "OL1438783A",
-                "OL3096016A"
-            ],
-            "author_name": [
-                "Darwyn Cooke",
-                "Amanda Conner"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2014,
-            "has_fulltext": false,
-            "key": "/works/OL21068187W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Before Watchmen"
-        },
-        {
-            "author_key": [
-                "OL67629A"
-            ],
-            "author_name": [
-                "J. Michael Straczynski"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2012,
-            "has_fulltext": false,
-            "key": "/works/OL32736280W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Before Watchmen"
-        },
-        {
-            "author_key": [
-                "OL67629A"
-            ],
-            "author_name": [
-                "J. Michael Straczynski"
-            ],
-            "cover_edition_key": "OL35430384M",
-            "cover_i": 12271882,
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2020,
-            "has_fulltext": false,
-            "key": "/works/OL26269866W",
-            "public_scan_b": false,
-            "title": "Watchmen Baslangiç"
-        },
-        {
-            "author_key": [
-                "OL10904751A"
-            ],
-            "author_name": [
-                "LaTonya Derbigny"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2018,
-            "has_fulltext": false,
-            "key": "/works/OL29504719W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Watchmen 2018"
-        },
-        {
-            "author_key": [
-                "OL67629A"
-            ],
-            "author_name": [
-                "J. Michael Straczynski"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2013,
-            "has_fulltext": false,
-            "key": "/works/OL28963362W",
-            "public_scan_b": false,
-            "title": "Before Watchmen 04"
-        },
-        {
-            "author_key": [
-                "OL14477592A"
-            ],
-            "author_name": [
-                "Jacob Tack"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2016,
-            "has_fulltext": false,
-            "key": "/works/OL40756288W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Watchmen"
-        },
-        {
-            "author_key": [
-                "OL6864641A"
-            ],
-            "author_name": [
-                "Mark D. White"
-            ],
-            "cover_edition_key": "OL22665645M",
-            "cover_i": 8733611,
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2009,
-            "has_fulltext": false,
-            "key": "/works/OL18681923W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Watchmen and philosophy"
-        },
-        {
-            "author_key": [
-                "OL668699A"
-            ],
-            "author_name": [
-                "Helen Cresswell"
-            ],
-            "cover_edition_key": "OL17441992M",
-            "cover_i": 10340438,
-            "ebook_access": "borrowable",
-            "edition_count": 2,
-            "first_publish_year": 1974,
-            "has_fulltext": true,
-            "ia": [
-                "nightwatchmen0000cres"
-            ],
-            "ia_collection": [
-                "inlibrary",
-                "internetarchivebooks",
-                "printdisabled",
-                "unb-ol"
-            ],
-            "key": "/works/OL10463423W",
-            "language": [
-                "eng"
-            ],
-            "lending_edition_s": "OL17441992M",
-            "lending_identifier_s": "nightwatchmen0000cres",
-            "public_scan_b": false,
-            "title": "The night-watchmen"
-        },
-        {
-            "author_key": [
-                "OL1399592A",
-                "OL67629A",
-                "OL622131A"
-            ],
-            "author_name": [
-                "Brian Azzarello",
-                "J. Michael Straczynski",
-                "Len Wein"
-            ],
-            "cover_edition_key": "OL27358253M",
-            "cover_i": 8821541,
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2018,
-            "has_fulltext": false,
-            "key": "/works/OL20174672W",
-            "public_scan_b": false,
-            "title": "Before Watchmen Omnibus"
-        },
-        {
-            "author_key": [
-                "OL1399592A"
-            ],
-            "author_name": [
-                "Brian Azzarello"
-            ],
-            "cover_i": 7861385,
-            "ebook_access": "borrowable",
-            "edition_count": 1,
-            "first_publish_year": 2013,
-            "has_fulltext": true,
-            "ia": [
-                "beforewatchmenco0000azza"
-            ],
-            "ia_collection": [
-                "inlibrary",
-                "internetarchivebooks",
-                "printdisabled"
-            ],
-            "key": "/works/OL17580259W",
-            "lending_edition_s": "OL26183415M",
-            "lending_identifier_s": "beforewatchmenco0000azza",
-            "public_scan_b": false,
-            "title": "Before Watchmen Comedianrorschach"
-        },
-        {
-            "author_key": [
-                "OL12257693A"
-            ],
-            "author_name": [
-                "Blair Watchmen"
-            ],
-            "cover_edition_key": "OL45847499M",
-            "cover_i": 14518642,
-            "ebook_access": "borrowable",
-            "edition_count": 1,
-            "first_publish_year": 2016,
-            "has_fulltext": true,
-            "ia": [
-                "smarthomesmartho0000blai"
-            ],
-            "ia_collection": [
-                "inlibrary",
-                "internetarchivebooks",
-                "printdisabled"
-            ],
-            "key": "/works/OL33864983W",
-            "lending_edition_s": "OL45847499M",
-            "lending_identifier_s": "smarthomesmartho0000blai",
-            "public_scan_b": false,
-            "title": "Smart Home"
-        },
-        {
-            "author_key": [
-                "OL13765295A"
-            ],
-            "author_name": [
-                "Rich Watchmen"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2010,
-            "has_fulltext": false,
-            "key": "/works/OL38265299W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Like a Thief"
-        },
-        {
-            "author_key": [
-                "OL13961743A"
-            ],
-            "author_name": [
-                "Esther Watchmen"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2015,
-            "has_fulltext": false,
-            "key": "/works/OL40750942W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Armageddon Movement"
-        },
-        {
-            "author_key": [
-                "OL13961743A"
-            ],
-            "author_name": [
-                "Esther Watchmen"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2015,
-            "has_fulltext": false,
-            "key": "/works/OL40751256W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Communism Brainwashing and the Birth of Public Schools"
-        },
-        {
-            "author_key": [
-                "OL13961743A"
-            ],
-            "author_name": [
-                "Esther Watchmen"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2013,
-            "has_fulltext": false,
-            "key": "/works/OL38841664W",
-            "public_scan_b": false,
-            "title": "Yoga and Going Green at School"
-        },
-        {
-            "author_key": [
-                "OL15168938A"
-            ],
-            "author_name": [
-                "Temperance Watchmen"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 1851,
-            "has_fulltext": false,
-            "key": "/works/OL42804346W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Constitution, by-laws and regulations of the Brotherhood of Temperance Watchmen, in North America"
-        },
-        {
-            "author_key": [
-                "OL67629A"
-            ],
-            "author_name": [
-                "J. Michael Straczynski"
-            ],
-            "cover_edition_key": "OL27147608M",
-            "cover_i": 9258278,
-            "ebook_access": "borrowable",
-            "edition_count": 1,
-            "first_publish_year": 2013,
-            "has_fulltext": true,
-            "ia": [
-                "beforewatchmenni0000stra"
-            ],
-            "ia_collection": [
-                "hamiltonpubliclibrary-ol",
-                "inlibrary",
-                "internetarchivebooks",
-                "printdisabled",
-                "tulsacc-ol",
-                "worthingtonlibraries-ol"
-            ],
-            "key": "/works/OL19967400W",
-            "language": [
-                "eng"
-            ],
-            "lending_edition_s": "OL27147608M",
-            "lending_identifier_s": "beforewatchmenni0000stra",
-            "public_scan_b": false,
-            "title": "Before Watchmen"
-        },
-        {
-            "author_key": [
-                "OL668699A"
-            ],
-            "author_name": [
-                "Helen Cresswell"
-            ],
-            "cover_edition_key": "OL24870320M",
-            "cover_i": 6862862,
-            "ebook_access": "borrowable",
-            "edition_count": 1,
-            "first_publish_year": 1969,
-            "has_fulltext": true,
-            "ia": [
-                "nightwatchmen00cres"
-            ],
-            "ia_collection": [
-                "inlibrary",
-                "internetarchivebooks",
-                "printdisabled"
-            ],
-            "key": "/works/OL15964379W",
-            "language": [
-                "eng"
-            ],
-            "lending_edition_s": "OL24870320M",
-            "lending_identifier_s": "nightwatchmen00cres",
-            "public_scan_b": false,
-            "title": "The night watchmen"
-        },
-        {
-            "author_key": [
-                "OL2674228A",
-                "OL9979855A"
-            ],
-            "author_name": [
-                "Cresswell",
-                "Helen Cresswell"
-            ],
-            "ebook_access": "borrowable",
-            "edition_count": 2,
-            "first_publish_year": 1969,
-            "has_fulltext": true,
-            "ia": [
-                "nightwatchmen0000cres_p7s9"
-            ],
-            "ia_collection": [
-                "inlibrary",
-                "internetarchivebooks",
-                "printdisabled"
-            ],
-            "key": "/works/OL27714743W",
-            "lending_edition_s": "OL37810601M",
-            "lending_identifier_s": "nightwatchmen0000cres_p7s9",
-            "public_scan_b": false,
-            "title": "The Night Watchmen"
-        },
-        {
-            "author_key": [
-                "OL3125365A"
-            ],
-            "author_name": [
-                "Obadiah Frank"
-            ],
-            "cover_edition_key": "OL8878345M",
-            "cover_i": 872896,
-            "ebook_access": "printdisabled",
-            "edition_count": 2,
-            "first_publish_year": 2004,
-            "has_fulltext": true,
-            "ia": [
-                "watchmenscry0000obad"
-            ],
-            "ia_collection": [
-                "internetarchivebooks",
-                "printdisabled"
-            ],
-            "key": "/works/OL8992163W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "The Watchmen's Cry"
-        },
-        {
-            "author_key": [
-                "OL2994994A"
-            ],
-            "author_name": [
-                "Nell Zier"
-            ],
-            "cover_edition_key": "OL11724017M",
-            "cover_i": 2777022,
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2005,
-            "has_fulltext": false,
-            "key": "/works/OL8788381W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Hashomer, the Watchmen"
-        },
-        {
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2021,
-            "has_fulltext": false,
-            "key": "/works/OL25194325W",
-            "public_scan_b": false,
-            "title": "watchmen 1-12"
-        },
-        {
-            "author_key": [
-                "OL9673395A"
-            ],
-            "author_name": [
-                "M. J. Granger"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2021,
-            "has_fulltext": false,
-            "key": "/works/OL25611653W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Black Watchmen Sleepeth"
-        },
-        {
-            "author_key": [
-                "OL619256A"
-            ],
-            "author_name": [
-                "Rafael Marín Trechera"
-            ],
-            "cover_edition_key": "OL31429648M",
-            "cover_i": 10518593,
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2009,
-            "has_fulltext": false,
-            "key": "/works/OL23633898W",
-            "public_scan_b": false,
-            "title": "W de Watchmen"
-        },
-        {
-            "author_key": [
-                "OL5988145A"
-            ],
-            "author_name": [
-                "Presbyterian Church in the U.S.A. (Old School). Board of Publication"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 1866,
-            "has_fulltext": false,
-            "key": "/works/OL32099232W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "The Little watchmen"
-        },
-        {
-            "author_key": [
-                "OL12298028A"
-            ],
-            "author_name": [
-                "Malin Akerman"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2010,
-            "has_fulltext": false,
-            "key": "/works/OL33984139W",
-            "public_scan_b": false,
-            "title": "Watchmen (Director's Cut)"
-        },
-        {
-            "author_key": [
-                "OL12296496A"
-            ],
-            "author_name": [
-                "Jennifer M. Pitkin"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2013,
-            "has_fulltext": false,
-            "key": "/works/OL33980003W",
-            "public_scan_b": false,
-            "title": "Watchmen for Morning"
-        },
-        {
-            "author_key": [
-                "OL10423699A"
-            ],
-            "author_name": [
-                "Carey Shaemun Webster"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2022,
-            "has_fulltext": false,
-            "key": "/works/OL27937893W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Watchmen't Playbook"
-        },
-        {
-            "author_key": [
-                "OL10017942A"
-            ],
-            "author_name": [
-                "Michael Tsaphah"
-            ],
-            "cover_edition_key": "OL36026939M",
-            "cover_i": 12500528,
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2017,
-            "has_fulltext": false,
-            "key": "/works/OL26605114W",
-            "public_scan_b": false,
-            "title": "The Watchmen’s Chronicle"
-        },
-        {
-            "author_key": [
-                "OL668699A"
-            ],
-            "author_name": [
-                "Helen Cresswell"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 1990,
-            "has_fulltext": false,
-            "key": "/works/OL3784398W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "The Night-Watchmen"
-        },
-        {
-            "author_key": [
-                "OL2956297A"
-            ],
-            "author_name": [
-                "Alex Gough"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2014,
-            "has_fulltext": false,
-            "key": "/works/OL41580780W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Watchmen of Rome"
-        },
-        {
-            "author_key": [
-                "OL736406A"
-            ],
-            "author_name": [
-                "Lora Allison"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 1992,
-            "has_fulltext": false,
-            "key": "/works/OL3999474W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Warriors and Watchmen"
-        },
-        {
-            "author_key": [
-                "OL12775258A"
-            ],
-            "author_name": [
-                "Denham, Richard, Trow, M J"
-            ],
-            "cover_edition_key": "OL47735585M",
-            "cover_i": 14447371,
-            "ebook_access": "borrowable",
-            "edition_count": 1,
-            "first_publish_year": 2014,
-            "has_fulltext": true,
-            "ia": [
-                "britanniapartiiw0000denh"
-            ],
-            "ia_collection": [
-                "inlibrary",
-                "internetarchivebooks",
-                "printdisabled"
-            ],
-            "key": "/works/OL35322005W",
-            "lending_edition_s": "OL47735585M",
-            "lending_identifier_s": "britanniapartiiw0000denh",
-            "public_scan_b": false,
-            "title": "Britannia, Part II, The Watchmen"
-        },
-        {
-            "author_key": [
-                "OL622131A"
-            ],
-            "author_name": [
-                "Len Wein"
-            ],
-            "cover_i": 7861387,
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2013,
-            "has_fulltext": false,
-            "key": "/works/OL17580260W",
-            "public_scan_b": false,
-            "title": "Before Watchmen Ozymandiascrimson Corsair"
-        },
-        {
-            "author_key": [
-                "OL6518431A"
-            ],
-            "author_name": [
-                "Will Brooker"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 2,
-            "first_publish_year": 2023,
-            "has_fulltext": false,
-            "key": "/works/OL34049379W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Never-Ending Watchmen"
-        },
-        {
-            "author_key": [
-                "OL668699A"
-            ],
-            "author_name": [
-                "Helen Cresswell"
-            ],
-            "cover_i": 1184318,
-            "ebook_access": "no_ebook",
-            "edition_count": 0,
-            "has_fulltext": false,
-            "key": "/works/OL3784397W",
-            "public_scan_b": false,
-            "title": "The Night-watchmen"
-        },
-        {
-            "author_key": [
-                "OL3064596A"
-            ],
-            "author_name": [
-                "Peter Aperlo"
-            ],
-            "cover_edition_key": "OL24083837M",
-            "cover_i": 6298084,
-            "ebook_access": "no_ebook",
-            "edition_count": 2,
-            "first_publish_year": 2009,
-            "has_fulltext": false,
-            "key": "/works/OL14954949W",
-            "public_scan_b": false,
-            "subtitle": "The Art of the Film",
-            "title": "Watchmen"
-        },
-        {
-            "author_key": [
-                "OL894115A"
-            ],
-            "author_name": [
-                "Bryan Aubrey"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 1986,
-            "has_fulltext": false,
-            "key": "/works/OL4480506W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Watchmen of eternity"
-        },
-        {
-            "author_key": [
-                "OL10186127A"
-            ],
-            "author_name": [
-                "Alice Alice Rogers"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2020,
-            "has_fulltext": false,
-            "key": "/works/OL27179282W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "How Night Watchmen Swear Coloring Book"
-        },
-        {
-            "author_key": [
-                "OL592467A"
-            ],
-            "author_name": [
-                "J. R. Black"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 2,
-            "first_publish_year": 2021,
-            "has_fulltext": false,
-            "key": "/works/OL25581792W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Watchmen of Dalton Manor"
-        },
-        {
-            "author_key": [
-                "OL3059219A"
-            ],
-            "author_name": [
-                "Tom Hess"
-            ],
-            "cover_edition_key": "OL9378456M",
-            "cover_i": 2076406,
-            "ebook_access": "borrowable",
-            "edition_count": 2,
-            "first_publish_year": 2000,
-            "has_fulltext": true,
-            "ia": [
-                "watchmenbeingpre0000hess"
-            ],
-            "ia_collection": [
-                "inlibrary",
-                "internetarchivebooks",
-                "printdisabled"
-            ],
-            "key": "/works/OL8888202W",
-            "language": [
-                "eng"
-            ],
-            "lending_edition_s": "OL9378456M",
-            "lending_identifier_s": "watchmenbeingpre0000hess",
-            "public_scan_b": false,
-            "title": "The Watchmen"
-        },
-        {
-            "author_key": [
-                "OL1438783A"
-            ],
-            "author_name": [
-                "Darwyn Cooke"
-            ],
-            "cover_i": 7861383,
-            "ebook_access": "borrowable",
-            "edition_count": 1,
-            "first_publish_year": 2013,
-            "has_fulltext": true,
-            "ia": [
-                "beforewatchmenmi0000cook"
-            ],
-            "ia_collection": [
-                "hamiltonpubliclibrary-ol",
-                "inlibrary",
-                "internetarchivebooks",
-                "printdisabled",
-                "tulsacc-ol"
-            ],
-            "key": "/works/OL17580258W",
-            "lending_edition_s": "OL26183413M",
-            "lending_identifier_s": "beforewatchmenmi0000cook",
-            "public_scan_b": false,
-            "title": "Before Watchmen Minutemen Silk Spectre"
-        },
-        {
-            "author_key": [
-                "OL1708793A"
-            ],
-            "author_name": [
-                "Glen C. H. Perry"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 1938,
-            "has_fulltext": false,
-            "key": "/works/OL6444464W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Watchmen of the sea"
-        },
-        {
-            "author_key": [
-                "OL18800A"
-            ],
-            "author_name": [
-                "Helen Norris"
-            ],
-            "cover_edition_key": "OL3022292M",
-            "cover_i": 8180691,
-            "ebook_access": "borrowable",
-            "edition_count": 1,
-            "first_publish_year": 1985,
-            "has_fulltext": true,
-            "ia": [
-                "morethansevenwat0000norr"
-            ],
-            "ia_collection": [
-                "inlibrary",
-                "internetarchivebooks",
-                "printdisabled"
-            ],
-            "key": "/works/OL442460W",
-            "language": [
-                "eng"
-            ],
-            "lending_edition_s": "OL3022292M",
-            "lending_identifier_s": "morethansevenwat0000norr",
-            "public_scan_b": false,
-            "title": "More than seven watchmen"
-        },
-        {
-            "author_key": [
-                "OL3726443A"
-            ],
-            "author_name": [
-                "Miriam Rodyn Park"
-            ],
-            "cover_edition_key": "OL11742631M",
-            "cover_i": 2703652,
-            "ebook_access": "borrowable",
-            "edition_count": 1,
-            "first_publish_year": 2007,
-            "has_fulltext": true,
-            "ia": [
-                "watchmenonwall0000miri"
-            ],
-            "ia_collection": [
-                "inlibrary",
-                "internetarchivebooks",
-                "printdisabled"
-            ],
-            "key": "/works/OL9735280W",
-            "language": [
-                "eng"
-            ],
-            "lending_edition_s": "OL11742631M",
-            "lending_identifier_s": "watchmenonwall0000miri",
-            "public_scan_b": false,
-            "title": "Watchmen on the Wall"
-        },
-        {
-            "author_key": [
-                "OL11258292A"
-            ],
-            "author_name": [
-                "Frank MENA"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2020,
-            "has_fulltext": false,
-            "key": "/works/OL30757198W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Watchmen of the Fort"
-        },
-        {
-            "author_key": [
-                "OL3469038A"
-            ],
-            "author_name": [
-                "Lorna Kendall"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 1963,
-            "has_fulltext": false,
-            "key": "/works/OL33954957W",
-            "public_scan_b": false,
-            "title": "Watchmen Upon Thy Walls"
-        },
-        {
-            "author_key": [
-                "OL11155731A"
-            ],
-            "author_name": [
-                "Ena Denise McBryde-Silva"
-            ],
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2020,
-            "has_fulltext": false,
-            "key": "/works/OL30459931W",
-            "language": [
-                "eng"
-            ],
-            "public_scan_b": false,
-            "title": "Watchmen of the Kingdom"
-        },
-        {
-            "author_key": [
-                "OL3064596A"
-            ],
-            "author_name": [
-                "Peter Aperlo"
-            ],
-            "cover_edition_key": "OL47289683M",
-            "cover_i": 13749989,
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2009,
-            "has_fulltext": false,
-            "key": "/works/OL34930799W",
-            "public_scan_b": false,
-            "title": "EL ARTE DE WATCHMEN"
-        },
-        {
-            "cover_edition_key": "OL47254557M",
-            "cover_i": 13702788,
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "has_fulltext": false,
-            "key": "/works/OL34897812W",
-            "public_scan_b": false,
-            "title": "WATCHMEN 01 EL COMANDANTE"
-        },
-        {
-            "author_key": [
-                "OL7738237A"
-            ],
-            "author_name": [
-                "Apostle Ron Wilson"
-            ],
-            "cover_edition_key": "OL27635343M",
-            "cover_i": 9082670,
-            "ebook_access": "no_ebook",
-            "edition_count": 1,
-            "first_publish_year": 2011,
-            "has_fulltext": false,
-            "key": "/works/OL20414852W",
-            "public_scan_b": false,
-            "title": "Watchmen on the Wall"
-        }
-    ]
+    "data": {
+        "numFound": 181236,
+        "start": 0,
+        "numFoundExact": true,
+        "num_found": 181236,
+        "documentation_url": "https://openlibrary.org/dev/docs/api/search",
+        "q": "Test",
+        "offset": null,
+        "docs": [
+            {
+                "author_name": [
+                    "George Bernard Shaw"
+                ],
+                "cover_i": 9267223,
+                "first_publish_year": 1912,
+                "key": "/works/OL1066524W",
+                "number_of_pages_median": 135,
+                "title": "Pygmalion",
+                "subject": [
+                    "Drama",
+                    "Flower vending",
+                    "Linguistics teachers",
+                    "Social classes",
+                    "Speech and social status",
+                    "Man-woman relationships",
+                    "open_syllabus_project",
+                    "German",
+                    "Dictionaries",
+                    "English language",
+                    "British and irish drama (dramatic works by one author)",
+                    "Comedies",
+                    "Speech and social status -- Drama",
+                    "London (England) -- Drama",
+                    "Linguistics teachers -- Drama",
+                    "Social classes -- Drama",
+                    "Flower vending -- Drama"
+                ],
+                "place": [
+                    "London",
+                    "England"
+                ],
+                "time": [
+                    "1912"
+                ],
+                "person": [
+                    "Pygmalion",
+                    "Galatea",
+                    "Henry Higgins",
+                    "Eliza Doolittle",
+                    "Colonel Pickering",
+                    "Alfred Doolittle",
+                    "Mrs. Higgins",
+                    "Freddy Eynsford Hill"
+                ],
+                "ratings_average": 3.857143,
+                "ratings_count": 49
+            },
+            {
+                "author_name": [
+                    "Robert W. Chambers"
+                ],
+                "cover_i": 4752788,
+                "first_publish_year": 1895,
+                "key": "/works/OL8127201W",
+                "number_of_pages_median": 228,
+                "title": "The King in Yellow",
+                "subject": [
+                    "Fiction",
+                    "Fiction, horror",
+                    "Fiction, short stories (single author)",
+                    "Fiction, fantasy, collections & anthologies",
+                    "Fiction, fantasy, paranormal",
+                    "American fiction",
+                    "American Short stories",
+                    "Cuentos estadounidenses",
+                    "Fiction, general",
+                    "American literature",
+                    "Literature",
+                    "American Paranormal fiction",
+                    "American Horror tales"
+                ],
+                "place": [
+                    "United States; Bretagne",
+                    "United states"
+                ],
+                "time": [
+                    "1900",
+                    "1920"
+                ],
+                "ratings_average": 3.9375,
+                "ratings_count": 16
+            },
+            {
+                "author_name": [
+                    "Walt Whitman"
+                ],
+                "cover_i": 9000447,
+                "first_publish_year": 1855,
+                "key": "/works/OL16333W",
+                "number_of_pages_median": 384,
+                "title": "Leaves of Grass",
+                "subject": [
+                    "Manuscripts",
+                    "United States Civil War, 1861-1865",
+                    "Gay poets",
+                    "Presidents",
+                    "Poetry",
+                    "American Poets",
+                    "Fiction",
+                    "English poetry",
+                    "American poetry",
+                    "Mysticism",
+                    "Classic Literature",
+                    "Biography",
+                    "History",
+                    "American Epic poetry",
+                    "Poems",
+                    "Poetry (poetic works by one author)",
+                    "Whitman, Walt, 1819-1892. Leaves of grass",
+                    "Leaves of grass (Whitman, Walt)",
+                    "Mysticism, poetry",
+                    "LGBTQ poetry",
+                    "Leaves of grass",
+                    "Politics and government",
+                    "American literature",
+                    "POETRY / American / General",
+                    "Calligraphy",
+                    "Specimens",
+                    "Democracy in literature",
+                    "Self in literature",
+                    "Moi (Psychologie) dans la littérature",
+                    "Poésie américaine",
+                    "Poètes américains",
+                    "Poésie épique américaine",
+                    "American poetry (collections), 19th century",
+                    "Private presses",
+                    "Wood-engraving",
+                    "Poesia Norte Americana",
+                    "Leather bindings (Bookbinding)",
+                    "Bookbinders",
+                    "Bayntun-Riviere (Bindery)",
+                    "Limited Editions Club",
+                    "American poetry, history and criticism, 19th century",
+                    "Whitman, walt, 1819-1892, concordances",
+                    "Sheldan, moreah , 1930-",
+                    "American poetry--19th century",
+                    "Poets, american",
+                    "Poets, american--19th century",
+                    "Ps3201 1855e 2005",
+                    "811/.3",
+                    "Children's poetry, American",
+                    "Criticism and interpretation",
+                    "Whitman, walt, 1819-1892",
+                    "Whitman, walt, 1819-1892, juvenile literature",
+                    "Poetry, collections",
+                    "Title pages",
+                    "Printing",
+                    "Fiction, general",
+                    "American poetry -- 19th century",
+                    "Philosophy",
+                    "Long Now Manual for Civilization",
+                    "Poetry as Topic",
+                    "American",
+                    "General",
+                    "Bayntun and Rivi©·re (Bookbinders)",
+                    "Free verse",
+                    "Library",
+                    "Personal copy"
+                ],
+                "place": [
+                    "United States"
+                ],
+                "time": [
+                    "19th century",
+                    "Civil War, 1861-1865"
+                ],
+                "person": [
+                    "Walt Whitman (1819-1892)",
+                    "Abraham Lincoln (1809-1865)",
+                    "Emory Holloway (1885-)",
+                    "Federico Garciía Lorca (1898-1936)",
+                    "Pablo Neruda (1904-1973)"
+                ],
+                "ratings_average": 3.8333333,
+                "ratings_count": 12
+            },
+            {
+                "author_name": [
+                    "Thomas E. Pinelli"
+                ],
+                "cover_i": 8936636,
+                "first_publish_year": 1990,
+                "key": "/works/OL8894965W",
+                "number_of_pages_median": 26,
+                "title": "NASA/DoD aerospace knowledge diffusion research project",
+                "subject": [
+                    "Aeronautical engineering",
+                    "Aeronautics",
+                    "Aerospace engineering",
+                    "Aerospace engineers",
+                    "Aerospace industry",
+                    "Aerospace technology transfer",
+                    "Aircraft design",
+                    "Aircraft engines",
+                    "Aircraft industry",
+                    "American Institute of Aeronautics and Astronautics",
+                    "Avionics",
+                    "Biotechnology",
+                    "Commercial aircraft",
+                    "Communication",
+                    "Communication of technical information",
+                    "Construction Materials",
+                    "Cultural resources",
+                    "Data acquisition",
+                    "Databases",
+                    "Defense program",
+                    "Documentation",
+                    "Economic conditions",
+                    "Economic development",
+                    "Education",
+                    "Electric equipment",
+                    "Engineers",
+                    "Federal budgets",
+                    "Flight crews",
+                    "Flight tests",
+                    "Format",
+                    "Government policy",
+                    "Histories",
+                    "Human factors engineering",
+                    "Industries",
+                    "Information Systems",
+                    "Information dissemination",
+                    "Information services",
+                    "Information storage and retrieval systems",
+                    "Information transfer",
+                    "Instructors",
+                    "International cooperation",
+                    "International relations",
+                    "Japan",
+                    "Knowledge",
+                    "Maintenance",
+                    "Manufacturing",
+                    "Marketing",
+                    "Materials science",
+                    "NASA programs",
+                    "Personnel development",
+                    "Policies",
+                    "Political planning",
+                    "Procedures",
+                    "Propulsion",
+                    "Reports",
+                    "Research",
+                    "Research and development",
+                    "Science",
+                    "Scientists",
+                    "Semiconductors (Materials)",
+                    "Social factors",
+                    "Students",
+                    "Surveys",
+                    "Technical writing",
+                    "Technological innovations",
+                    "Technology transfer",
+                    "Technology utilization",
+                    "United States",
+                    "User requirements"
+                ],
+                "place": [
+                    "Japan",
+                    "United States"
+                ],
+                "ratings_average": 4,
+                "ratings_count": 5
+            },
+            {
+                "author_name": [
+                    "William Shakespeare"
+                ],
+                "cover_i": 8155661,
+                "first_publish_year": 1611,
+                "key": "/works/OL362699W",
+                "number_of_pages_median": 143,
+                "title": "The Tempest",
+                "subject": [
+                    "English literature: Shakespeare criticism",
+                    "English literature: Shakespeare texts",
+                    "Plays / Drama",
+                    "Literary Criticism",
+                    "Classics",
+                    "For National Curriculum Key Stage 3",
+                    "play",
+                    "performing arts",
+                    "English drama",
+                    "tragicomedy",
+                    "Drama",
+                    "Teatro",
+                    "Survival after airplane accidents, shipwrecks",
+                    "Magicians",
+                    "Magos",
+                    "Supervivencia (accidentes de aviación, naufragios, etc.)",
+                    "Fathers and daughters",
+                    "Tragicomedia",
+                    "Castaways",
+                    "Padres e hijas",
+                    "Náufragos",
+                    "shipwrecks",
+                    "Plays",
+                    "Spirits",
+                    "Shipwreck victims",
+                    "English literature",
+                    "Political refugees",
+                    "History and criticism",
+                    "Bu hnenanweisung",
+                    "Auffu hrung",
+                    "Geschichte",
+                    "English Young adult drama",
+                    "Islands",
+                    "Shipwreck survival",
+                    "Literatura inglesa (crítica e interpretação)",
+                    "Criticism and interpretation",
+                    "Juvenile drama",
+                    "Children's plays, English",
+                    "Reading Level-Grade 11",
+                    "Reading Level-Grade 12",
+                    "Tempest (Shakespeare, William)",
+                    "18.05 English literature",
+                    "British and irish drama (dramatic works by one author)",
+                    "Shakespeare, william, 1564-1616, tempest",
+                    "English literature, outlines, syllabi, etc.",
+                    "Drama (dramatic works by one author)",
+                    "Literature, history and criticism",
+                    "Shakespeare, william, 1564-1616, juvenile literature",
+                    "Problems, exercises",
+                    "Adaptations",
+                    "Outlines, syllabi",
+                    "Ariel (Fictitious character : Shakespeare)",
+                    "Caliban (Fictitious character)",
+                    "Prospero (Fictitious character)",
+                    "Children's plays",
+                    "Stage history",
+                    "Drama .",
+                    "Nobility",
+                    "Roman Empire",
+                    "Juvenile fiction",
+                    "Pictorial works",
+                    "Shakespeare, william, 1564-1616",
+                    "Fiction",
+                    "Shipwreck victims -- Drama",
+                    "Fathers and daughters -- Drama",
+                    "Magicians -- Drama",
+                    "Political refugees -- Drama",
+                    "Islands -- Drama",
+                    "Spirits -- Drama",
+                    "English literature, history and criticism",
+                    "Comic books, strips",
+                    "SV",
+                    "Survival",
+                    "Translations into Hebrew",
+                    "Children's fiction",
+                    "Linguistics & semiotics",
+                    "Shipwreck survival--drama",
+                    "Fathers and daughters--drama",
+                    "Magicians--drama",
+                    "Islands--drama",
+                    "Pr2833.a2 l56 2002",
+                    "822.3/3",
+                    "Mathematics, study and teaching",
+                    "Shakespeare, william , 1564-1616",
+                    "Fathers and daughters--fiction",
+                    "Castaways--drama",
+                    "Pr2833.a2 v38 2011",
+                    "The tempest",
+                    "English drama (Comedy)",
+                    "English Dramatists",
+                    "Early modern",
+                    "Education",
+                    "Light",
+                    "Skates (Fishes)"
+                ],
+                "place": [
+                    "Italy",
+                    "Naples",
+                    "Carthage",
+                    "Milan"
+                ],
+                "person": [
+                    "Prospero",
+                    "Miranda",
+                    "Ariel",
+                    "Caliban",
+                    "Sycorax",
+                    "Iris",
+                    "Ceres",
+                    "Juno",
+                    "Alonso",
+                    "Sebastian",
+                    "Antonio",
+                    "Ferdinand",
+                    "Gonzalo",
+                    "William Shakespeare (1564-1616)"
+                ],
+                "ratings_average": 3.9482758,
+                "ratings_count": 58
+            }
+        ]
+    },
+    "status": 200,
+    "headers": {
+        "content-type": "application/json",
+        "date": "Sat, 11 Apr 2026 18:48:58 GMT",
+        "referrer-policy": "no-referrer-when-downgrade",
+        "server": "nginx/1.28.3",
+        "x-served-by": "FastAPI"
+    },
+    "config": {
+        "transitional": {
+            "silentJSONParsing": true,
+            "forcedJSONParsing": true,
+            "clarifyTimeoutError": false,
+            "legacyInterceptorReqResOrdering": true
+        },
+        "adapter": [
+            "xhr",
+            "http",
+            "fetch"
+        ],
+        "transformRequest": [
+            null
+        ],
+        "transformResponse": [
+            null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1,
+        "env": {},
+        "headers": {
+            "Accept": "application/json, text/plain, */*",
+            "User-Agent": "myLibrary (Dustin Bruce, dustinbruce50@gmail.com)"
+        },
+        "params": {
+            "q": "Test",
+            "page": 1,
+            "limit": 5,
+            "fields": "key,title,subtitle,author_name,cover_i,first_publish_year,ratings_average,ratings_count,subject,person,place,time,number_of_pages_median,"
+        },
+        "method": "get",
+        "url": "https://openlibrary.org/search.json?q=Test&page=1&limit=5",
+        "allowAbsoluteUrls": true
+    },
+    "request": {
+        "UNSENT": 0,
+        "OPENED": 1,
+        "HEADERS_RECEIVED": 2,
+        "LOADING": 3,
+        "DONE": 4,
+        "readyState": 4,
+        "status": 200,
+        "timeout": 0,
+        "withCredentials": true,
+        "upload": {},
+        "_aborted": false,
+        "_hasError": false,
+        "_method": "GET",
+        "_perfKey": "network_XMLHttpRequest_https://openlibrary.org/search.json?q=Test&page=1&limit=5&q=Test&page=1&limit=5&fields=key,title,subtitle,author_name,cover_i,first_publish_year,ratings_average,ratings_count,subject,person,place,time,number_of_pages_median,",
+        "_response": "{\"numFound\":181236,\"start\":0,\"numFoundExact\":true,\"num_found\":181236,\"documentation_url\":\"https://openlibrary.org/dev/docs/api/search\",\"q\":\"Test\",\"offset\":null,\"docs\":[{\"author_name\":[\"George Bernard Shaw\"],\"cover_i\":9267223,\"first_publish_year\":1912,\"key\":\"/works/OL1066524W\",\"number_of_pages_median\":135,\"title\":\"Pygmalion\",\"subject\":[\"Drama\",\"Flower vending\",\"Linguistics teachers\",\"Social classes\",\"Speech and social status\",\"Man-woman relationships\",\"open_syllabus_project\",\"German\",\"Dictionaries\",\"English language\",\"British and irish drama (dramatic works by one author)\",\"Comedies\",\"Speech and social status -- Drama\",\"London (England) -- Drama\",\"Linguistics teachers -- Drama\",\"Social classes -- Drama\",\"Flower vending -- Drama\"],\"place\":[\"London\",\"England\"],\"time\":[\"1912\"],\"person\":[\"Pygmalion\",\"Galatea\",\"Henry Higgins\",\"Eliza Doolittle\",\"Colonel Pickering\",\"Alfred Doolittle\",\"Mrs. Higgins\",\"Freddy Eynsford Hill\"],\"ratings_average\":3.857143,\"ratings_count\":49},{\"author_name\":[\"Robert W. Chambers\"],\"cover_i\":4752788,\"first_publish_year\":1895,\"key\":\"/works/OL8127201W\",\"number_of_pages_median\":228,\"title\":\"The King in Yellow\",\"subject\":[\"Fiction\",\"Fiction, horror\",\"Fiction, short stories (single author)\",\"Fiction, fantasy, collections & anthologies\",\"Fiction, fantasy, paranormal\",\"American fiction\",\"American Short stories\",\"Cuentos estadounidenses\",\"Fiction, general\",\"American literature\",\"Literature\",\"American Paranormal fiction\",\"American Horror tales\"],\"place\":[\"United States; Bretagne\",\"United states\"],\"time\":[\"1900\",\"1920\"],\"ratings_average\":3.9375,\"ratings_count\":16},{\"author_name\":[\"Walt Whitman\"],\"cover_i\":9000447,\"first_publish_year\":1855,\"key\":\"/works/OL16333W\",\"number_of_pages_median\":384,\"title\":\"Leaves of Grass\",\"subject\":[\"Manuscripts\",\"United States Civil War, 1861-1865\",\"Gay poets\",\"Presidents\",\"Poetry\",\"American Poets\",\"Fiction\",\"English poetry\",\"American poetry\",\"Mysticism\",\"Classic Literature\",\"Biography\",\"History\",\"American Epic poetry\",\"Poems\",\"Poetry (poetic works by one author)\",\"Whitman, Walt, 1819-1892. Leaves of grass\",\"Leaves of grass (Whitman, Walt)\",\"Mysticism, poetry\",\"LGBTQ poetry\",\"Leaves of grass\",\"Politics and government\",\"American literature\",\"POETRY / American / General\",\"Calligraphy\",\"Specimens\",\"Democracy in literature\",\"Self in literature\",\"Moi (Psychologie) dans la littérature\",\"Poésie américaine\",\"Poètes américains\",\"Poésie épique américaine\",\"American poetry (collections), 19th century\",\"Private presses\",\"Wood-engraving\",\"Poesia Norte Americana\",\"Leather bindings (Bookbinding)\",\"Bookbinders\",\"Bayntun-Riviere (Bindery)\",\"Limited Editions Club\",\"American poetry, history and criticism, 19th century\",\"Whitman, walt, 1819-1892, concordances\",\"Sheldan, moreah , 1930-\",\"American poetry--19th century\",\"Poets, american\",\"Poets, american--19th century\",\"Ps3201 1855e 2005\",\"811/.3\",\"Children's poetry, American\",\"Criticism and interpretation\",\"Whitman, walt, 1819-1892\",\"Whitman, walt, 1819-1892, juvenile literature\",\"Poetry, collections\",\"Title pages\",\"Printing\",\"Fiction, general\",\"American poetry -- 19th century\",\"Philosophy\",\"Long Now Manual for Civilization\",\"Poetry as Topic\",\"American\",\"General\",\"Bayntun and Rivi©·re (Bookbinders)\",\"Free verse\",\"Library\",\"Personal copy\"],\"place\":[\"United States\"],\"time\":[\"19th century\",\"Civil War, 1861-1865\"],\"person\":[\"Walt Whitman (1819-1892)\",\"Abraham Lincoln (1809-1865)\",\"Emory Holloway (1885-)\",\"Federico Garciía Lorca (1898-1936)\",\"Pablo Neruda (1904-1973)\"],\"ratings_average\":3.8333333,\"ratings_count\":12},{\"author_name\":[\"Thomas E. Pinelli\"],\"cover_i\":8936636,\"first_publish_year\":1990,\"key\":\"/works/OL8894965W\",\"number_of_pages_median\":26,\"title\":\"NASA/DoD aerospace knowledge diffusion research project\",\"subject\":[\"Aeronautical engineering\",\"Aeronautics\",\"Aerospace engineering\",\"Aerospace engineers\",\"Aerospace industry\",\"Aerospace technology transfer\",\"Aircraft design\",\"Aircraft engines\",\"Aircraft industry\",\"American Institute of Aeronautics and Astronautics\",\"Avionics\",\"Biotechnology\",\"Commercial aircraft\",\"Communication\",\"Communication of technical information\",\"Construction Materials\",\"Cultural resources\",\"Data acquisition\",\"Databases\",\"Defense program\",\"Documentation\",\"Economic conditions\",\"Economic development\",\"Education\",\"Electric equipment\",\"Engineers\",\"Federal budgets\",\"Flight crews\",\"Flight tests\",\"Format\",\"Government policy\",\"Histories\",\"Human factors engineering\",\"Industries\",\"Information Systems\",\"Information dissemination\",\"Information services\",\"Information storage and retrieval systems\",\"Information transfer\",\"Instructors\",\"International cooperation\",\"International relations\",\"Japan\",\"Knowledge\",\"Maintenance\",\"Manufacturing\",\"Marketing\",\"Materials science\",\"NASA programs\",\"Personnel development\",\"Policies\",\"Political planning\",\"Procedures\",\"Propulsion\",\"Reports\",\"Research\",\"Research and development\",\"Science\",\"Scientists\",\"Semiconductors (Materials)\",\"Social factors\",\"Students\",\"Surveys\",\"Technical writing\",\"Technological innovations\",\"Technology transfer\",\"Technology utilization\",\"United States\",\"User requirements\"],\"place\":[\"Japan\",\"United States\"],\"ratings_average\":4.0,\"ratings_count\":5},{\"author_name\":[\"William Shakespeare\"],\"cover_i\":8155661,\"first_publish_year\":1611,\"key\":\"/works/OL362699W\",\"number_of_pages_median\":143,\"title\":\"The Tempest\",\"subject\":[\"English literature: Shakespeare criticism\",\"English literature: Shakespeare texts\",\"Plays / Drama\",\"Literary Criticism\",\"Classics\",\"For National Curriculum Key Stage 3\",\"play\",\"performing arts\",\"English drama\",\"tragicomedy\",\"Drama\",\"Teatro\",\"Survival after airplane accidents, shipwrecks\",\"Magicians\",\"Magos\",\"Supervivencia (accidentes de aviación, naufragios, etc.)\",\"Fathers and daughters\",\"Tragicomedia\",\"Castaways\",\"Padres e hijas\",\"Náufragos\",\"shipwrecks\",\"Plays\",\"Spirits\",\"Shipwreck victims\",\"English literature\",\"Political refugees\",\"History and criticism\",\"Bu hnenanweisung\",\"Auffu hrung\",\"Geschichte\",\"English Young adult drama\",\"Islands\",\"Shipwreck survival\",\"Literatura inglesa (crítica e interpretação)\",\"Criticism and interpretation\",\"Juvenile drama\",\"Children's plays, English\",\"Reading Level-Grade 11\",\"Reading Level-Grade 12\",\"Tempest (Shakespeare, William)\",\"18.05 English literature\",\"British and irish drama (dramatic works by one author)\",\"Shakespeare, william, 1564-1616, tempest\",\"English literature, outlines, syllabi, etc.\",\"Drama (dramatic works by one author)\",\"Literature, history and criticism\",\"Shakespeare, william, 1564-1616, juvenile literature\",\"Problems, exercises\",\"Adaptations\",\"Outlines, syllabi\",\"Ariel (Fictitious character : Shakespeare)\",\"Caliban (Fictitious character)\",\"Prospero (Fictitious character)\",\"Children's plays\",\"Stage history\",\"Drama .\",\"Nobility\",\"Roman Empire\",\"Juvenile fiction\",\"Pictorial works\",\"Shakespeare, william, 1564-1616\",\"Fiction\",\"Shipwreck victims -- Drama\",\"Fathers and daughters -- Drama\",\"Magicians -- Drama\",\"Political refugees -- Drama\",\"Islands -- Drama\",\"Spirits -- Drama\",\"English literature, history and criticism\",\"Comic books, strips\",\"SV\",\"Survival\",\"Translations into Hebrew\",\"Children's fiction\",\"Linguistics & semiotics\",\"Shipwreck survival--drama\",\"Fathers and daughters--drama\",\"Magicians--drama\",\"Islands--drama\",\"Pr2833.a2 l56 2002\",\"822.3/3\",\"Mathematics, study and teaching\",\"Shakespeare, william , 1564-1616\",\"Fathers and daughters--fiction\",\"Castaways--drama\",\"Pr2833.a2 v38 2011\",\"The tempest\",\"English drama (Comedy)\",\"English Dramatists\",\"Early modern\",\"Education\",\"Light\",\"Skates (Fishes)\"],\"place\":[\"Italy\",\"Naples\",\"Carthage\",\"Milan\"],\"person\":[\"Prospero\",\"Miranda\",\"Ariel\",\"Caliban\",\"Sycorax\",\"Iris\",\"Ceres\",\"Juno\",\"Alonso\",\"Sebastian\",\"Antonio\",\"Ferdinand\",\"Gonzalo\",\"William Shakespeare (1564-1616)\"],\"ratings_average\":3.9482758,\"ratings_count\":58}]}",
+        "_url": "https://openlibrary.org/search.json?q=Test&page=1&limit=5&q=Test&page=1&limit=5&fields=key,title,subtitle,author_name,cover_i,first_publish_year,ratings_average,ratings_count,subject,person,place,time,number_of_pages_median,",
+        "_timedOut": false,
+        "_incrementalEvents": false,
+        "_startTime": 14971818.164,
+        "_performanceLogger": {
+            "_timespans": {
+                "network_XMLHttpRequest_https://openlibrary.org/search.json?q=Test&page=1&limit=5&q=Test&page=1&limit=5&fields=key,title,subtitle,author_name,cover_i,first_publish_year,ratings_average,ratings_count,subject,person,place,time,number_of_pages_median,": {
+                    "startTime": 14971818.1443,
+                    "endTime": 14972526.731,
+                    "totalTime": 708.5866999998689
+                }
+            },
+            "_extras": {},
+            "_points": {
+                "initializeCore_start": 14967043.7141,
+                "initializeCore_end": 14967135.8776
+            },
+            "_pointExtras": {},
+            "_closed": false
+        },
+        "responseHeaders": {
+            "referrer-policy": "no-referrer-when-downgrade",
+            "content-type": "application/json",
+            "date": "Sat, 11 Apr 2026 18:48:58 GMT",
+            "server": "nginx/1.28.3",
+            "x-served-by": "FastAPI"
+        },
+        "_requestId": null,
+        "_headers": {
+            "accept": "application/json, text/plain, */*",
+            "user-agent": "myLibrary (Dustin Bruce, dustinbruce50@gmail.com)"
+        },
+        "_responseType": "",
+        "_sent": true,
+        "_lowerCaseResponseHeaders": {
+            "referrer-policy": "no-referrer-when-downgrade",
+            "content-type": "application/json",
+            "date": "Sat, 11 Apr 2026 18:48:58 GMT",
+            "server": "nginx/1.28.3",
+            "x-served-by": "FastAPI"
+        },
+        "_subscriptions": [],
+        "responseURL": "https://openlibrary.org/search.json?q=Test&page=1&limit=5&q=Test&page=1&limit=5&fields=key,title,subtitle,author_name,cover_i,first_publish_year,ratings_average,ratings_count,subject,person,place,time,number_of_pages_median,"
+    }
 }
