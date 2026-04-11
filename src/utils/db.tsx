@@ -2,6 +2,9 @@ import SQLite from 'react-native-sqlite-2';
 import { Book } from './types';
 import RNFS from 'react-native-fs';
 
+
+const db = SQLite.openDatabase('localsql');
+
 export async function copyCoverFromAssets(filename: string): Promise<string> {
     const destPath = `${RNFS.DocumentDirectoryPath}/${filename}`;
     try {
@@ -60,7 +63,6 @@ result: ${JSON.stringify(result)}
     }
 }
 
-const db = SQLite.openDatabase('localsql');
 
 export async function initDB() {
     return new Promise((resolve, reject) => {

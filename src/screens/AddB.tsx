@@ -8,7 +8,7 @@ import {
   FlatList,
   Button,
 } from 'react-native';
-import React from 'react';
+import React, { JSX, useRef } from 'react';
 import { colors } from '../utils/colors';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { launchCamera } from 'react-native-image-picker';
@@ -17,6 +17,8 @@ import axios from 'axios';
 import { Book } from '../utils/types';
 import { addBook } from '../utils/db';
 import Ionicons from '@react-native-vector-icons/ionicons';
+import { Camera } from 'lucide-react-native';
+
 
 const requestCameraPermission = async () => {
   if (Platform.OS === 'android') {
@@ -68,6 +70,14 @@ const openCamera = async () => {
 const BASE_API_URL = 'https://openlibrary.org/search.json?q=';
 const BASE_API_URL_TAGS = 'https://openlibrary.org';
 
+let rating_stars: JSX.Element[] = [
+  <Ionicons name="star" size={20} color="#FFD700" />,
+  <Ionicons name="star" size={20} color="#FFD700" />,
+  <Ionicons name="star" size={20} color="#FFD700" />,
+  <Ionicons name="star" size={20} color="#FFD700" />,
+  <Ionicons name="star" size={20} color="#FFD700" />,
+];
+
 const AddB = () => {
   const [searchResults, setSearchResults] = React.useState<any[]>([]);
   const [searchTerm, setSearchTerm] = React.useState('');
@@ -77,6 +87,7 @@ const AddB = () => {
     [key: number]: any[];
   }>({});
   const [isLoading, setIsLoading] = React.useState(false);
+  const listRef = useRef<FlatList>(null);
 
   React.useEffect(() => {
     console.log('Search results updated: ', searchResults);
@@ -85,23 +96,18 @@ const AddB = () => {
   const fetchTags = async (key: string) => {
     let result;
     let tags: string[] = [];
-     try {
-      result = await axios.get(
-        `${BASE_API_URL_TAGS}${key}.json`,
-        {
-          params: {
-            fields:
-              'title,subject_places,subject_people,subject_times,subjects,',
-          },
-          headers: {
-            'User-Agent': 'myLibrary (Dustin Bruce, dustinbruce50@gmail.com)',
-          },
+    try {
+      result = await axios.get(`${BASE_API_URL_TAGS}${key}.json`, {
+        params: {
+          fields: 'title,subject_places,subject_people,subject_times,subjects,',
         },
-      );
+        headers: {
+          'User-Agent': 'myLibrary (Dustin Bruce, dustinbruce50@gmail.com)',
+        },
+      });
     } catch (error) {
       console.error('Error fetching tags: ', error);
-    }
-    finally {
+    } finally {
       if (result?.status === 200) {
         console.log('Tag API response: ', result);
       }
@@ -126,19 +132,21 @@ const AddB = () => {
     //remove anything after --
     tags = tags.map((tag: string) =>
       tag
-    .replace(/\(\d{4}-\d{4}\)/g, '')
-    .replace(/\(\d{4}-\s*\)/g, '')
-    .replace(/\(\d{4}\)/g, '')
-    .replace(/\(.*?\)/g, '')
-    .replace(/--.*/g, '')
-    .replace(/\d{4}-\d{4}/g, '')
-    .replace(/\d{4}-\s*/g, '')
-    .replace(/\d{4}/g, '')
-    //.replace(/\(.*?\)/g, '')
-    .trim(), 
+        .replace(/\(\d{4}-\d{4}\)/g, '')
+        .replace(/\(\d{4}-\s*\)/g, '')
+        .replace(/\(\d{4}\)/g, '')
+        .replace(/\(.*?\)/g, '')
+        .replace(/--.*/g, '')
+        .replace(/\d{4}-\d{4}/g, '')
+        .replace(/\d{4}-\s*/g, '')
+        .replace(/\d{4}/g, '')
+        //.replace(/\(.*?\)/g, '')
+        .trim(),
     );
     //take anything seperated by a : ; or , and split into separate tags
-    tags = tags.flatMap((tag: string) => tag.split(/[:;,]+/).map((t: string) => t.trim()));
+    tags = tags.flatMap((tag: string) =>
+      tag.split(/[:;,]+/).map((t: string) => t.trim()),
+    );
     //dedup and remove empty tags
     tags = Array.from(new Set(tags)).filter((tag: string) => tag.length > 0);
 
@@ -212,14 +220,14 @@ const AddB = () => {
             page,
             limit,
             fields:
-              'key,description,title,subtitle,author_name,cover_i,first_publish_year,ratings_average,ratings_count,subject,person,place,time,number_of_pages_median,',
+              'key,description,title,subtitle,author_name,cover_i,first_publish_year,ratings_average,ratings_count,number_of_pages_median,',
           },
           headers: {
             'User-Agent': 'myLibrary (Dustin Bruce, dustinbruce50@gmail.com)',
           },
         },
       );
-      console.log('API response: ', result);
+      console.log('Book API response: ', result);
     } catch (error) {
       console.error('Error fetching book data: ', error);
     }
@@ -263,33 +271,23 @@ const AddB = () => {
           style={[
             styles.textInput,
             {
-              height: 40,
               borderWidth: 1,
-              borderColor: '#ccc',
-              borderRadius: 10,
-              paddingLeft: 12,
-              paddingRight: 50,
-              width: '80%',
-              alignSelf: 'center',
               backgroundColor: '#fff',
-              right: 0,
             },
           ]}
         ></TextInput>
         <Pressable
           style={{
             position: 'absolute',
-            right: 65,
-            top: 4,
+            right: 50,
+            top: 0,
           }}
           onPress={openCamera}
         >
-          <Image
-            source={require('../../assets/cam.png')}
-            style={{
-              height: 50,
-              width: 40,
-            }}
+          <Camera
+            size={40}
+            color={colors.bodyText}
+            
           />
         </Pressable>
         <Pressable
@@ -301,17 +299,166 @@ const AddB = () => {
             style={{
               alignSelf: 'center',
               fontFamily: 'CormorantGaramond-Bold',
-              fontSize: 20,
+              fontSize: 25,
               color: colors.titleText,
+              borderColor: colors.button,
+              borderWidth: 2,
+              paddingHorizontal: 20,
+              paddingVertical: 5,
+              borderRadius: 5,
+              marginTop: -10,
             }}
           >
             Search
           </Text>
         </Pressable>
         <FlatList
+          ref={listRef}
           fadingEdgeLength={0.1}
           data={searchResults}
           contentContainerStyle={{ paddingBottom: 0 }}
+          style={[styles.modContainer, { width: '100%', position: 'relative' }]}
+          keyExtractor={(item: any) => item.key.toString()}
+          renderItem={data => {
+            const book = data.item;
+            return (
+              searchResults && (
+                <View style={styles.card}>
+                  <Text
+                    style={[
+                      {
+                        fontFamily: 'CormorantGaramond-Bold',
+                        fontSize: 36,
+                      },
+                    ]}
+                  >
+                    {book.title}
+                  </Text>
+                  <Text
+                    style={[
+                      {
+                        fontFamily: 'Roboto',
+                        fontSize: 20,
+                        marginBottom: 20,
+                      },
+                    ]}
+                  >
+                    {book.author_name &&
+                    Array.isArray(book.author_name) &&
+                    book.author_name.length > 0
+                      ? `${book.author_name.join(', ')} - ${
+                          book.first_publish_year
+                        }`
+                      : `Unknown Author - ${book.first_publish_year}`}
+                  </Text>
+
+                  <Text
+                    style={[
+                      {
+                        fontFamily: 'Roboto',
+                        fontSize: 20,
+                        
+                      },
+                    ]}
+                  >
+                    {book.description && book.description.length > 100
+                      ? `${book.description.substring(0, 100)}...`
+                      : book.description}
+                  </Text>
+
+                  {book.cover_i && (
+                    <Image
+                      source={{
+                        uri: `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`,
+                      }}
+                      style={{
+                        alignSelf: 'center',
+                        margin: 10,
+                        height: 250,
+                        aspectRatio: 2 / 3,
+                      }}
+                    />
+                  )}
+                  <Text style={{ textAlign: 'center' }}>
+                    Pages: {book.number_of_pages_median || 'N/A'}
+                  </Text>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'center',
+                      marginBottom: 10,
+                    }}
+                  >
+                    {Array.from({ length: 5 }, (_, i) => {
+                      let icon_name;
+                      if (book.ratings_average >= i + 1) {
+                        icon_name = 'star';
+                      } else if (book.ratings_average >= i + 0.5) {
+                        icon_name = 'star-half';
+                      } else {
+                        icon_name = 'star-outline';
+                      }
+                      return (
+                        <Ionicons
+                          key={i}
+                          name={icon_name as any}
+                          size={20}
+                          color="#FFD700"
+                        />
+                      );
+                    })}
+                    <Text>({book.ratings_count || 0})</Text>
+                  </View>
+
+                  <Pressable
+                    onPress={async () => {
+                      console.log('Adding book with data:');
+                      console.log(
+                        `title: ${book.title}, author: ${book.author_name}, cover: ${book.cover_i}, year: ${book.first_publish_year}`,
+                      );
+                      const author = Array.isArray(book.author_name)
+                        ? book.author_name.join(', ')
+                        : book.author_name ?? 'Unknown';
+                      try {
+                        let tags: any = await fetchTags(book.key);
+                        await addBook(
+                          String(book.title),
+                          String(author),
+                          book.cover_i,
+                          book.first_publish_year,
+                          tags,
+                        );
+                      } catch (error) {
+                        console.error('Error adding book:', error);
+                      }
+                    }}
+                    style={({ pressed }) => ({
+                      backgroundColor: colors.button,
+                      width: '50%',
+                      alignSelf: 'center',
+                      padding: 10,
+                      borderRadius: 10,
+                      shadowColor: '#000',
+                      shadowOpacity: 0.3,
+                      shadowRadius: 4,
+                      elevation: 3,
+                      transform: [{ scale: pressed ? 0.95 : 1 }],
+                    })}
+                  >
+                    <Text
+                      style={{
+                        color: '#fff',
+
+                        textAlign: 'center',
+                      }}
+                    >
+                      Add Book
+                    </Text>
+                  </Pressable>
+                </View>
+              )
+            );
+          }}
           ListFooterComponent={
             <>
               {searchResults.length > 1 && (
@@ -370,110 +517,20 @@ const AddB = () => {
               )}
             </>
           }
-          style={[styles.modContainer, { width: '100%', position: 'relative' }]}
-          keyExtractor={(item: any) => item.key.toString()}
-          renderItem={data => {
-            const book = data.item;
-            return (
-              searchResults && (
-                <View style={styles.card}>
-                  <Text
-                    style={[
-                      {
-                        fontFamily: 'CormorantGaramond-Bold',
-                        fontSize: 26,
-                      },
-                    ]}
-                  >
-                    {book.title}
-                  </Text>
-                  <Text
-                    style={[
-                      {
-                        fontFamily: 'CormorantGaramond-Regular',
-                        fontSize: 22,
-                      },
-                    ]}
-                  >
-                    {book.author_name} - {book.year}
-                  </Text>
-                  {/*}
-                                    <Text
-                                        style={[
-                                            {
-                                                fontFamily:
-                                                    'CormorantGaramond-Italic',
-                                                fontSize: 20,
-                                            },
-                                        ]}
-                                    >
-                                        {book.description}
-                                    </Text>
-                                      */}
-                  {book.cover_i && (
-                    <Image
-                      source={{
-                        uri: `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`,
-                      }}
-                      style={{
-                        alignSelf: 'center',
-                        margin: 10,
-                        height: 250,
-                        aspectRatio: 2 / 3,
-                      }}
-                    />
-                  )}
-
-                  <Pressable
-                    onPress={async () => {
-                      console.log('Adding book with data:');
-                      console.log(
-                        `title: ${book.title}, author: ${book.author_name}, cover: ${book.cover_i}, year: ${book.first_publish_year}`,
-                      );
-                      const author = Array.isArray(book.author_name)
-                        ? book.author_name.join(', ')
-                        : book.author_name ?? 'Unknown';
-                      try {
-                        let tags: any = await fetchTags(book.key);
-                        await addBook(
-                          String(book.title),
-                          String(author),
-                          book.cover_i,
-                          book.first_publish_year,
-                          tags,
-                        );
-                      } catch (error) {
-                        console.error('Error adding book:', error);
-                      }
-                    }}
-                    style={({ pressed }) => ({
-                      backgroundColor: colors.button,
-                      width: '50%',
-                      alignSelf: 'center',
-                      padding: 10,
-                      borderRadius: 10,
-                      shadowColor: '#000',
-                      shadowOpacity: 0.3,
-                      shadowRadius: 4,
-                      elevation: 3,
-                      transform: [{ scale: pressed ? 0.95 : 1 }],
-                    })}
-                  >
-                    <Text
-                      style={{
-                        color: '#fff',
-
-                        textAlign: 'center',
-                      }}
-                    >
-                      Add Book
-                    </Text>
-                  </Pressable>
-                </View>
-              )
-            );
-          }}
         />
+        {searchResults.length === 0 && (
+          <Text
+            style={{
+              top: 150,
+              position: 'absolute',
+              //bottom: 10,
+              alignSelf: 'center',
+              fontFamily: 'CormorantGaramond-Bold',
+            fontSize: 30,
+            color: colors.titleText,
+            textAlign: 'center',
+          }}
+        >Search for your favorite book by name, or hit the camera icon to scan a barcode</Text>)}
       </View>
     </SafeAreaView>
   );
