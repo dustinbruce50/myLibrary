@@ -5,5 +5,7 @@ export type Book = {
   year: number;
   description: string;
   coverUri: string;
+  cover_ids?: string;
+  primary_cover_id?: number;
 
 };

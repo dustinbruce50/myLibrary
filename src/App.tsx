@@ -20,6 +20,8 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Tabnav from './navigators/Tabnav';
 import BookDetails from './screens/Notes/BookDetails';
 import { Book } from './utils/types';
+import BookNotes from './screens/Notes/BookNotes';
+import CoverPicker from './screens/Notes/CoverPicker';
 
 
 
@@ -34,6 +36,8 @@ export type RootStackParamList = {
   Login: undefined;
   Tabnav: undefined;
   BookDetails: { book: Book };
+  BookNotes: { book: Book };
+  CoverPicker: { book: Book };
   Home: undefined;
 };
 
@@ -64,6 +68,8 @@ function App() {
       <Stack.Screen name="Tabnav" component={Tabnav} options={{headerShown: false}}/>
       <Stack.Screen name="Home" component={Home} options={{headerShown: false}}/>
       <Stack.Screen name="BookDetails" component={BookDetails} options={{headerShown: false}}/>
+      <Stack.Screen name="BookNotes" component={BookNotes} options={{headerShown: false}}/>
+      <Stack.Screen name="CoverPicker" component={CoverPicker} options={{headerShown: false}}/>
     </Stack.Navigator>
   </SafeAreaProvider>
 </NavigationContainer>

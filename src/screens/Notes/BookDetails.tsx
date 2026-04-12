@@ -1,13 +1,43 @@
-import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
+import { FlatList, Image, StyleSheet, Text, View, ScrollView, Pressable } from 'react-native';
 import React from 'react';
 import { colors } from '../../utils/colors';
 import { Book } from '../../utils/types';
+import NotesSection from './NoteSection';
+import { getBookById } from '../../utils/db';
+import { useFocusEffect } from '@react-navigation/native';
+import ExpandableText from '../../components/ExpandableText';
+
+
+const quotesNotes: string[] = []
+const characterNotes: string[] = []
+const chapterNotes: string[] = []
+const settingNotes: string[] = []
+const questionNotes: string[] = []
+const personalNotes: string[] = []
+
 
 const BookDetails = (book: any) => {
-  const local = book.route.params.book as Book;
+  const initial = book.route.params.book as Book;
+  const [local, setLocal] = React.useState<Book>(initial);
   console.log('deeper: ', local);
   console.log('BookDetails local array:', local);
   console.log('BookDetails received book:', book);
+  
+  useFocusEffect(
+    React.useCallback(() => {
+      let isMounted = true;
+      getBookById(initial.id)
+        .then(updated => {
+          if (!isMounted) return;
+          if (updated) setLocal(updated);
+        })
+        .catch(() => {});
+      return () => {
+        isMounted = false;
+      };
+    }, [initial.id]),
+  );
+
 
   return (
     <View style={[styles.screenContainer]}>
@@ -22,7 +52,7 @@ const BookDetails = (book: any) => {
       >
         In The Margins.
       </Text>
-      <View style={[styles.modContainer]}>
+      <ScrollView style={[styles.modContainer]}>
         <View style={[styles.card, {  }]}>
           <Image
             source={{ uri: `${local.coverUri}` }}
@@ -33,14 +63,34 @@ const BookDetails = (book: any) => {
               aspectRatio: 2 / 3,
             }}
           ></Image>
-          <Text>{local.title}</Text>
-          <Text>{local.author}</Text>
-          <Text>{local.year}</Text>
-          <Text>{local.description}</Text>
-          
-        </View>
-      </View>
-      <Text>BookDetails</Text>
+          <Text style={styles.bookTitle}>{local.title}</Text>
+          <Text style={styles.bookMeta}>{local.author}</Text>
+          <Text style={styles.bookMeta}>{local.year}</Text>
+          <ExpandableText
+            text={local.description}
+            numberOfLines={5}
+            textStyle={styles.bookDescription}
+          />
+          <View style={styles.buttonRow}>
+            <Pressable
+              onPress={() => book.navigation.navigate('BookNotes', { book: local })}
+              style={styles.notesButton}
+            >
+              <Text style={styles.notesButtonText}>Notes</Text>
+            </Pressable>
+            <Pressable
+              onPress={() =>
+                book.navigation.navigate('CoverPicker', { book: local })
+              }
+              style={styles.coverButton}
+            >
+              <Text style={styles.notesButtonText}>Cover Art</Text>
+            </Pressable>
+          </View>
+          </View>
+
+        
+      </ScrollView>
     </View>
   );
 };
@@ -62,10 +112,56 @@ const styles = StyleSheet.create({
   card: {
     padding: 30,
     backgroundColor: colors.accent,
-    //height:'auto',
+    
     borderRadius: 10,
     margin: 20,
     height: 'auto',
+  },
+  bookTitle: {
+    fontFamily: 'CormorantGaramond-Bold',
+    fontSize: 28,
+    color: colors.bodyText,
+    textAlign: 'center',
+    marginTop: 6,
+  },
+  bookMeta: {
+    fontFamily: 'CormorantGaramond-Regular',
+    fontSize: 20,
+    color: colors.bodyText,
+    textAlign: 'center',
+    marginTop: 2,
+  },
+  bookDescription: {
+    fontFamily: 'CormorantGaramond-Italic',
+    fontSize: 18,
+    color: colors.bodyText,
+    marginTop: 10,
+  },
+  buttonRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 16,
+    gap: 12,
+  },
+  notesButton: {
+    flex: 1,
+    backgroundColor: colors.button,
+    borderRadius: 10,
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+  },
+  coverButton: {
+    flex: 1,
+    backgroundColor: colors.button,
+    borderRadius: 10,
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+  },
+  notesButtonText: {
+    fontFamily: 'CormorantGaramond-Bold',
+    fontSize: 20,
+    color: colors.titleText,
+    textAlign: 'center',
   },
   textInput: {
     height: 40, // <-- This works!

@@ -92,13 +92,15 @@ const AddB = () => {
     console.log('Search results updated: ', searchResults);
   }, [searchResults]);
 
-  const fetchTags = async (key: string) => {
+  const fetchTagsAndCovers = async (key: string) => {
     let result;
     let tags: string[] = [];
+    let covers: number[] = [];
     try {
       result = await axios.get(`${BASE_API_URL_TAGS}${key}.json`, {
         params: {
-          fields: 'title,subject_places,subject_people,subject_times,subjects,',
+          fields:
+            'title,subject_places,subject_people,subject_times,subjects,covers,',
         },
         headers: {
           'User-Agent': 'myLibrary (Dustin Bruce, dustinbruce50@gmail.com)',
@@ -150,7 +152,10 @@ const AddB = () => {
     tags = Array.from(new Set(tags)).filter((tag: string) => tag.length > 0);
 
     console.log('Tags after cleaning: ', tags);
-    return tags;
+    if (Array.isArray(result?.data?.covers)) {
+      covers = result.data.covers.filter((c: any) => typeof c === 'number');
+    }
+    return { tags, covers };
   };
 
   const fetchBooks = async (
@@ -313,9 +318,13 @@ const AddB = () => {
           data={searchResults}
           contentContainerStyle={{ paddingBottom: 0 }}
           style={[styles.modContainer, { width: '100%', position: 'relative' }]}
-          keyExtractor={(item: any) => item.key.toString()}
+          keyExtractor={(item: any) =>{
+            return item.key.toString();
+          }}
           renderItem={data => {
+            
             const book = data.item;
+            console.log('Inside FlatList Rendering book: ', book);
             return (
               searchResults && (
                 <View style={styles.card}>
@@ -350,13 +359,14 @@ const AddB = () => {
                   <Text
                     style={[
                       {
-                        fontFamily: 'Roboto',
-                        fontSize: 20,
+                        fontFamily: 'CormorantGaramond-Italic',
+                        fontSize: 18,
+                        color: colors.bodyText,
                       },
                     ]}
                   >
-                    {book.description && book.description.length > 100
-                      ? `${book.description.substring(0, 100)}...`
+                    {book.description && book.description.length > 140
+                      ? `${book.description.substring(0, 140)}...`
                       : book.description}
                   </Text>
 
@@ -414,13 +424,18 @@ const AddB = () => {
                         ? book.author_name.join(', ')
                         : book.author_name ?? 'Unknown';
                       try {
-                        let tags: any = await fetchTags(book.key);
+                        const extras: any = await fetchTagsAndCovers(book.key);
                         await addBook(
                           String(book.title),
                           String(author),
                           book.cover_i,
+                          extras?.covers ?? [],
+                          book.cover_i,
                           book.first_publish_year,
-                          tags,
+                          book.description || '',
+                          book.ratings_average, 
+                          book.ratings_count,
+                          extras?.tags ?? [],
                         );
                       } catch (error) {
                         console.error('Error adding book:', error);

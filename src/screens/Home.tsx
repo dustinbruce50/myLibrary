@@ -7,7 +7,6 @@ import {
   Pressable,
   FlatList,
   StatusBar,
-  Button,
 } from 'react-native';
 import React, { Component  } from 'react';
 import { colors } from '../utils/colors';
@@ -19,6 +18,8 @@ import { Navigation } from 'lucide-react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../App';
+import ExpandableText from '../components/ExpandableText';
+import AppButton from '../components/AppButton';
 
 
 
@@ -39,9 +40,6 @@ export default function Home() {
   const loadBooks = async () => {
     const books = await getBooks();
     setBooks(books as Book[]);
-  };
-  const uploadBook = async (title: string, author: string, year: number) => {
-    await addBook(title, author, year);
   };
 
   return (
@@ -87,11 +85,13 @@ export default function Home() {
             >
               {item.author} - {item.year}
             </Text>
-            <Text
-              style={[{ fontFamily: 'CormorantGaramond-Italic', fontSize: 20 }]}
-            >
-              {item.description}
-            </Text>
+            <ExpandableText
+              text={item.description}
+              numberOfLines={3}
+              textStyle={[
+                { fontFamily: 'CormorantGaramond-Italic', fontSize: 20 },
+              ]}
+            />
 
             {item.coverUri && (
               <Image
@@ -104,9 +104,12 @@ export default function Home() {
                 }}
               />
             )}
-            <Button title="Open Details" onPress={() => 
+            <AppButton
+              title="Open Details"
+              onPress={() =>
                 navigation.navigate('BookDetails', { book: item as Book })
-                }/>
+              }
+            />
           </View>
         )}
       />
