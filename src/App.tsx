@@ -18,10 +18,27 @@ import { initDB, seedDB } from './utils/db';
 import RNFS from 'react-native-fs';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Tabnav from './navigators/Tabnav';
+import BookDetails from './screens/Notes/BookDetails';
+import { Book } from './utils/types';
 
+
+
+
+
+
+
+
+
+
+export type RootStackParamList = {
+  Login: undefined;
+  Tabnav: undefined;
+  BookDetails: { book: Book };
+  Home: undefined;
+};
 
 const Tab = createBottomTabNavigator();
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 
 function App() {
@@ -45,6 +62,8 @@ function App() {
     <Stack.Navigator initialRouteName='Login'>
       <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
       <Stack.Screen name="Tabnav" component={Tabnav} options={{headerShown: false}}/>
+      <Stack.Screen name="Home" component={Home} options={{headerShown: false}}/>
+      <Stack.Screen name="BookDetails" component={BookDetails} options={{headerShown: false}}/>
     </Stack.Navigator>
   </SafeAreaProvider>
 </NavigationContainer>

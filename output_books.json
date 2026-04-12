@@ -1,0 +1,75 @@
+{
+    "numFound": 181238,
+    "start": 0,
+    "numFoundExact": true,
+    "num_found": 181238,
+    "documentation_url": "https://openlibrary.org/dev/docs/api/search",
+    "q": "Test",
+    "offset": null,
+    "docs": [
+        {
+            "author_name": [
+                "George Bernard Shaw"
+            ],
+            "cover_i": 9267223,
+            "first_publish_year": 1912,
+            "key": "/works/OL1066524W",
+            "number_of_pages_median": 135,
+            "title": "Pygmalion",
+            "ratings_average": 3.857143,
+            "ratings_count": 49,
+            "description": "Pygmalion is a play by George Bernard Shaw, named after a Greek mythological figure. It was first presented on stage to the public in 1913.\r\n\r\n----------\t\t\r\nAlso contained in:\t\t\r\n\t\t\r\n\r\n - [Collected Plays with their Prefaces: Volume IV](https://openlibrary.org/works/OL24714049W)\r\n - [Complete Plays with Prefaces: Volume I](https://openlibrary.org/works/OL15835450W)\t\t\r\n - [Four Plays by Bernard Shaw][1]\t\t\r\n - [Plays](https://openlibrary.org/works/OL15241070W/The_Complete_Plays_of_Bernard_Shaw)\t\t\r\n - [Portable Bernard Shaw](https://openlibrary.org/works/OL1066402W/The_Portable_Bernard_Shaw)\t\t\r\n - [Pygmalion and Major Barbara][2]\t\t\r\n - [Pygmalion and My Fair Lady][3]\t\t\r\n - [Pygmalion and Related Readings][4]\r\n - [Pygmalion and Three Other Plays](https://openlibrary.org/works/OL15013904W)\r\n - [Pygmalion with Connections](https://openlibrary.org/works/OL1066164W/Pygmalion_with_Connections)\t\t\r\n - [Selected Plays](https://openlibrary.org/works/OL15241059W)\t\t\r\n - [Selected Plays with Prefaces](https://openlibrary.org/works/OL20644026W)\t\t\r\n - [Six Plays](https://openlibrary.org/works/OL17986328W)\t\t\r\n\t\t\t\r\n[1]: https://openlibrary.org/works/OL1066032W/Four_Plays_by_Bernard_Shaw\t\t\r\n[2]: https://openlibrary.org/works/OL1066354W/Pygmalion_Major_Barbara\t\t\r\n[3]: https://openlibrary.org/works/OL15013928W/Pygmalion_My_Fair_Lady\t\t\r\n[4]: https://openlibrary.org/works/OL8049503W/Pygmalion_and_Related_Readings"
+        },
+        {
+            "author_name": [
+                "Robert W. Chambers"
+            ],
+            "cover_i": 4752788,
+            "first_publish_year": 1895,
+            "key": "/works/OL8127201W",
+            "number_of_pages_median": 228,
+            "title": "The King in Yellow",
+            "ratings_average": 3.9375,
+            "ratings_count": 16,
+            "description": "An important early classic of fantasy/sci-fi.  [Main story:] The ill effects of a soul-destroying play, to read which brings doom.  A discovery that changes living flesh to stone.  The mad adherents of a cult of evil powers from beyond. A lost traveler is suddenly 400 years in the past.\r\nGreat writing; powerful emotions. Chambers wrote mainly conventional stuff, but not here."
+        },
+        {
+            "author_name": [
+                "Walt Whitman"
+            ],
+            "cover_i": 9000447,
+            "first_publish_year": 1855,
+            "key": "/works/OL16333W",
+            "number_of_pages_median": 384,
+            "title": "Leaves of Grass",
+            "ratings_average": 3.8333333,
+            "ratings_count": 12,
+            "description": "**Leaves of Grass** is a poetry collection by American poet Walt Whitman. First published in 1855, Whitman spent most of his professional life writing and rewriting *Leaves of Grass*, revising it multiple times until his death. There have been held to be either six or nine individual editions of Leaves of Grass, the count varying depending on how they are distinguished.[2] This resulted in vastly different editions over four decades—the first edition being a small book of twelve poems, and the last, a compilation of over 400. \r\n\r\n(Source: [Wikipedia](https://en.wikipedia.org/wiki/Leaves_of_Grass))"
+        },
+        {
+            "author_name": [
+                "Thomas E. Pinelli"
+            ],
+            "cover_i": 8936636,
+            "first_publish_year": 1990,
+            "key": "/works/OL8894965W",
+            "number_of_pages_median": 26,
+            "title": "NASA/DoD aerospace knowledge diffusion research project",
+            "ratings_average": 4,
+            "ratings_count": 5
+        },
+        {
+            "author_name": [
+                "William Shakespeare"
+            ],
+            "cover_i": 8155661,
+            "first_publish_year": 1611,
+            "key": "/works/OL362699W",
+            "number_of_pages_median": 143,
+            "title": "The Tempest",
+            "ratings_average": 3.9482758,
+            "ratings_count": 58,
+            "description": "The Tempest is a play by William Shakespeare, believed to have been written in 1610–11, and thought by many critics to be the last play that Shakespeare wrote alone. It is set on a remote island, where Prospero, the rightful Duke of Milan, plots to restore his daughter Miranda to her rightful place using illusion and skilful manipulation. He conjures up a storm, the eponymous tempest, to lure his usurping brother Antonio and the complicit King Alonso of Naples to the island. There, his machinations bring about the revelation of Antonio's lowly nature, the redemption of the King, and the marriage of Miranda to Alonso's son, Ferdinand."
+        }
+    ]
+}

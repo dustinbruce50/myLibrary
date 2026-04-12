@@ -1,0 +1,86 @@
+{
+  "description": {
+    "type": "/type/text",
+    "value": "Pygmalion is a play by George Bernard Shaw, named after a Greek mythological figure. It was first presented on stage to the public in 1913.\r\n\r\n----------\t\t\r\nAlso contained in:\t\t\r\n\t\t\r\n\r\n - [Collected Plays with their Prefaces: Volume IV](https://openlibrary.org/works/OL24714049W)\r\n - [Complete Plays with Prefaces: Volume I](https://openlibrary.org/works/OL15835450W)\t\t\r\n - [Four Plays by Bernard Shaw][1]\t\t\r\n - [Plays](https://openlibrary.org/works/OL15241070W/The_Complete_Plays_of_Bernard_Shaw)\t\t\r\n - [Portable Bernard Shaw](https://openlibrary.org/works/OL1066402W/The_Portable_Bernard_Shaw)\t\t\r\n - [Pygmalion and Major Barbara][2]\t\t\r\n - [Pygmalion and My Fair Lady][3]\t\t\r\n - [Pygmalion and Related Readings][4]\r\n - [Pygmalion and Three Other Plays](https://openlibrary.org/works/OL15013904W)\r\n - [Pygmalion with Connections](https://openlibrary.org/works/OL1066164W/Pygmalion_with_Connections)\t\t\r\n - [Selected Plays](https://openlibrary.org/works/OL15241059W)\t\t\r\n - [Selected Plays with Prefaces](https://openlibrary.org/works/OL20644026W)\t\t\r\n - [Six Plays](https://openlibrary.org/works/OL17986328W)\t\t\r\n\t\t\t\r\n[1]: https://openlibrary.org/works/OL1066032W/Four_Plays_by_Bernard_Shaw\t\t\r\n[2]: https://openlibrary.org/works/OL1066354W/Pygmalion_Major_Barbara\t\t\r\n[3]: https://openlibrary.org/works/OL15013928W/Pygmalion_My_Fair_Lady\t\t\r\n[4]: https://openlibrary.org/works/OL8049503W/Pygmalion_and_Related_Readings"
+  },
+  "links": [
+    {
+      "title": "Pygmalion (play) - Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Pygmalion_(play)",
+      "type": { "key": "/type/link" }
+    },
+    {
+      "url": "https://www.sparknotes.com/lit/pygmalion/",
+      "title": "SparkNotes: Pygmalion",
+      "type": { "key": "/type/link" }
+    },
+    {
+      "title": "Pygmalion | play by Shaw | Britannica.com",
+      "url": "https://www.britannica.com/topic/Pygmalion-play-by-Shaw",
+      "type": { "key": "/type/link" }
+    },
+    {
+      "title": "How Pygmalion went from feminist manifesto to chick flick (pri.org)",
+      "url": "https://www.pri.org/stories/2014-07-09/how-pygmalion-went-feminist-manifesto-chick-flick",
+      "type": { "key": "/type/link" }
+    }
+  ],
+  "title": "Pygmalion",
+  "covers": [9267223, 10105103, 10710338, 10885150, 12622029],
+  "subject_places": ["London", "England"],
+  "subjects": [
+    "Drama",
+    "Flower vending",
+    "Linguistics teachers",
+    "Social classes",
+    "Speech and social status",
+    "Man-woman relationships",
+    "open_syllabus_project",
+    "German",
+    "Dictionaries",
+    "English language",
+    "British and irish drama (dramatic works by one author)",
+    "Comedies",
+    "Speech and social status -- Drama",
+    "London (England) -- Drama",
+    "Linguistics teachers -- Drama",
+    "Social classes -- Drama",
+    "Flower vending -- Drama"
+  ],
+  "subject_people": [
+    "Pygmalion",
+    "Galatea",
+    "Henry Higgins",
+    "Eliza Doolittle",
+    "Colonel Pickering",
+    "Alfred Doolittle",
+    "Mrs. Higgins",
+    "Freddy Eynsford Hill"
+  ],
+  "key": "/works/OL1066524W",
+  "authors": [
+    {
+      "author": { "key": "/authors/OL107911A" },
+      "type": { "key": "/type/author_role" }
+    }
+  ],
+  "subject_times": ["1912"],
+  "type": { "key": "/type/work" },
+  "excerpts": [
+    {
+      "excerpt": "As will be seen later on, Pygmalion needs, not a preface, but a sequel, which I have supplied in its due place.",
+      "author": { "key": "/people/seabelis" },
+      "comment": "First sentence."
+    }
+  ],
+  "latest_revision": 64,
+  "revision": 64,
+  "created": {
+    "type": "/type/datetime",
+    "value": "2009-12-09T20:21:11.441893"
+  },
+  "last_modified": {
+    "type": "/type/datetime",
+    "value": "2024-04-08T13:34:52.158434"
+  }
+}

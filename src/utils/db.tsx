@@ -83,6 +83,7 @@ export async function initDB() {
                     author TEXT NOT NULL,
                     year INTEGER,
                     coverUri TEXT,
+                    description TEXT,
                     rating FLOAT
                 );`,
                 [],
@@ -143,22 +144,25 @@ export async function seedDB() {
             tx.executeSql(`DELETE FROM books;`);
             db.transaction(tx => {
                 tx.executeSql(
-                    `INSERT INTO books (title, author, year, coverUri) VALUES 
-                (?, ?, ?, ?),
-                (?, ?, ?, ?),
-                (?, ?, ?, ?);`,
+                    `INSERT INTO books (title, author, year, description, coverUri) VALUES 
+                (?, ?, ?, ?, ?),
+                (?, ?, ?, ?, ?),
+                (?, ?, ?, ?, ?);`,
                     [
                         'The Great Gatsby',
                         'F. Scott Fitzgerald',
                         1925,
+                        'A novel about the American dream.',
                         gatsbyUri,
                         'To Kill a Mockingbird',
                         'Harper Lee',
                         1960,
+                        'A novel about racial injustice in the Deep South.',
                         mockingbirdUri,
                         '1984',
                         'George Orwell',
                         1949,
+                        'A dystopian novel about totalitarianism and surveillance.',
                         n1984Uri,
                     ],
                     () => resolve(true),
@@ -177,7 +181,9 @@ export async function addBook(
     title: string,
     author: string,
     cover_i: number,
+    description: string = '',
     year?: number,
+    rating?: number,
     tags: string[] = [],
     
 ) {
@@ -204,8 +210,8 @@ export async function addBook(
         // Insert book into books table
         db.transaction(tx => {
             tx.executeSql(
-                `INSERT INTO books (title, author, year, coverUri) VALUES (?, ?, ?, ?);`,
-                [title, author, year ? year : 0, filepath],
+                `INSERT INTO books (title, author, year, description, coverUri) VALUES (?, ?, ?, ?, ?);`,
+                [title, author, year ? year : 0, description , filepath],
                 (_tx, result) => {
                     id = result.insertId;
                     resolve(true);

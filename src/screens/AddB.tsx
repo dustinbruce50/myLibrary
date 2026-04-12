@@ -19,7 +19,6 @@ import { addBook } from '../utils/db';
 import Ionicons from '@react-native-vector-icons/ionicons';
 import { Camera } from 'lucide-react-native';
 
-
 const requestCameraPermission = async () => {
   if (Platform.OS === 'android') {
     try {
@@ -284,11 +283,7 @@ const AddB = () => {
           }}
           onPress={openCamera}
         >
-          <Camera
-            size={40}
-            color={colors.bodyText}
-            
-          />
+          <Camera size={40} color={colors.bodyText} />
         </Pressable>
         <Pressable
           onPress={() => {
@@ -357,7 +352,6 @@ const AddB = () => {
                       {
                         fontFamily: 'Roboto',
                         fontSize: 20,
-                        
                       },
                     ]}
                   >
@@ -526,11 +520,15 @@ const AddB = () => {
               //bottom: 10,
               alignSelf: 'center',
               fontFamily: 'CormorantGaramond-Bold',
-            fontSize: 30,
-            color: colors.titleText,
-            textAlign: 'center',
-          }}
-        >Search for your favorite book by name, or hit the camera icon to scan a barcode</Text>)}
+              fontSize: 30,
+              color: colors.titleText,
+              textAlign: 'center',
+            }}
+          >
+            Search for your favorite book by name, or hit the camera icon to
+            scan a barcode
+          </Text>
+        )}
       </View>
     </SafeAreaView>
   );
