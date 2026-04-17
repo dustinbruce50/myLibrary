@@ -29,22 +29,26 @@ export default AppButton;
 const styles = StyleSheet.create({
   button: {
     backgroundColor: colors.button,
-    borderRadius: 10,
-    paddingVertical: 12,
+    borderRadius: 14,
+    paddingVertical: 14,
     paddingHorizontal: 18,
     alignSelf: 'center',
     marginTop: 10,
     minWidth: '70%',
+    shadowColor: '#000',
+    shadowOpacity: 0.18,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 6 },
+    elevation: 4,
   },
   pressed: {
-    opacity: 0.9,
+    opacity: 0.92,
     transform: [{ scale: 0.98 }],
   },
   text: {
     fontFamily: 'CormorantGaramond-Bold',
-    fontSize: 18,
+    fontSize: 19,
     color: colors.titleText,
     textAlign: 'center',
   },
 });
-

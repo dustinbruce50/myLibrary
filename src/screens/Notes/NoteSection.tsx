@@ -118,12 +118,11 @@ const NoteSection = ({ bookId, classOf, name, notes }: NoteSectionProps) => {
   return (
     <View style={styles.sectionContainer}>
       <View style={styles.sectionHeaderCard}>
+        <Pressable onPress={addNote} style={styles.addButton}>
+          <CirclePlus size={32} />
+        </Pressable>
         <View style={styles.headerRow}>
-          <View style={styles.headerSpacer} />
           <Text style={styles.cardTitle}>{name}</Text>
-          <Pressable onPress={addNote} style={styles.addButton}>
-            <CirclePlus size={32} />
-          </Pressable>
         </View>
       </View>
 
@@ -138,19 +137,21 @@ const NoteSection = ({ bookId, classOf, name, notes }: NoteSectionProps) => {
               style={styles.deleteButton}
               hitSlop={10}
             >
-              <CircleX size={28} color={colors.bodyText} />
+              <CircleX size={32} color={'#8B3a3a'} />
             </Pressable>
-            <TestNotes
-              classOf={classOf}
-              headerValue={note.header}
-              onChangeHeaderText={(text: string) =>
-                updateNoteHeader(index, text)
-              }
-              showHeader={showHeader}
-              value={note.text}
-              onChangeText={(text: string) => updateNoteText(index, text)}
-              onSave={() => saveNote(index)}
-            />
+            <View style={styles.noteCardContent}>
+              <TestNotes
+                classOf={classOf}
+                headerValue={note.header}
+                onChangeHeaderText={(text: string) =>
+                  updateNoteHeader(index, text)
+                }
+                showHeader={showHeader}
+                value={note.text}
+                onChangeText={(text: string) => updateNoteText(index, text)}
+                onSave={() => saveNote(index)}
+              />
+            </View>
           </View>
         ))}
       </ScrollView>
@@ -167,30 +168,29 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
   },
   sectionHeaderCard: {
-    paddingVertical: 12,
-    paddingHorizontal: 20,
     backgroundColor: colors.accent,
     borderRadius: 10,
     marginHorizontal: 20,
     marginTop: 20,
     marginBottom: 10,
+    position: 'relative',
   },
   headerRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  headerSpacer: {
-    width: 44,
-    height: 44,
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
   },
   addButton: {
+    position: 'absolute',
+    right: 10,
+    top: 10,
     width: 44,
     height: 44,
-    paddingHorizontal: 6,
-    paddingVertical: 6,
     alignItems: 'center',
     justifyContent: 'center',
+    zIndex: 2,
   },
   lineRow: {
     flexWrap: 'wrap',
@@ -228,8 +228,10 @@ const styles = StyleSheet.create({
     position: 'relative',
     backgroundColor: colors.accent,
     borderRadius: 10,
-    padding: 18,
     marginBottom: 18,
+  },
+  noteCardContent: {
+    padding: 18,
   },
   deleteButton: {
     position: 'absolute',

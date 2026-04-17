@@ -50,7 +50,7 @@ const BookDetails = (book: any) => {
           marginTop: 80,
         }}
       >
-        In The Margins.
+        In this Edition.
       </Text>
       <ScrollView style={[styles.modContainer]}>
         <View style={[styles.card, {  }]}>
@@ -146,20 +146,30 @@ const styles = StyleSheet.create({
   notesButton: {
     flex: 1,
     backgroundColor: colors.button,
-    borderRadius: 10,
-    paddingVertical: 12,
+    borderRadius: 14,
+    paddingVertical: 14,
     paddingHorizontal: 20,
+    shadowColor: '#000',
+    shadowOpacity: 0.18,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 6 },
+    elevation: 4,
   },
   coverButton: {
     flex: 1,
     backgroundColor: colors.button,
-    borderRadius: 10,
-    paddingVertical: 12,
+    borderRadius: 14,
+    paddingVertical: 14,
     paddingHorizontal: 20,
+    shadowColor: '#000',
+    shadowOpacity: 0.18,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 6 },
+    elevation: 4,
   },
   notesButtonText: {
     fontFamily: 'CormorantGaramond-Bold',
-    fontSize: 20,
+    fontSize: 19,
     color: colors.titleText,
     textAlign: 'center',
   },

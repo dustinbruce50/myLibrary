@@ -18,6 +18,8 @@ import { Book } from '../utils/types';
 import { addBook } from '../utils/db';
 import Ionicons from '@react-native-vector-icons/ionicons';
 import { Camera } from 'lucide-react-native';
+import BarcodeScanning from '@react-native-ml-kit/barcode-scanning';
+
 
 const requestCameraPermission = async () => {
   if (Platform.OS === 'android') {
@@ -42,7 +44,7 @@ const requestCameraPermission = async () => {
     }
   }
 };
-
+/**
 const openCamera = async () => {
   await requestCameraPermission();
   const result = await launchCamera({
@@ -65,7 +67,14 @@ const openCamera = async () => {
     console.log('No image URI returned');
   }
 };
+*/
 
+const openCamera = async () => {
+  const barcodes = await BarcodeScanning.scan();
+  if (barcodes.length > 0) {
+    console.log('Scanned barcodes: ', barcodes);
+  }
+}
 const BASE_API_URL = 'https://openlibrary.org/search.json?q=';
 const BASE_API_URL_TAGS = 'https://openlibrary.org';
 
