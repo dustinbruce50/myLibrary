@@ -2,10 +2,9 @@ export type Book = {
   id: number;
   title: string;
   author: string;
-  year: number;
-  description: string;
-  coverUri: string;
-  cover_ids?: string;
-  primary_cover_id?: number;
-
+  year: number | null;
+  description?: string | null;
+  coverUri?: string | null;
+  rating?: number | null;
+  tags: string[];
 };

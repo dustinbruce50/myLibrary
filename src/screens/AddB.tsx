@@ -6,16 +6,14 @@ import {
   Pressable,
   Image,
   FlatList,
-  Button,
 } from 'react-native';
-import React, { JSX, useRef } from 'react';
+import React, { useRef } from 'react';
 import { colors } from '../utils/colors';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { launchCamera } from 'react-native-image-picker';
 import { PermissionsAndroid, Platform } from 'react-native';
 import axios from 'axios';
-import { Book } from '../utils/types';
-import { addBook } from '../utils/db';
+import { createBook } from '../utils/db';
 import Ionicons from '@react-native-vector-icons/ionicons';
 import { Camera } from 'lucide-react-native';
 import BarcodeScanning from '@react-native-ml-kit/barcode-scanning';
@@ -77,14 +75,6 @@ const openCamera = async () => {
 }
 const BASE_API_URL = 'https://openlibrary.org/search.json?q=';
 const BASE_API_URL_TAGS = 'https://openlibrary.org';
-
-let rating_stars: JSX.Element[] = [
-  <Ionicons name="star" size={20} color="#FFD700" />,
-  <Ionicons name="star" size={20} color="#FFD700" />,
-  <Ionicons name="star" size={20} color="#FFD700" />,
-  <Ionicons name="star" size={20} color="#FFD700" />,
-  <Ionicons name="star" size={20} color="#FFD700" />,
-];
 
 const AddB = () => {
   const [searchResults, setSearchResults] = React.useState<any[]>([]);
@@ -168,12 +158,12 @@ const AddB = () => {
   };
 
   const fetchBooks = async (
-    searchTerm: string,
+    query: string,
     action: string | null = null,
     limit: number = 5,
   ) => {
     let page = currentPage;
-    if (!searchTerm.trim()) {
+    if (!query.trim()) {
       console.log('Search term is empty, skipping fetch');
       setSearchResults([]);
       setCachePages({});
@@ -184,13 +174,13 @@ const AddB = () => {
     console.log('action: ', action);
 
     //caching and page num logic
-    if (action == 'forward') {
+    if (action === 'forward') {
       if (!cachePages[page]) {
         console.log('Caching current page: ', currentPage);
         setCachePages(prev => ({ ...prev, [currentPage]: searchResults }));
       }
       page = currentPage + 1;
-    } else if (action == 'backward') {
+    } else if (action === 'backward') {
       if (!cachePages[page]) {
         console.log('Caching current page: ', currentPage);
         setCachePages(prev => ({ ...prev, [currentPage]: searchResults }));
@@ -211,25 +201,25 @@ const AddB = () => {
 
     console.log(
       'fetch books called with searchTerm: ',
-      searchTerm,
+      query,
       ' page: ',
       page,
     );
     console.log(
       'Search URL: ',
       `${BASE_API_URL}${encodeURIComponent(
-        searchTerm,
+        query,
       )}&page=${page}&limit=${limit}`,
     );
     let result;
     try {
       result = await axios.get(
         `${BASE_API_URL}${encodeURIComponent(
-          searchTerm,
+          query,
         )}&page=${page}&limit=${limit}`,
         {
           params: {
-            q: searchTerm,
+            q: query,
             page,
             limit,
             fields:

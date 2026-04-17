@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import React, { Component  } from 'react';
 import { colors } from '../utils/colors';
-import { addBook, getBooks, seedDB } from '../utils/db';
+import { listBooks } from '../utils/db';
 import { Book } from '../utils/types';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useFocusEffect } from '@react-navigation/native';

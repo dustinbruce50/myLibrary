@@ -6,17 +6,11 @@
  */
 import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import { StyleSheet } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Login from './screens/Login';
-import Home from './screens/Home';
 import { NavigationContainer } from '@react-navigation/native';
-import { initDB, seedDB } from './utils/db';
-import RNFS from 'react-native-fs';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { initializeDatabase, seedDatabase } from './utils/db';
 import Tabnav from './navigators/Tabnav';
 import BookDetails from './screens/Notes/BookDetails';
 import { Book } from './utils/types';
@@ -49,15 +43,12 @@ function App() {
 
   React.useEffect(() => {
     const initialize = async () => {
-      await initDB();
-      await seedDB();
+      await initializeDatabase();
+      await seedDatabase();
       
     };
     initialize();
   }, []);
-
-
-  const isDarkMode = useColorScheme() === 'dark';
 
   return (
     
