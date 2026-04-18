@@ -13,12 +13,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { launchCamera } from 'react-native-image-picker';
 import { PermissionsAndroid, Platform } from 'react-native';
 import axios from 'axios';
-import { createBook , CreateBookInput} from '../utils/db';
+import { createBook } from '../utils/db';
 import Ionicons from '@react-native-vector-icons/ionicons';
 import { Camera } from 'lucide-react-native';
 import BarcodeScanning from '@react-native-ml-kit/barcode-scanning';
-
-
+import { g_b_key } from '@env';
+import { searchBooks } from '../utils/Book_Search';
+import { Book } from '../utils/types';
 
 const requestCameraPermission = async () => {
   if (Platform.OS === 'android') {
@@ -43,45 +44,10 @@ const requestCameraPermission = async () => {
     }
   }
 };
-/**
-const openCamera = async () => {
-  await requestCameraPermission();
-  const result = await launchCamera({
-    mediaType: 'photo',
-    cameraType: 'back',
-    saveToPhotos: false,
-  });
-  if (result.didCancel) {
-    console.log('User cancelled camera');
-  } else if (result.errorCode) {
-    console.log('Camera error: ', result.errorMessage);
-    return;
-  }
-
-  const uri = result.assets?.[0]?.uri;
-  if (uri) {
-    console.log('Captured image URI: ', uri);
-    // Here you can handle the captured image URI, e.g., save it to state or upload it
-  } else {
-    console.log('No image URI returned');
-  }
-};
-
-
-const openCamera = async () => {
-  const barcodes = await BarcodeScanning.scan();
-  if (barcodes.length > 0) {
-    console.log('Scanned barcodes: ', barcodes);
-  }
-}
- */
-const BASE_API_URL = 'https://openlibrary.org/search.json?q=';
-const BASE_API_URL_TAGS = 'https://openlibrary.org';
 
 const AddB = () => {
-  const [searchResults, setSearchResults] = React.useState<any[]>([]);
+  const [searchResults, setSearchResults] = React.useState<Book[]>([]);
   const [searchTerm, setSearchTerm] = React.useState('');
-  //const [pageLast, setPageLast] = React.useState(1);
   const [currentPage, setCurrentPage] = React.useState(1);
   const [cachePages, setCachePages] = React.useState<{
     [key: number]: any[];
@@ -92,157 +58,6 @@ const AddB = () => {
   React.useEffect(() => {
     console.log('Search results updated: ', searchResults);
   }, [searchResults]);
-
-  const fetchTagsAndCovers = async (key: string) => {
-    let result;
-    let tags: string[] = [];
-    let covers: number[] = [];
-    try {
-      result = await axios.get(`${BASE_API_URL_TAGS}${key}.json`, {
-        params: {
-          fields:
-            'title,subject_places,subject_people,subject_times,subjects,covers,',
-        },
-        headers: {
-          'User-Agent': 'myLibrary (Dustin Bruce, dustinbruce50@gmail.com)',
-        },
-      });
-    } catch (error) {
-      console.error('Error fetching tags: ', error);
-    } finally {
-      if (result?.status === 200) {
-        console.log('Tag API response: ', result);
-      }
-    }
-    for (const field of [
-      'subject_places',
-      'subject_people',
-      'subject_times',
-      'subjects',
-    ]) {
-      console.log(`Checking for tags in field: ${field}`);
-      if (result?.data?.[field]) {
-        tags = tags.concat(result.data[field]);
-      }
-    }
-    console.log('Extracted tags: ', tags);
-
-    //clean tags
-    //remove (year-year) from tags or (year- ) or (year)
-    //remove date ranges without parenthesis
-    //remove anything in parentheses
-    //remove anything after --
-    tags = tags.map((tag: string) =>
-      tag
-        .replace(/\(\d{4}-\d{4}\)/g, '')
-        .replace(/\(\d{4}-\s*\)/g, '')
-        .replace(/\(\d{4}\)/g, '')
-        .replace(/\(.*?\)/g, '')
-        .replace(/--.*/g, '')
-        .replace(/\d{4}-\d{4}/g, '')
-        .replace(/\d{4}-\s*/g, '')
-        .replace(/\d{4}/g, '')
-        //.replace(/\(.*?\)/g, '')
-        .trim(),
-    );
-    //take anything seperated by a : ; or , and split into separate tags
-    tags = tags.flatMap((tag: string) =>
-      tag.split(/[:;,]+/).map((t: string) => t.trim()),
-    );
-    //dedup and remove empty tags
-    tags = Array.from(new Set(tags)).filter((tag: string) => tag.length > 0);
-
-    console.log('Tags after cleaning: ', tags);
-    if (Array.isArray(result?.data?.covers)) {
-      covers = result.data.covers.filter((c: any) => typeof c === 'number');
-    }
-    return { tags, covers };
-  };
-
-  const fetchBooks = async (
-    query: string,
-    action: string | null = null,
-    limit: number = 5,
-  ) => {
-    let page = currentPage;
-    if (!query.trim()) {
-      console.log('Search term is empty, skipping fetch');
-      setSearchResults([]);
-      setCachePages({});
-      setCurrentPage(1);
-      return;
-    }
-
-    console.log('action: ', action);
-
-    //caching and page num logic
-    if (action === 'forward') {
-      if (!cachePages[page]) {
-        console.log('Caching current page: ', currentPage);
-        setCachePages(prev => ({ ...prev, [currentPage]: searchResults }));
-      }
-      page = currentPage + 1;
-    } else if (action === 'backward') {
-      if (!cachePages[page]) {
-        console.log('Caching current page: ', currentPage);
-        setCachePages(prev => ({ ...prev, [currentPage]: searchResults }));
-      }
-      page = currentPage - 1;
-    } else {
-      page = currentPage;
-    }
-    //cache loading
-    if (cachePages[page]) {
-      console.log('Loading page from cache: ', page);
-      setSearchResults(cachePages[page]);
-      setCurrentPage(page);
-      return;
-    } else {
-      setIsLoading(true);
-    }
-
-    console.log(
-      'fetch books called with searchTerm: ',
-      query,
-      ' page: ',
-      page,
-    );
-    console.log(
-      'Search URL: ',
-      `${BASE_API_URL}${encodeURIComponent(
-        query,
-      )}&page=${page}&limit=${limit}`,
-    );
-    let result;
-    try {
-      result = await axios.get(
-        `${BASE_API_URL}${encodeURIComponent(
-          query,
-        )}&page=${page}&limit=${limit}`,
-        {
-          params: {
-            q: query,
-            page,
-            limit,
-            fields:
-              'key,description,title,subtitle,author_name,cover_i,first_publish_year,ratings_average,ratings_count,number_of_pages_median,covers,',
-          },
-          headers: {
-            'User-Agent': 'myLibrary (Dustin Bruce, dustinbruce50@gmail.com)',
-          },
-        },
-      );
-      console.log('Book API response: ', result);
-    } catch (error) {
-      console.error('Error fetching book data: ', error);
-    }
-    if (result?.status === 200) {
-      setCurrentPage(page);
-      setSearchResults(result?.data?.docs || []);
-      setIsLoading(false);
-    }
-    console.log('Search results: ', searchResults);
-  };
 
   return (
     <SafeAreaView style={[styles.screenContainer]}>
@@ -265,7 +80,7 @@ const AddB = () => {
             position: 'relative',
             justifyContent: 'center',
             height: '100%',
-            opacity: isLoading ? 0.1 : 1,
+            opacity: isLoading ? 0.5 : 1,
           },
         ]}
       >
@@ -292,8 +107,13 @@ const AddB = () => {
           <Camera size={40} color={colors.bodyText} />
         </Pressable>
         <Pressable
-          onPress={() => {
-            fetchBooks(searchTerm);
+          onPress={async () => {
+            setCurrentPage(1);
+            setIsLoading(true);
+            let results = await searchBooks('google', searchTerm, 1);
+            setSearchResults(results);
+            setIsLoading(false);
+            listRef.current?.scrollToOffset({ offset: 0, animated: true });
           }}
         >
           <Text
@@ -319,13 +139,11 @@ const AddB = () => {
           data={searchResults}
           contentContainerStyle={{ paddingBottom: 0 }}
           style={[styles.modContainer, { width: '100%', position: 'relative' }]}
-          keyExtractor={(item: any) =>{
-            return item.key.toString();
+          keyExtractor={(item: any) => {
+            return item.id.toString();
           }}
           renderItem={data => {
-            
             const book = data.item;
-            console.log('Inside AddB FlatList Rendering book: ', book);
             return (
               searchResults && (
                 <View style={styles.card}>
@@ -348,15 +166,21 @@ const AddB = () => {
                       },
                     ]}
                   >
-                    {book.author_name &&
-                    Array.isArray(book.author_name) &&
-                    book.author_name.length > 0
-                      ? `${book.author_name.join(', ')} - ${
-                          book.first_publish_year
-                        }`
-                      : `Unknown Author - ${book.first_publish_year}`}
+                    {book.author} - {book.year}
                   </Text>
-
+                  {book.coverUri && (
+                    <Image
+                      source={{
+                        uri: book.coverUri,
+                      }}
+                      style={{
+                        alignSelf: 'center',
+                        margin: 10,
+                        height: 250,
+                        aspectRatio: 2 / 3,
+                      }}
+                    />
+                  )}
                   <Text
                     style={[
                       {
@@ -371,21 +195,8 @@ const AddB = () => {
                       : book.description}
                   </Text>
 
-                  {book.cover_i && (
-                    <Image
-                      source={{
-                        uri: `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`,
-                      }}
-                      style={{
-                        alignSelf: 'center',
-                        margin: 10,
-                        height: 250,
-                        aspectRatio: 2 / 3,
-                      }}
-                    />
-                  )}
                   <Text style={{ textAlign: 'center' }}>
-                    Pages: {book.number_of_pages_median || 'N/A'}
+                    Pages: {book.numPages || 'N/A'}
                   </Text>
                   <View
                     style={{
@@ -396,9 +207,9 @@ const AddB = () => {
                   >
                     {Array.from({ length: 5 }, (_, i) => {
                       let icon_name;
-                      if (book.ratings_average >= i + 1) {
+                      if (book.rating >= i + 1) {
                         icon_name = 'star';
-                      } else if (book.ratings_average >= i + 0.5) {
+                      } else if (book.ratings >= i + 0.5) {
                         icon_name = 'star-half';
                       } else {
                         icon_name = 'star-outline';
@@ -421,30 +232,26 @@ const AddB = () => {
                       console.log(
                         `title: ${book.title}, author: ${book.author_name}, cover: ${book.cover_i}, year: ${book.first_publish_year}`,
                       );
-                      const author = Array.isArray(book.author_name)
-                        ? book.author_name.join(', ')
-                        : book.author_name ?? 'Unknown';
+
                       try {
-                        const extras: any = await fetchTagsAndCovers(book.key);
+                        //const extras: any = await fetchTagsAndCovers(book.key);
                         await createBook(
-                          
-                          
-                          {title: String(book.title),
-                          author: String(author),
-                          year: book.first_publish_year,
-                          description: book.description || '',
-                          rating: book.ratings_average, 
-                          tags: extras.tags,
-                          cover: {openLibraryCoverId: book.cover_i},
-                          coverIds: extras.covers
-                          //extras?.covers ?? [],
-                          //coverUri: book.cover_i,
-                          }
-                          
-                          
+                          {
+                            id: book.key,
+                            title: String(book.title),
+                            author: String(book.author),
+                            year: book.first_publish_year,
+                            description: book.description || '',
+                            rating: book.ratings,
+                            //tags: extras?.tags,
+                            cover: { url: book.cover, filename: book.id },
+                            //coverIds: extras.covers,
+                            //extras?.covers ?? [],
+                            //coverUri: book.cover_i,
+                          },
+
                           //book.ratings_count,
-                          //extras?.tags ?? [], 
-                           
+                          //extras?.tags ?? [],
                         );
                       } catch (error) {
                         console.error('Error adding book:', error);
@@ -500,10 +307,21 @@ const AddB = () => {
                   <Pressable
                     disabled={currentPage === 1}
                     style={{ opacity: currentPage === 1 ? 0.5 : 1 }}
-                    onPress={() => {
+                    onPress={async () => {
                       {
-                        console.log('are we calling backward?');
-                        fetchBooks(searchTerm, 'backward');
+                        setCurrentPage(currentPage - 1);
+                        setIsLoading(true);
+                        listRef.current?.scrollToOffset({
+                          offset: 0,
+                          animated: true,
+                        });
+                        let results = await searchBooks(
+                          'google',
+                          searchTerm,
+                          currentPage - 1,
+                        );
+                        setSearchResults(results);
+                        setIsLoading(false);
                       }
                     }}
                   >
@@ -516,10 +334,21 @@ const AddB = () => {
                     <Text style={{ alignSelf: 'center' }}>Prev Page</Text>
                   </Pressable>
                   <Pressable
-                    onPress={() => {
+                    onPress={async () => {
                       {
-                        console.log('are we calling forward?');
-                        fetchBooks(searchTerm, 'forward');
+                        setIsLoading(true);
+                        listRef.current?.scrollToOffset({
+                          offset: 0,
+                          animated: true,
+                        });
+                        setCurrentPage(currentPage + 1);
+                        let results = await searchBooks(
+                          'google',
+                          searchTerm,
+                          currentPage + 1,
+                        );
+                        setSearchResults(results);
+                        setIsLoading(false);
                       }
                     }}
                   >

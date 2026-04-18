@@ -1,11 +1,14 @@
 import SQLite, { SQLResultSet } from 'react-native-sqlite-2';
 import RNFS from 'react-native-fs';
-import { Book, BookCoverInput, CreateBookInput, UpdateBookInput } from './types';
-import {SqlParam, } from '../utils/types'
+import {
+  Book,
+  BookCoverInput,
+  CreateBookInput,
+  UpdateBookInput,
+} from './types';
+import { SqlParam } from '../utils/types';
 import { LucideSquareArrowRightExit } from 'lucide-react-native';
 import { executeNativeBackPress } from 'react-native-screens';
-
-
 
 const db = SQLite.openDatabase('localsql');
 
@@ -40,16 +43,16 @@ function mapRows<T>(result: SQLResultSet): T[] {
 }
 
 function sanitizeTags(tags: string[] = []): string[] {
-console.log('tags', tags)
-let local = Array.from(
+  console.log('tags', tags);
+  let local = Array.from(
     new Set(tags.map(tag => tag.trim()).filter(tag => tag.length > 0)),
-  )
-  console.log('local ', local)
+  );
+  console.log('local ', local);
   return local;
 }
 
 function mapBookRow(
-  row: Book & { tags?: string | null; tagNames?: string | null; },
+  row: Book & { tags?: string | null; tagNames?: string | null },
 ): Book {
   const tagSource = row.tags ?? row.tagNames ?? '';
 
@@ -65,7 +68,7 @@ function mapBookRow(
       .split('|')
       .map(tag => tag.trim())
       .filter(Boolean),
-    coverIds: row.coverIds ?? []
+    coverIds: row.coverIds ?? [],
   };
 }
 
@@ -81,16 +84,15 @@ export async function downloadCoverFromUrl(
   filename: string,
 ): Promise<string> {
   const destinationPath = `${RNFS.DocumentDirectoryPath}/${filename}`;
-  console.log("AM I THE PROBLEM???")
-  console.log("Maybe Problem URL: ", url)
-  try{
-  const result = await RNFS.downloadFile({
-    fromUrl: url,
-    toFile: destinationPath,
-  }).promise;
-  }
-  catch (e){
-    console.log("Error where you are ", e)
+  console.log('AM I THE PROBLEM???');
+  console.log('Maybe Problem URL: ', url);
+  try {
+    const result = await RNFS.downloadFile({
+      fromUrl: url,
+      toFile: destinationPath,
+    }).promise;
+  } catch (e) {
+    console.log('Error where you are ', e);
   }
   //if (result.statusCode !== 200) {
   //  throw new Error(`Failed to download cover: ${result.statusCode}`);
@@ -113,7 +115,6 @@ async function resolveCoverUri(cover?: BookCoverInput): Promise<string | null> {
   }
 
   if (cover.openLibraryCoverId) {
-    
     return downloadCoverFromUrl(
       `https://covers.openlibrary.org/b/id/${cover.openLibraryCoverId}-M.jpg`,
       `cover_${cover.openLibraryCoverId}.jpg`,
@@ -121,7 +122,7 @@ async function resolveCoverUri(cover?: BookCoverInput): Promise<string | null> {
   }
 
   if (cover.url && cover.filename) {
-    console.log("_____________TESTING______________")
+    console.log('_____________TESTING______________');
     return downloadCoverFromUrl(cover.url, cover.filename);
   }
 
@@ -159,9 +160,7 @@ async function replaceBookTags(bookId: number, tags: string[]): Promise<void> {
 }
 
 export async function initializeDatabase(): Promise<void> {
-  await executeSql(
-    `DROP TABLE IF EXISTS books;`
-  )
+  await executeSql(`DROP TABLE IF EXISTS books;`);
   //await executeSql(
   //  `DROP TABLE IF EXISTS tags;`
   //)
@@ -224,50 +223,47 @@ export async function seedDatabase(): Promise<void> {
   });
 }
 
-export async function createBook(input: CreateBookInput){
-  const coverUri = await resolveCoverUri(input.cover);
+export async function createBook(input: CreateBookInput) {
+  console.log('input ', input);
+  let temp: any = input.cover?.url;
+  const coverUri = await downloadCoverFromUrl(temp, temp);
   const result = await executeSql(
     `INSERT INTO books (title, author, year, description, coverUri, rating, coverIds)
      VALUES (?, ?, ?, ?, ?, ?, ?);`,
     [
-      input.title,
-      input.author,
+      input.title ?? '',
+      input.author ?? '',
       input.year ?? null,
       input.description ?? null,
       coverUri,
       input.rating ?? null,
-      JSON.stringify(input.coverIds) ?? null 
+      JSON.stringify(input.coverIds) ?? null,
     ],
   );
   const bookId = result.insertId;
-  if (!bookId){
+  if (!bookId) {
     throw new Error('failed to get inserted Book ID');
   }
-  for (const tagname of input.tags ?? [] ){
-    await executeSql(
-      `INSERT OR IGNORE INTO tags (name) VALUES (?);`,
-      [tagname]
-    );
+  for (const tagname of input.tags ?? []) {
+    await executeSql(`INSERT OR IGNORE INTO tags (name) VALUES (?);`, [
+      tagname,
+    ]);
     const tagResult = await executeSql(
       `SELECT id FROM tags WHERE name = ? LIMIT 1;`,
-      [tagname]
+      [tagname],
     );
-    const rows = tagResult.rows
-    if (!rows || rows.length === 0){
+    const rows = tagResult.rows;
+    if (!rows || rows.length === 0) {
       throw new Error(`failed to find tag id for tag: ${tagname}`);
     }
 
-    const tagId = rows.item(0).id
+    const tagId = rows.item(0).id;
 
     await executeSql(
       `INSERT OR IGNORE INTO book_tags (book_id, tag_id) VALUES (?,?);`,
-      [bookId, tagId]
-    )
+      [bookId, tagId],
+    );
   }
-  
-  
-
-  
 }
 
 export async function listBooks(): Promise<Book[]> {
@@ -283,12 +279,9 @@ export async function listBooks(): Promise<Book[]> {
       books.coverIds
     FROM books;`,
   );
- let data = mapRows<Book & { tags?: string | null }>(result).map(mapBookRow)
- console.log("Data inside listBooks: ", data)
- return data
-  
-
-;
+  let data = mapRows<Book & { tags?: string | null }>(result).map(mapBookRow);
+  console.log('Data inside listBooks: ', data);
+  return data;
 }
 
 export async function getBookById(id: number): Promise<Book | null> {
