@@ -13,10 +13,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { launchCamera } from 'react-native-image-picker';
 import { PermissionsAndroid, Platform } from 'react-native';
 import axios from 'axios';
-import { createBook } from '../utils/db';
+import { createBook , CreateBookInput} from '../utils/db';
 import Ionicons from '@react-native-vector-icons/ionicons';
 import { Camera } from 'lucide-react-native';
 import BarcodeScanning from '@react-native-ml-kit/barcode-scanning';
+
 
 
 const requestCameraPermission = async () => {
@@ -65,7 +66,7 @@ const openCamera = async () => {
     console.log('No image URI returned');
   }
 };
-*/
+
 
 const openCamera = async () => {
   const barcodes = await BarcodeScanning.scan();
@@ -73,6 +74,7 @@ const openCamera = async () => {
     console.log('Scanned barcodes: ', barcodes);
   }
 }
+ */
 const BASE_API_URL = 'https://openlibrary.org/search.json?q=';
 const BASE_API_URL_TAGS = 'https://openlibrary.org';
 
@@ -223,7 +225,7 @@ const AddB = () => {
             page,
             limit,
             fields:
-              'key,description,title,subtitle,author_name,cover_i,first_publish_year,ratings_average,ratings_count,number_of_pages_median,',
+              'key,description,title,subtitle,author_name,cover_i,first_publish_year,ratings_average,ratings_count,number_of_pages_median,covers,',
           },
           headers: {
             'User-Agent': 'myLibrary (Dustin Bruce, dustinbruce50@gmail.com)',
@@ -285,7 +287,7 @@ const AddB = () => {
             right: 50,
             top: 0,
           }}
-          onPress={openCamera}
+          //onPress={openCamera}
         >
           <Camera size={40} color={colors.bodyText} />
         </Pressable>
@@ -323,7 +325,7 @@ const AddB = () => {
           renderItem={data => {
             
             const book = data.item;
-            console.log('Inside FlatList Rendering book: ', book);
+            console.log('Inside AddB FlatList Rendering book: ', book);
             return (
               searchResults && (
                 <View style={styles.card}>
@@ -424,17 +426,25 @@ const AddB = () => {
                         : book.author_name ?? 'Unknown';
                       try {
                         const extras: any = await fetchTagsAndCovers(book.key);
-                        await addBook(
-                          String(book.title),
-                          String(author),
-                          book.cover_i,
-                          extras?.covers ?? [],
-                          book.cover_i,
-                          book.first_publish_year,
-                          book.description || '',
-                          book.ratings_average, 
-                          book.ratings_count,
-                          extras?.tags ?? [],
+                        await createBook(
+                          
+                          
+                          {title: String(book.title),
+                          author: String(author),
+                          year: book.first_publish_year,
+                          description: book.description || '',
+                          rating: book.ratings_average, 
+                          tags: extras.tags,
+                          cover: {openLibraryCoverId: book.cover_i},
+                          coverIds: extras.covers
+                          //extras?.covers ?? [],
+                          //coverUri: book.cover_i,
+                          }
+                          
+                          
+                          //book.ratings_count,
+                          //extras?.tags ?? [], 
+                           
                         );
                       } catch (error) {
                         console.error('Error adding book:', error);

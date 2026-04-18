@@ -6,54 +6,47 @@ import {
   StyleSheet,
   Text,
   View,
+  ViewComponent,
 } from 'react-native';
 import { colors } from '../../utils/colors';
 import { Book } from '../../utils/types';
 import { ArrowLeft, Check } from 'lucide-react-native';
-import { setPrimaryCover } from '../../utils/db';
+import { updateBook } from '../../utils/db';
+//import { setPrimaryCover } from '../../utils/db';
 
-const parseCoverIds = (book: Book): number[] => {
-  const anyBook: any = book as any;
-  const raw = anyBook.cover_ids;
-  if (!raw) return [];
-  try {
-    const parsed = JSON.parse(raw);
-    if (Array.isArray(parsed)) {
-      return parsed.filter((n: any) => typeof n === 'number');
-    }
-  } catch {}
-  return [];
-};
 
 const CoverPicker = (screenProps: any) => {
-  const book = screenProps.route.params.book as Book;
-  const coverIds = React.useMemo(() => {
-    const ids = parseCoverIds(book);
-    if (ids.length > 0) return ids;
-    const primary = (book as any).primary_cover_id;
-    return typeof primary === 'number' ? [primary] : [];
-  }, [book]);
-
-  const [selected, setSelected] = React.useState<number | null>(
-    (book as any).primary_cover_id ?? null,
-  );
-  const [saving, setSaving] = React.useState(false);
-
-  const choose = async (coverId: number) => {
-    setSelected(coverId);
-    setSaving(true);
-    try {
-      await setPrimaryCover({ bookId: book.id, coverId });
-    } finally {
-      setSaving(false);
-      screenProps.navigation.goBack();
+  console.log("relevant data from cover picker: ", )
+  console.log(screenProps)
+  
+  const goBack = async () => {
+    if(selected !== primary_cover_id){
+      setSaving(true)
+      await updateBook(book.id, {cover: {openLibraryCoverId: selected as number}})
+      setSaving(false)
+      screenProps.navigation.goBack()
     }
   };
 
+
+  const book = screenProps.route.params.book as Book;
+
+  let ids: number[] = JSON.parse(book.coverIds as unknown as string);
+  let primary_cover_id = Number(book.coverUri?.slice(book.coverUri.lastIndexOf('_')+1, book.coverUri.lastIndexOf('.jpg')).trim());
+  console.log("primary_cover_id: ", primary_cover_id)
+  console.log('primary covery id type: ', typeof(primary_cover_id))
+  console.log("ids: ", ids)
+  console.log("ids.type", typeof(ids))
+
+  const [selected, setSelected] = React.useState<number | null>(primary_cover_id);
+  const [saving, setSaving] = React.useState(false);
+
+  
+  
   return (
     <View style={styles.screenContainer}>
       <Pressable
-        onPress={() => screenProps.navigation.goBack()}
+        onPress={goBack}
         style={styles.backButton}
         hitSlop={10}
       >
@@ -61,37 +54,40 @@ const CoverPicker = (screenProps: any) => {
       </Pressable>
 
       <Text style={styles.title}>Cover Art</Text>
-      <Text style={styles.subtitle}>{book.title}</Text>
 
       <FlatList
-        data={coverIds}
-        keyExtractor={id => String(id)}
-        numColumns={3}
-        columnWrapperStyle={styles.row}
-        contentContainerStyle={styles.list}
-        renderItem={({ item }) => {
+        data={ids}
+        keyExtractor={(item, index) => String(item ?? index)}
+        renderItem={({ item, index }) => {
           const uri = `https://covers.openlibrary.org/b/id/${item}-M.jpg`;
-          const isSelected = selected === item;
           return (
-            <Pressable
-              disabled={saving}
-              onPress={() => choose(item)}
-              style={[styles.coverTile, isSelected && styles.coverTileSelected]}
-            >
-              <Image source={{ uri }} style={styles.coverImage} />
-              {isSelected && (
-                <View style={styles.checkBadge}>
-                  <Check size={16} color={colors.titleText} />
-                </View>
-              )}
-            </Pressable>
+            <View>
+              <Text style={{fontSize:36}}>{index+1}</Text>
+              <Pressable
+                onPress={() => {
+                  setSelected(item);
+                  console.log('setting selected to: ', item);
+                }}
+                style={[
+                  styles.coverTile,
+                  selected === item && styles.coverTileSelected,
+                ]}
+              >
+                <Image source={{ uri }} style={{
+                  alignSelf: 'center',
+                  margin: 10,
+                  height: 250,
+                  aspectRatio: 2 / 3,
+                }} />
+                {selected === item && (
+                  <View style={styles.checkBadge}>
+                    <Check color={colors.titleText} size={20} />
+                  </View>
+                )}
+              </Pressable>
+            </View>
           );
         }}
-        ListEmptyComponent={
-          <Text style={styles.empty}>
-            No alternate covers found for this book.
-          </Text>
-        }
       />
     </View>
   );
@@ -138,14 +134,17 @@ const styles = StyleSheet.create({
   },
   coverTile: {
     flex: 1,
-    backgroundColor: colors.accent,
+    width: '100%',
+    //backgroundColor: 'green',
     borderRadius: 10,
     padding: 8,
     marginBottom: 10,
     position: 'relative',
   },
   coverTileSelected: {
+    alignSelf: 'center',
     borderWidth: 2,
+    width: '50%',
     borderColor: colors.titleText,
   },
   coverImage: {

@@ -16,6 +16,8 @@ import BookDetails from './screens/Notes/BookDetails';
 import { Book } from './utils/types';
 import BookNotes from './screens/Notes/BookNotes';
 import CoverPicker from './screens/Notes/CoverPicker';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Home from './screens/Home';
 
 
 

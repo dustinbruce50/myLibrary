@@ -4,25 +4,22 @@ import { colors } from '../../utils/colors';
 import { Book } from '../../utils/types';
 import NotesSection from './NoteSection';
 import { getBookById } from '../../utils/db';
-import { useFocusEffect } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import ExpandableText from '../../components/ExpandableText';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../App';
 
 
-const quotesNotes: string[] = []
-const characterNotes: string[] = []
-const chapterNotes: string[] = []
-const settingNotes: string[] = []
-const questionNotes: string[] = []
-const personalNotes: string[] = []
+type BookDetailsNavProp = NativeStackNavigationProp<RootStackParamList>;
 
 
-const BookDetails = (book: any) => {
-  const initial = book.route.params.book as Book;
-  const [local, setLocal] = React.useState<Book>(initial);
-  console.log('deeper: ', local);
-  console.log('BookDetails local array:', local);
-  console.log('BookDetails received book:', book);
+const BookDetails = (item: any) => {
+  const navigation = useNavigation<BookDetailsNavProp>();
+  const local = item.route.params.book;
   
+  console.log('BookDetails local:', local);
+  console.log('BookDetails received item:', item);
+/**  
   useFocusEffect(
     React.useCallback(() => {
       let isMounted = true;
@@ -37,7 +34,7 @@ const BookDetails = (book: any) => {
       };
     }, [initial.id]),
   );
-
+ */
 
   return (
     <View style={[styles.screenContainer]}>
@@ -73,15 +70,16 @@ const BookDetails = (book: any) => {
           />
           <View style={styles.buttonRow}>
             <Pressable
-              onPress={() => book.navigation.navigate('BookNotes', { book: local })}
+              onPress={() => navigation.navigate('BookNotes', { book:local })}
               style={styles.notesButton}
             >
               <Text style={styles.notesButtonText}>Notes</Text>
             </Pressable>
             <Pressable
-              onPress={() =>
-                book.navigation.navigate('CoverPicker', { book: local })
-              }
+              onPress={() => {
+                console.log("One more time, local" , local)
+                navigation.navigate('CoverPicker', { book:local})
+              }}
               style={styles.coverButton}
             >
               <Text style={styles.notesButtonText}>Cover Art</Text>

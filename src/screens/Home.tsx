@@ -38,7 +38,7 @@ export default function Home() {
   );
 
   const loadBooks = async () => {
-    const books = await getBooks();
+    const books = await listBooks();
     setBooks(books as Book[]);
   };
 
@@ -70,32 +70,37 @@ export default function Home() {
       <FlatList
         data={books}
         style={styles.modContainer}
-        keyExtractor={(book: Book) => book.id.toString()}
-        renderItem={({item}) => (
+        keyExtractor={(item: any) =>{
+            return item.id.toString();
+          }}
+        renderItem={data => {
+          const book = data.item
+          console.log('Inside Home FlatList Rendering book: ', book);
+          return (
           <View style={styles.card}>
             <Text
               style={[{ fontFamily: 'CormorantGaramond-Bold', fontSize: 26 }]}
             >
-              {item.title}
+              {book.title}
             </Text>
             <Text
               style={[
                 { fontFamily: 'CormorantGaramond-Regular', fontSize: 22 },
               ]}
             >
-              {item.author} - {item.year}
+              {book.author} - {book.year}
             </Text>
             <ExpandableText
-              text={item.description}
+              text={book.description}
               numberOfLines={3}
               textStyle={[
                 { fontFamily: 'CormorantGaramond-Italic', fontSize: 20 },
               ]}
             />
 
-            {item.coverUri && (
+            {book.coverUri && (
               <Image
-                source={{ uri: `${item.coverUri}` }}
+                source={{ uri: `${book.coverUri}` }}
                 style={{
                   alignSelf: 'center',
                   margin: 10,
@@ -107,11 +112,11 @@ export default function Home() {
             <AppButton
               title="Open Details"
               onPress={() =>
-                navigation.navigate('BookDetails', { book: item as Book })
+                navigation.navigate('BookDetails', {book:book})
               }
             />
           </View>
-        )}
+  )}}
       />
     </SafeAreaView>
   );
