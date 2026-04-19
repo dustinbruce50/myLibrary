@@ -1,4 +1,12 @@
-import { FlatList, Image, StyleSheet, Text, View, ScrollView, Pressable } from 'react-native';
+import {
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Pressable,
+} from 'react-native';
 import React from 'react';
 import { colors } from '../../utils/colors';
 import { Book } from '../../utils/types';
@@ -9,17 +17,15 @@ import ExpandableText from '../../components/ExpandableText';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../App';
 
-
 type BookDetailsNavProp = NativeStackNavigationProp<RootStackParamList>;
-
 
 const BookDetails = (item: any) => {
   const navigation = useNavigation<BookDetailsNavProp>();
   const local = item.route.params.book;
-  
+
   console.log('BookDetails local:', local);
   console.log('BookDetails received item:', item);
-/**  
+  /**  
   useFocusEffect(
     React.useCallback(() => {
       let isMounted = true;
@@ -50,7 +56,7 @@ const BookDetails = (item: any) => {
         In this Edition.
       </Text>
       <ScrollView style={[styles.modContainer]}>
-        <View style={[styles.card, {  }]}>
+        <View style={[styles.card, {}]}>
           <Image
             source={{ uri: `${local.coverUri}` }}
             style={{
@@ -70,24 +76,22 @@ const BookDetails = (item: any) => {
           />
           <View style={styles.buttonRow}>
             <Pressable
-              onPress={() => navigation.navigate('BookNotes', { book:local })}
+              onPress={() => navigation.navigate('BookNotes', { book: local })}
               style={styles.notesButton}
             >
               <Text style={styles.notesButtonText}>Notes</Text>
             </Pressable>
             <Pressable
               onPress={() => {
-                console.log("One more time, local" , local)
-                navigation.navigate('CoverPicker', { book:local})
+                //console.log("One more time, local" , local)
+                //navigation.navigate('CoverPicker', { book:local})
               }}
               style={styles.coverButton}
             >
               <Text style={styles.notesButtonText}>Cover Art</Text>
             </Pressable>
           </View>
-          </View>
-
-        
+        </View>
       </ScrollView>
     </View>
   );
@@ -110,7 +114,7 @@ const styles = StyleSheet.create({
   card: {
     padding: 30,
     backgroundColor: colors.accent,
-    
+
     borderRadius: 10,
     margin: 20,
     height: 'auto',

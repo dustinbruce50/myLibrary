@@ -1,7 +1,7 @@
 //import { Text, View } from 'react-native'
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Book, BookProvider } from './types';
+import { Book, BookProvider, CreateBookInput } from './types';
 import { g_b_key } from '@env';
 const BASE_API_URL = 'https://www.googleapis.com/books/v1/volumes';
 export const Provider_GoogleBooks: BookProvider = {
@@ -23,17 +23,17 @@ export const Provider_GoogleBooks: BookProvider = {
     console.log('result: ', result);
     const items = result.data?.items ?? [];
 
-    return items.map((item: any): Book => {
+    return items.map((item: any): CreateBookInput => {
       const volume = item.volumeInfo ?? {};
       return {
-        id: `google-${item.id}`,
+        id: item.id,
         title: volume.title ?? 'Unknown title',
         subtitle: volume.subtitle ?? null,
         author: volume.authors?.join(', ') ?? 'Unknown author',
         year: Number(String(volume.publishedDate).slice(0, 4)) || null,
         description: volume.description ?? null,
         numPages: volume.pageCount ?? null,
-        coverUri: volume.imageLinks?.smallThumbnail ?? null,
+        cover: { url: volume.imageLinks?.smallThumbnail ?? null },
         coverIds: [],
         rating: volume.averageRating ?? null,
         tags: volume.categories ?? [],

@@ -23,7 +23,7 @@ export type BookCoverInput = {
 };
 
 export type CreateBookInput = {
-  id: number | string;
+  id?: number | string;
   title?: string | null;
   subtitle?: string| null;
   author?: string| null;
@@ -54,3 +54,18 @@ export type UpdateBookInput = {
 export interface BookProvider {
   search(query: string, page: number, action: string | null): Promise<Book[]>;
 }
+
+export type Note = {
+  id?: number;
+  bookId: number;
+  classOf: number;
+  header: string;
+  text: string;
+};
+
+type NoteSectionProps = {
+  bookId: number | string;
+  classOf: string;
+  name: string;
+  notes: string[];
+};

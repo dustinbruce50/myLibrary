@@ -5,14 +5,6 @@ import { CirclePlus, CircleX } from 'lucide-react-native';
 import TestNotes from './TestNotes';
 import { deleteNote, getNotesByBookAndClass, upsertNote } from '../../utils/db';
 
-
-type NoteSectionProps = {
-  bookId: number;
-  classOf: string;
-  name: string;
-  notes: string[];
-};
-
 type LocalNote = {
   id?: number;
   header: string;
@@ -46,7 +38,9 @@ const NoteSection = ({ bookId, classOf, name, notes }: NoteSectionProps) => {
   const showHeader = shouldShowHeader(classOf);
 
   const [localNotes, setLocalNotes] = React.useState<LocalNote[]>(
-    notes.length > 0 ? notes.map(n => ({ header: '', text: n })) : [{ header: '', text: '' }],
+    notes.length > 0
+      ? notes.map(n => ({ header: '', text: n }))
+      : [{ header: '', text: '' }],
   );
 
   React.useEffect(() => {
@@ -58,7 +52,13 @@ const NoteSection = ({ bookId, classOf, name, notes }: NoteSectionProps) => {
           setLocalNotes([{ header: '', text: '' }]);
           return;
         }
-        setLocalNotes(rows.map(r => ({ id: r.id, header: r.header ?? '', text: r.text ?? '' })));
+        setLocalNotes(
+          rows.map(r => ({
+            id: r.id,
+            header: r.header ?? '',
+            text: r.text ?? '',
+          })),
+        );
       })
       .catch(() => {});
     return () => {
@@ -159,7 +159,6 @@ const NoteSection = ({ bookId, classOf, name, notes }: NoteSectionProps) => {
   );
 };
 
-
 export default NoteSection;
 
 const styles = StyleSheet.create({
@@ -200,7 +199,6 @@ const styles = StyleSheet.create({
     paddingTop: -5,
     marginBottom: 10,
     height: 'auto',
-    
   },
   cardTitle: {
     fontFamily: 'CormorantGaramond-Bold',

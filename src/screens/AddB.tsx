@@ -168,10 +168,10 @@ const AddB = () => {
                   >
                     {book.author} - {book.year}
                   </Text>
-                  {book.coverUri && (
+                  {book.cover.url && (
                     <Image
                       source={{
-                        uri: book.coverUri,
+                        uri: book.cover.url,
                       }}
                       style={{
                         alignSelf: 'center',
@@ -230,24 +230,21 @@ const AddB = () => {
                     onPress={async () => {
                       console.log('Adding book with data:');
                       console.log(
-                        `title: ${book.title}, author: ${book.author_name}, cover: ${book.cover_i}, year: ${book.first_publish_year}`,
+                        `title: ${book.title}, author: ${book.author}, cover: ${book.cover.url}, year: ${book.year}`,
                       );
 
                       try {
-                        //const extras: any = await fetchTagsAndCovers(book.key);
                         await createBook(
                           {
-                            id: book.key,
                             title: String(book.title),
-                            author: String(book.author),
-                            year: book.first_publish_year,
+                            subtitle: book.subtitle,
+                            author: book.author.map
+                              ? book.author.map((a: { name: string }) => a.name)
+                              : book.author,
+                            year: book.year,
                             description: book.description || '',
-                            rating: book.ratings,
-                            //tags: extras?.tags,
-                            cover: { url: book.cover, filename: book.id },
-                            //coverIds: extras.covers,
-                            //extras?.covers ?? [],
-                            //coverUri: book.cover_i,
+                            rating: book.rating,
+                            cover: { url: book.cover.url, filename: book.id },
                           },
 
                           //book.ratings_count,

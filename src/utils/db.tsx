@@ -6,7 +6,7 @@ import {
   CreateBookInput,
   UpdateBookInput,
 } from './types';
-import { SqlParam } from '../utils/types';
+import { SqlParam, Note } from '../utils/types';
 import { LucideSquareArrowRightExit } from 'lucide-react-native';
 import { executeNativeBackPress } from 'react-native-screens';
 
@@ -87,16 +87,13 @@ export async function downloadCoverFromUrl(
   console.log('AM I THE PROBLEM???');
   console.log('Maybe Problem URL: ', url);
   try {
-    const result = await RNFS.downloadFile({
+    await RNFS.downloadFile({
       fromUrl: url,
       toFile: destinationPath,
     }).promise;
   } catch (e) {
     console.log('Error where you are ', e);
   }
-  //if (result.statusCode !== 200) {
-  //  throw new Error(`Failed to download cover: ${result.statusCode}`);
-  //}
 
   return `file://${destinationPath}`;
 }
@@ -196,6 +193,16 @@ export async function initializeDatabase(): Promise<void> {
       FOREIGN KEY (tag_id) REFERENCES tags(id) ON DELETE CASCADE
     );`,
   );
+  await executeSql(
+    `CREATE TABLE IF NOT EXISTS notes (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      book_id INTEGER NOT NULL,
+      class_of TEXT NOT NULL,
+      header TEXT,
+      text TEXT,
+      FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE
+    );`,
+  );
 }
 
 export async function seedDatabase(): Promise<void> {
@@ -225,8 +232,20 @@ export async function seedDatabase(): Promise<void> {
 
 export async function createBook(input: CreateBookInput) {
   console.log('input ', input);
-  let temp: any = input.cover?.url;
-  const coverUri = await downloadCoverFromUrl(temp, temp);
+  if (input.cover?.assetFilename) {
+    input.coverUri = await resolveCoverUri({
+      assetFilename: input.cover.assetFilename,
+    });
+  } else if (input.cover?.openLibraryCoverId) {
+    input.coverUri = await resolveCoverUri({
+      openLibraryCoverId: input.cover.openLibraryCoverId,
+    });
+  } else if (input.cover?.url) {
+    input.coverUri = await resolveCoverUri({
+      url: input.cover.url,
+      filename: input.cover.filename,
+    });
+  }
   const result = await executeSql(
     `INSERT INTO books (title, author, year, description, coverUri, rating, coverIds)
      VALUES (?, ?, ?, ?, ?, ?, ?);`,
@@ -235,7 +254,7 @@ export async function createBook(input: CreateBookInput) {
       input.author ?? '',
       input.year ?? null,
       input.description ?? null,
-      coverUri,
+      input.coverUri ?? null,
       input.rating ?? null,
       JSON.stringify(input.coverIds) ?? null,
     ],
@@ -361,4 +380,24 @@ export async function updateBook(
 
 export async function deleteBook(id: number): Promise<void> {
   await executeSql(`DELETE FROM books WHERE id = ?;`, [id]);
+}
+
+//Notes Functions
+
+export async function getNotesByBookAndClass(
+  bookId: number,
+  classOf: number,
+): Promise<Note[]> {
+  const result = await executeSql(
+    `SELECT
+      notes.id,
+      notes.book_id,
+      notes.class_of,
+      notes.header,
+      notes.text
+    FROM notes
+    WHERE book_id = ? AND class_of = ?;`,
+    [bookId, classOf],
+  );
+  return mapRows<Note>(result);
 }
