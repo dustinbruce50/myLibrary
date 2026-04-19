@@ -5,6 +5,7 @@ import {
   BookCoverInput,
   CreateBookInput,
   UpdateBookInput,
+  UpsertNoteInput,
 } from './types';
 import { SqlParam, Note } from '../utils/types';
 import { LucideSquareArrowRightExit } from 'lucide-react-native';
@@ -358,9 +359,9 @@ export async function updateBook(
     params.push(updates.rating);
   }
 
-  if (updates.cover !== undefined) {
+  if (updates.coverUri !== undefined) {
     assignments.push('coverUri = ?');
-    params.push(await resolveCoverUri(updates.cover));
+    //params.push(await resolveCoverUri(updates.cover));
   }
 
   if (assignments.length > 0) {
@@ -388,6 +389,9 @@ export async function getNotesByBookAndClass(
   bookId: number,
   classOf: number,
 ): Promise<Note[]> {
+  console.log('data passed to getNotesByBookAndClass');
+  console.log('bookId', bookId);
+  console.log('classOf', classOf);
   const result = await executeSql(
     `SELECT
       notes.id,
@@ -399,5 +403,23 @@ export async function getNotesByBookAndClass(
     WHERE book_id = ? AND class_of = ?;`,
     [bookId, classOf],
   );
-  return mapRows<Note>(result);
+  console.log('should be returning data to notes from db');
+  console.log('result', result);
+  let temp = mapRows<Note>(result);
+  console.log('temp', temp);
+  return temp;
+}
+export async function upsertNote(input: UpsertNoteInput): Promise<number> {
+  console.log('__________________________TESTING_________________________');
+  const result = await executeSql(
+    `INSERT OR REPLACE INTO notes (id, book_id, class_of, header, text)
+     VALUES (?, ?, ?, ?, ?);`,
+    [input.id ?? null, input.bookId, input.classOf, input.header, input.text],
+  );
+  console.log('result', result);
+  return result.insertId;
+}
+
+export async function deleteNote(id: number): Promise<void> {
+  await executeSql(`DELETE FROM notes WHERE id = ?;`, [id]);
 }

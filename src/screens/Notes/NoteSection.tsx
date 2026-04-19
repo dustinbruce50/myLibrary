@@ -4,12 +4,7 @@ import { colors } from '../../utils/colors';
 import { CirclePlus, CircleX } from 'lucide-react-native';
 import TestNotes from './TestNotes';
 import { deleteNote, getNotesByBookAndClass, upsertNote } from '../../utils/db';
-
-type LocalNote = {
-  id?: number;
-  header: string;
-  text: string;
-};
+import { Note, NoteSectionProps } from '../../utils/types';
 
 const classStringToInt = (classOf: string) => {
   switch (classOf) {
@@ -33,39 +28,31 @@ const classStringToInt = (classOf: string) => {
 const shouldShowHeader = (classOf: string) =>
   classOf === 'Quotes' || classOf === 'Characters' || classOf === 'Chapters';
 
-const NoteSection = ({ bookId, classOf, name, notes }: NoteSectionProps) => {
+const NoteSection = ({ bookId, name, classOf }: NoteSectionProps) => {
   const classInt = classStringToInt(classOf);
   const showHeader = shouldShowHeader(classOf);
-
-  const [localNotes, setLocalNotes] = React.useState<LocalNote[]>(
-    notes.length > 0
-      ? notes.map(n => ({ header: '', text: n }))
-      : [{ header: '', text: '' }],
-  );
+  const [notes, setNotes] = React.useState<Note[]>([]);
+  const [localNotes, setLocalNotes] = React.useState<Note[]>([]);
 
   React.useEffect(() => {
-    let isMounted = true;
-    getNotesByBookAndClass(bookId, classInt)
-      .then(rows => {
-        if (!isMounted) return;
-        if (rows.length === 0) {
-          setLocalNotes([{ header: '', text: '' }]);
-          return;
-        }
-        setLocalNotes(
-          rows.map(r => ({
-            id: r.id,
-            header: r.header ?? '',
-            text: r.text ?? '',
-          })),
-        );
-      })
-      .catch(() => {});
-    return () => {
-      isMounted = false;
-    };
+    fetchNotes(bookId, classInt);
   }, [bookId, classInt]);
+  React.useEffect(() => {
+    updateLocalNotes(bookId, classInt);
+  }, []);
 
+  const fetchNotes = async (bookId: number, classOf: number) => {
+    let local = await getNotesByBookAndClass(bookId, classOf);
+    console.log('Fetching from DB to notes');
+    setNotes(local);
+    console.log('setting notes to local', local);
+  };
+  const updateLocalNotes = async (bookId: number, classOf: number) => {
+    let local = await getNotesByBookAndClass(bookId, classOf);
+    console.log('copy notes to localnotes?');
+    setLocalNotes(local);
+    return local;
+  };
   const updateNoteText = (index: number, text: string) => {
     setLocalNotes(currentNotes =>
       currentNotes.map((note, noteIndex) =>
@@ -73,7 +60,6 @@ const NoteSection = ({ bookId, classOf, name, notes }: NoteSectionProps) => {
       ),
     );
   };
-
   const updateNoteHeader = (index: number, header: string) => {
     setLocalNotes(currentNotes =>
       currentNotes.map((note, noteIndex) =>
@@ -81,22 +67,24 @@ const NoteSection = ({ bookId, classOf, name, notes }: NoteSectionProps) => {
       ),
     );
   };
-
   const addNote = () => {
-    setLocalNotes(currentNotes => [...currentNotes, { header: '', text: '' }]);
+    setLocalNotes(localNotes => [
+      ...(localNotes as Note[]),
+      { id: null, bookId, classOf: classInt, header: '', text: '' },
+    ]);
   };
 
   const saveNote = async (index: number) => {
     const note = localNotes[index];
     const id = await upsertNote({
-      id: note.id,
+      id: (note.id as number) ?? null,
       bookId,
-      classInt,
+      classOf: classInt,
       header: note.header,
       text: note.text,
     });
-    setLocalNotes(currentNotes =>
-      currentNotes.map((n, i) => (i === index ? { ...n, id } : n)),
+    setLocalNotes(localNotes =>
+      localNotes.map((n, i) => (i === index ? { ...n, id } : n)),
     );
   };
 
@@ -109,9 +97,19 @@ const NoteSection = ({ bookId, classOf, name, notes }: NoteSectionProps) => {
         return;
       }
     }
-    setLocalNotes(currentNotes => {
-      const next = currentNotes.filter((_n, i) => i !== index);
-      return next.length > 0 ? next : [{ header: '', text: '' }];
+    setLocalNotes(localNotes => {
+      const next = localNotes.filter((_n, i) => i !== index);
+      return next.length > 0
+        ? next
+        : [
+            {
+              id: null,
+              header: '',
+              text: '',
+              bookId: bookId,
+              classOf: classInt,
+            } as Note,
+          ];
     });
   };
 
@@ -130,7 +128,7 @@ const NoteSection = ({ bookId, classOf, name, notes }: NoteSectionProps) => {
         contentContainerStyle={styles.notesContainer}
         showsVerticalScrollIndicator={false}
       >
-        {localNotes.map((note, index) => (
+        {notes.map((note, index) => (
           <View key={`${name}-${index}`} style={styles.noteCard}>
             <Pressable
               onPress={() => removeNote(index)}

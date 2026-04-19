@@ -18,7 +18,7 @@ const Tab = createBottomTabNavigator();
 
 const BookNotesNav = (screenProps: any) => {
   const local = screenProps.route.params.book as Book;
-  const bookId = local.id as number | string;
+  const bookId = local.id as number;
 
   const QuotesTab = () => (
     <NoteSection bookId={bookId} classOf="Quotes" name="Quotes" notes={[]} />
@@ -147,7 +147,7 @@ const BookNotesNav = (screenProps: any) => {
   );
 };
 
-export default BookNotes;
+export default BookNotesNav;
 
 const styles = StyleSheet.create({
   screenContainer: {

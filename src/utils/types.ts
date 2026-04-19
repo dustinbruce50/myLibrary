@@ -56,6 +56,14 @@ export interface BookProvider {
 }
 
 export type Note = {
+  id: number | null;
+  bookId: number;
+  classOf: number;
+  header: string;
+  text: string;
+};
+
+export type UpsertNoteInput = {
   id?: number;
   bookId: number;
   classOf: number;
@@ -63,8 +71,8 @@ export type Note = {
   text: string;
 };
 
-type NoteSectionProps = {
-  bookId: number | string;
+export type NoteSectionProps = {
+  bookId: number;
   classOf: string;
   name: string;
   notes: string[];
