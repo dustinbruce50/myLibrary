@@ -32,50 +32,44 @@ const NoteSection = ({ bookId, name, classOf }: NoteSectionProps) => {
   const classInt = classStringToInt(classOf);
   const showHeader = shouldShowHeader(classOf);
   const [notes, setNotes] = React.useState<Note[]>([]);
-  const [localNotes, setLocalNotes] = React.useState<Note[]>([]);
 
   React.useEffect(() => {
     fetchNotes(bookId, classInt);
   }, [bookId, classInt]);
-  React.useEffect(() => {
-    updateLocalNotes(bookId, classInt);
-  }, []);
 
   const fetchNotes = async (bookId: number, classOf: number) => {
+    console.log('data passed to fetchNotes');
+    console.log('bookId', bookId);
+    console.log('classOf', classOf);
     let local = await getNotesByBookAndClass(bookId, classOf);
     console.log('Fetching from DB to notes');
     setNotes(local);
     console.log('setting notes to local', local);
   };
-  const updateLocalNotes = async (bookId: number, classOf: number) => {
-    let local = await getNotesByBookAndClass(bookId, classOf);
-    console.log('copy notes to localnotes?');
-    setLocalNotes(local);
-    return local;
-  };
+
   const updateNoteText = (index: number, text: string) => {
-    setLocalNotes(currentNotes =>
+    setNotes(currentNotes =>
       currentNotes.map((note, noteIndex) =>
         noteIndex === index ? { ...note, text } : note,
       ),
     );
   };
   const updateNoteHeader = (index: number, header: string) => {
-    setLocalNotes(currentNotes =>
-      currentNotes.map((note, noteIndex) =>
+    setNotes(notes =>
+      notes.map((note, noteIndex) =>
         noteIndex === index ? { ...note, header } : note,
       ),
     );
   };
   const addNote = () => {
-    setLocalNotes(localNotes => [
-      ...(localNotes as Note[]),
+    setNotes(notes => [
+      ...(notes as Note[]),
       { id: null, bookId, classOf: classInt, header: '', text: '' },
     ]);
   };
 
   const saveNote = async (index: number) => {
-    const note = localNotes[index];
+    const note = notes[index];
     const id = await upsertNote({
       id: (note.id as number) ?? null,
       bookId,
@@ -83,13 +77,11 @@ const NoteSection = ({ bookId, name, classOf }: NoteSectionProps) => {
       header: note.header,
       text: note.text,
     });
-    setLocalNotes(localNotes =>
-      localNotes.map((n, i) => (i === index ? { ...n, id } : n)),
-    );
+    setNotes(notes => notes.map((n, i) => (i === index ? { ...n, id } : n)));
   };
 
   const removeNote = async (index: number) => {
-    const note = localNotes[index];
+    const note = notes[index];
     if (note?.id != null) {
       try {
         await deleteNote(note.id);
@@ -97,8 +89,8 @@ const NoteSection = ({ bookId, name, classOf }: NoteSectionProps) => {
         return;
       }
     }
-    setLocalNotes(localNotes => {
-      const next = localNotes.filter((_n, i) => i !== index);
+    setNotes(notes => {
+      const next = notes.filter((_n, i) => i !== index);
       return next.length > 0
         ? next
         : [

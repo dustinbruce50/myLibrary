@@ -158,7 +158,7 @@ async function replaceBookTags(bookId: number, tags: string[]): Promise<void> {
 }
 
 export async function initializeDatabase(): Promise<void> {
-  await executeSql(`DROP TABLE IF EXISTS books;`);
+  //await executeSql(`DROP TABLE IF EXISTS books;`);
   //await executeSql(
   //  `DROP TABLE IF EXISTS tags;`
   //)
@@ -207,9 +207,9 @@ export async function initializeDatabase(): Promise<void> {
 }
 
 export async function seedDatabase(): Promise<void> {
-  await executeSql(`DELETE FROM book_tags;`);
-  await executeSql(`DELETE FROM tags;`);
-  await executeSql(`DELETE FROM books;`);
+  //await executeSql(`DELETE FROM book_tags;`);
+  //await executeSql(`DELETE FROM tags;`);
+  //await executeSql(`DELETE FROM books;`);
 
   await createBook({
     title: 'The Great Gatsby',
@@ -391,7 +391,10 @@ export async function getNotesByBookAndClass(
 ): Promise<Note[]> {
   console.log('data passed to getNotesByBookAndClass');
   console.log('bookId', bookId);
+  console.log('type of bookId', typeof bookId);
   console.log('classOf', classOf);
+  console.log('type of classOf', typeof classOf);
+
   const result = await executeSql(
     `SELECT
       notes.id,
@@ -400,7 +403,7 @@ export async function getNotesByBookAndClass(
       notes.header,
       notes.text
     FROM notes
-    WHERE book_id = ? AND class_of = ?;`,
+    WHERE notes.book_id = ? AND notes.class_of = ?;`,
     [bookId, classOf],
   );
   console.log('should be returning data to notes from db');
@@ -411,12 +414,20 @@ export async function getNotesByBookAndClass(
 }
 export async function upsertNote(input: UpsertNoteInput): Promise<number> {
   console.log('__________________________TESTING_________________________');
+  console.log('input', input);
+  for (const key in input) {
+    console.log('key', key);
+    console.log('typeof value', typeof key);
+  }
+  let local_book_id = Number(input.bookId);
+  let local_class_of = Number(input.classOf);
   const result = await executeSql(
     `INSERT OR REPLACE INTO notes (id, book_id, class_of, header, text)
      VALUES (?, ?, ?, ?, ?);`,
-    [input.id ?? null, input.bookId, input.classOf, input.header, input.text],
+    [input.id ?? null, local_book_id, local_class_of, input.header, input.text],
   );
   console.log('result', result);
+
   return result.insertId;
 }
 
