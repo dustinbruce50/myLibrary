@@ -8,7 +8,7 @@ import {
   FlatList,
   StatusBar,
 } from 'react-native';
-import React, { Component  } from 'react';
+import React, { Component } from 'react';
 import { colors } from '../utils/colors';
 import { listBooks } from '../utils/db';
 import { Book } from '../utils/types';
@@ -21,13 +21,10 @@ import { RootStackParamList } from '../App';
 import ExpandableText from '../components/ExpandableText';
 import AppButton from '../components/AppButton';
 
-
-
 export default function Home() {
-
-
   const [books, setBooks] = React.useState<Book[]>([]);
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   useFocusEffect(
     React.useCallback(() => {
       const initialize = async () => {
@@ -46,10 +43,7 @@ export default function Home() {
     <SafeAreaView
       style={[
         {
-          //width: '100%',
-          //height: '100%',
           flex: 1,
-          //justifyContent: 'flex-end',
           backgroundColor: colors.background,
         },
       ]}
@@ -70,53 +64,54 @@ export default function Home() {
       <FlatList
         data={books}
         style={styles.modContainer}
-        keyExtractor={(item: any) =>{
-            return item.id.toString();
-          }}
+        keyExtractor={(item: any) => {
+          return item.id.toString();
+        }}
         renderItem={data => {
-          const book = data.item
+          const book = data.item;
           console.log('Inside Home FlatList Rendering book: ', book);
           return (
-          <View style={styles.card}>
-            <Text
-              style={[{ fontFamily: 'CormorantGaramond-Bold', fontSize: 26 }]}
-            >
-              {book.title}
-            </Text>
-            <Text
-              style={[
-                { fontFamily: 'CormorantGaramond-Regular', fontSize: 22 },
-              ]}
-            >
-              {book.author} - {book.year}
-            </Text>
-            <ExpandableText
-              text={book.description}
-              numberOfLines={3}
-              textStyle={[
-                { fontFamily: 'CormorantGaramond-Italic', fontSize: 20 },
-              ]}
-            />
-
-            {book.coverUri && (
-              <Image
-                source={{ uri: `${book.coverUri}` }}
-                style={{
-                  alignSelf: 'center',
-                  margin: 10,
-                  height: 250,
-                  aspectRatio: 2 / 3,
-                }}
+            <View style={styles.card}>
+              <Text
+                style={[{ fontFamily: 'CormorantGaramond-Bold', fontSize: 26 }]}
+              >
+                {book.title}
+              </Text>
+              <Text
+                style={[
+                  { fontFamily: 'CormorantGaramond-Regular', fontSize: 22 },
+                ]}
+              >
+                {book.author} - {book.year}
+              </Text>
+              <ExpandableText
+                text={book.description}
+                numberOfLines={3}
+                textStyle={[
+                  { fontFamily: 'CormorantGaramond-Italic', fontSize: 20 },
+                ]}
               />
-            )}
-            <AppButton
-              title="Open Details"
-              onPress={() =>
-                navigation.navigate('BookDetails', {book:book})
-              }
-            />
-          </View>
-  )}}
+
+              {book.coverUri && (
+                <Image
+                  source={{ uri: `${book.coverUri}` }}
+                  style={{
+                    alignSelf: 'center',
+                    margin: 10,
+                    height: 250,
+                    aspectRatio: 2 / 3,
+                  }}
+                />
+              )}
+              <AppButton
+                title="Open Details"
+                onPress={() =>
+                  navigation.navigate('BookDetails', { book: book })
+                }
+              />
+            </View>
+          );
+        }}
       />
     </SafeAreaView>
   );
