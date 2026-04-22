@@ -7,10 +7,11 @@ import {
   Pressable,
   FlatList,
   StatusBar,
+  Button,
 } from 'react-native';
 import React, { Component } from 'react';
 import { colors } from '../utils/colors';
-import { listBooks } from '../utils/db';
+import { listBooks, dbResetDatabase } from '../utils/db';
 import { Book } from '../utils/types';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useFocusEffect } from '@react-navigation/native';
@@ -33,6 +34,10 @@ export default function Home() {
       initialize();
     }, []),
   );
+  const resetDatabase = async () => {
+    await dbResetDatabase();
+    await listBooks();
+  };
 
   const loadBooks = async () => {
     const books = await listBooks();
@@ -60,7 +65,7 @@ export default function Home() {
       >
         Your Library
       </Text>
-
+      <Button title="Reset Database" onPress={resetDatabase} />
       <FlatList
         data={books}
         style={styles.modContainer}

@@ -207,10 +207,6 @@ export async function initializeDatabase(): Promise<void> {
 }
 
 export async function seedDatabase(): Promise<void> {
-  //await executeSql(`DELETE FROM book_tags;`);
-  //await executeSql(`DELETE FROM tags;`);
-  //await executeSql(`DELETE FROM books;`);
-
   await createBook({
     title: 'The Great Gatsby',
     author: 'F. Scott Fitzgerald',
@@ -361,7 +357,6 @@ export async function updateBook(
 
   if (updates.coverUri !== undefined) {
     assignments.push('coverUri = ?');
-    //params.push(await resolveCoverUri(updates.cover));
   }
 
   if (assignments.length > 0) {
@@ -383,7 +378,17 @@ export async function deleteBook(id: number): Promise<void> {
   await executeSql(`DELETE FROM books WHERE id = ?;`, [id]);
 }
 
-//Notes Functions
+export async function dbResetDatabase(): Promise<void> {
+  await executeSql(`DELETE FROM book_tags;`);
+  await executeSql(`DELETE FROM tags;`);
+  await executeSql(`DELETE FROM books;`);
+  await executeSql(`DELETE FROM notes;`);
+  await initializeDatabase();
+  await seedDatabase();
+}
+
+//Notes Functions===================================================================
+//=================================================================================
 
 export async function getNotesByBookAndClass(
   bookId: number,

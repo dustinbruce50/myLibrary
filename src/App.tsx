@@ -35,7 +35,7 @@ function App() {
   React.useEffect(() => {
     const initialize = async () => {
       await initializeDatabase();
-      await seedDatabase();
+      //await seedDatabase();
     };
     initialize();
   }, []);

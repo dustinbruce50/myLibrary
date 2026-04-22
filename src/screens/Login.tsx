@@ -19,24 +19,32 @@ import {
   clearAuthRecord,
   hasAuthRecord,
 } from '../utils/auth';
+import { LocalAuthRecord } from '../utils/auth';
 
 const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [authenticated, setAuthenticated] = React.useState(false);
-  const [isRegister, setIsRegister] = React.useState<Boolean>(false);
+  const [isRegister, setIsRegister] = React.useState<Boolean>(true);
   const [errorMessage, setErrorMessage] = React.useState<String | null>(
     'TESTING',
   );
 
   const onSubmit = async () => {
     let auth = await getAuthRecord();
-    if (auth) {
+    console.log('global auth record: ', auth);
+    if (username === auth?.username) {
+      setIsRegister(false);
+    }
+    if (username === auth?.username && password === auth?.password) {
       setAuthenticated(true);
       navigation.navigate('Tabnav');
     }
-    setAuthenticated(true);
-    navigation.navigate('Tabnav');
+
+    if (username === '' || password === '') {
+      setErrorMessage('Please enter a username and password');
+      return;
+    }
   };
 
   return (
@@ -103,6 +111,7 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
             >
               <Pressable
                 onPress={onSubmit}
+                //disabled={isRegister as boolean}
                 style={({ pressed }) => ({
                   margin: 5,
                   backgroundColor: colors.button,
@@ -121,12 +130,20 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
               </Pressable>
               <Pressable
                 onPress={() => {
-                  if (username === '' || password === '') {
-                    return;
-                  }
+                  let authRecord: LocalAuthRecord = {
+                    username: username,
+                    password: password,
+                    salt: '',
+                    version: 0,
+                  };
+                  console.log('auth record: ', authRecord);
+                  saveAuthRecord(authRecord);
+                  setPassword('');
+                  setUsername('');
                 }}
                 style={({ pressed }) => ({
                   margin: 5,
+                  disabled: true,
                   backgroundColor: colors.button,
                   padding: 10,
                   borderRadius: 10,

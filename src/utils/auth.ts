@@ -2,7 +2,7 @@ import * as Keychain from 'react-native-keychain';
 
 const AUTH_SERVICE = 'myLibrary.localAuth';
 
-type LocalAuthRecord = {
+export type LocalAuthRecord = {
     username: string;
     password: string;
     salt: string;
