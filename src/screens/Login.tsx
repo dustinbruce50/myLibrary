@@ -8,18 +8,23 @@ import {
   Button,
   Pressable,
   StatusBar,
+  KeyboardAvoidingView,
 } from 'react-native';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NavigationProp } from '@react-navigation/core';
 import { colors } from '../utils/colors';
 import {
+  registerLocalAuth,
+  verifyLocalAuth,
   saveAuthRecord,
   getAuthRecord,
   clearAuthRecord,
   hasAuthRecord,
 } from '../utils/auth';
 import { LocalAuthRecord } from '../utils/auth';
+import { Key } from 'lucide-react-native';
+import { get } from 'react-native/Libraries/NativeComponent/NativeComponentRegistry';
 
 const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
   const [username, setUsername] = React.useState('');
@@ -31,20 +36,23 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
   );
 
   const onSubmit = async () => {
-    let auth = await getAuthRecord();
-    console.log('global auth record: ', auth);
-    if (username === auth?.username) {
-      setIsRegister(false);
-    }
-    if (username === auth?.username && password === auth?.password) {
-      setAuthenticated(true);
-      navigation.navigate('Tabnav');
-    }
-
     if (username === '' || password === '') {
       setErrorMessage('Please enter a username and password');
       return;
     }
+    const auth = await getAuthRecord();
+    console.log('global auth record: ', auth);
+    if (!auth) {
+      setErrorMessage('No account exists yet');
+      return;
+    }
+    const ok = await verifyLocalAuth(username, password);
+    if (!ok) {
+      setErrorMessage('Invalid username or password');
+      return;
+    }
+    setAuthenticated(true);
+    navigation.navigate('Tabnav');
   };
 
   return (
@@ -58,11 +66,12 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
           backgroundColor: ' rgba(0,0,0,0.1)',
         }}
       >
-        <View
+        <KeyboardAvoidingView
           style={{
             backgroundColor: 'rgba(70,50,30,0.3)',
             width: '100%',
             height: '100%',
+            justifyContent: 'center',
           }}
         >
           <View
@@ -71,10 +80,9 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
               alignContent: 'center',
               backgroundColor: colors.accent,
               width: '80%',
-
-              //height: '48%',
               borderRadius: 40,
-              top: '30%',
+              justifyContent: 'center',
+              alignItems: 'center',
             }}
           >
             <Text
@@ -94,6 +102,12 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
               style={styles.textInput}
               value={username}
               onChangeText={setUsername}
+              returnKeyType="next"
+              autoCapitalize="none"
+              autoCorrect={false}
+              autoComplete="username"
+              textContentType="username"
+              enterKeyHint="next"
             />
             <TextInput
               placeholder="Password"
@@ -101,6 +115,12 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
               style={styles.textInput}
               value={password}
               onChangeText={setPassword}
+              returnKeyType="go"
+              autoCorrect={false}
+              autoComplete="password"
+              textContentType="password"
+              submitBehavior="submit"
+              enterKeyHint="done"
             />
             <View
               style={{
@@ -129,17 +149,15 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
                 </Text>
               </Pressable>
               <Pressable
-                onPress={() => {
-                  let authRecord: LocalAuthRecord = {
-                    username: username,
-                    password: password,
-                    salt: '',
-                    version: 0,
-                  };
-                  console.log('auth record: ', authRecord);
-                  saveAuthRecord(authRecord);
+                onPress={async () => {
+                  if (!username || !password) {
+                    setErrorMessage('Please enter a username and password');
+                    return;
+                  }
+                  await registerLocalAuth(username, password);
                   setPassword('');
                   setUsername('');
+                  setErrorMessage('User Account Created');
                 }}
                 style={({ pressed }) => ({
                   margin: 5,
@@ -166,7 +184,7 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
               )}
             </View>
           </View>
-        </View>
+        </KeyboardAvoidingView>
       </ImageBackground>
     </SafeAreaView>
   );
