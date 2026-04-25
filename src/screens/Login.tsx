@@ -1,47 +1,44 @@
 import {
-  Image,
   ImageBackground,
   StyleSheet,
   Text,
   View,
   TextInput,
-  Button,
   Pressable,
   StatusBar,
   KeyboardAvoidingView,
+  Button,
 } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NavigationProp } from '@react-navigation/core';
 import { colors } from '../utils/colors';
 import {
   registerLocalAuth,
   verifyLocalAuth,
-  saveAuthRecord,
   getAuthRecord,
   clearAuthRecord,
-  hasAuthRecord,
 } from '../utils/auth';
-import { LocalAuthRecord } from '../utils/auth';
-import { Key } from 'lucide-react-native';
-import { get } from 'react-native/Libraries/NativeComponent/NativeComponentRegistry';
 
 const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const [authenticated, setAuthenticated] = React.useState(false);
-  const [isRegister, setIsRegister] = React.useState<Boolean>(true);
+  const [isRegistered, setIsRegistered] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState<String | null>(
     'TESTING',
   );
   const passwordRef = React.useRef<TextInput>(null);
+  useEffect(() => {
+    let auth = getAuthRecord();
+    setIsRegistered(auth !== null);
+  }, []);
 
   const onSubmit = async () => {
+    const auth = await getAuthRecord();
     if (username === '' || password === '') {
       setErrorMessage('Please enter a username and password');
       return;
     }
-    const auth = await getAuthRecord();
 
     if (!auth) {
       setErrorMessage('No account exists yet');
@@ -52,7 +49,7 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
       setErrorMessage('Invalid username or password');
       return;
     }
-    setAuthenticated(true);
+
     navigation.navigate('Tabnav');
   };
 
@@ -75,6 +72,13 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
             justifyContent: 'center',
           }}
         >
+          <Button
+            title="Reset Local Auth"
+            onPress={() => {
+              clearAuthRecord();
+              setIsRegistered(false);
+            }}
+          />
           <View
             style={{
               alignSelf: 'center',
@@ -152,34 +156,37 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
                   Login
                 </Text>
               </Pressable>
-              <Pressable
-                onPress={async () => {
-                  if (!username || !password) {
-                    setErrorMessage('Please enter a username and password');
-                    return;
-                  }
-                  await registerLocalAuth(username, password);
-                  setPassword('');
-                  setUsername('');
-                  setErrorMessage('User Account Created');
-                }}
-                style={({ pressed }) => ({
-                  margin: 5,
-                  disabled: true,
-                  backgroundColor: colors.button,
-                  padding: 10,
-                  borderRadius: 10,
-                  shadowColor: '#000',
-                  shadowOpacity: 0.3,
-                  shadowRadius: 4,
-                  elevation: 3,
-                  transform: [{ scale: pressed ? 0.95 : 1 }],
-                })}
-              >
-                <Text style={{ color: '#fff', textAlign: 'center' }}>
-                  Register
-                </Text>
-              </Pressable>
+              {!isRegistered && (
+                <Pressable
+                  onPress={async () => {
+                    if (!username || !password) {
+                      setErrorMessage('Please enter a username and password');
+                      return;
+                    }
+                    await registerLocalAuth(username, password);
+                    setPassword('');
+                    setUsername('');
+                    setErrorMessage('User Account Created');
+                    setIsRegistered(true);
+                  }}
+                  style={({ pressed }) => ({
+                    margin: 5,
+                    disabled: true,
+                    backgroundColor: colors.button,
+                    padding: 10,
+                    borderRadius: 10,
+                    shadowColor: '#000',
+                    shadowOpacity: 0.3,
+                    shadowRadius: 4,
+                    elevation: 3,
+                    transform: [{ scale: pressed ? 0.95 : 1 }],
+                  })}
+                >
+                  <Text style={{ color: '#fff', textAlign: 'center' }}>
+                    Register
+                  </Text>
+                </Pressable>
+              )}
 
               {errorMessage && (
                 <Text style={{ color: 'red', textAlign: 'center' }}>

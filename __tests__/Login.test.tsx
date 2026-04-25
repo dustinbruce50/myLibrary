@@ -41,6 +41,14 @@ describe('Login', () => {
         screen.getByText('Please enter a username and password'),
       ).toBeTruthy();
     });
-    expect(screen.queryByText('Login')).toBeNull();
+  });
+  test('shows error message when password is empty', async () => {
+    const screen = render(<Login navigation={navigation as any} />);
+    fireEvent.press(screen.getByText('Login'));
+    await waitFor(() => {
+      expect(
+        screen.getByText('Please enter a username and password'),
+      ).toBeTruthy();
+    });
   });
 });
