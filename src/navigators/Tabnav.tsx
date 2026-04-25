@@ -13,6 +13,7 @@ const Tabnav = () => {
   return (
     <Tab.Navigator
       screenOptions={{
+        tabBarHideOnKeyboard: true,
         tabBarActiveTintColor: colors.titleText,
         tabBarInactiveTintColor: colors.bodyText,
       }}
@@ -50,7 +51,6 @@ const Tabnav = () => {
           tabBarStyle: { backgroundColor: colors.button },
         }}
       />
-      
     </Tab.Navigator>
   );
 };

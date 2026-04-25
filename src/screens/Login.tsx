@@ -34,6 +34,7 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
   const [errorMessage, setErrorMessage] = React.useState<String | null>(
     'TESTING',
   );
+  const passwordRef = React.useRef<TextInput>(null);
 
   const onSubmit = async () => {
     if (username === '' || password === '') {
@@ -108,8 +109,11 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
               autoComplete="username"
               textContentType="username"
               enterKeyHint="next"
+              submitBehavior="submit"
+              onSubmitEditing={() => passwordRef.current?.focus()}
             />
             <TextInput
+              ref={passwordRef}
               placeholder="Password"
               secureTextEntry
               style={styles.textInput}

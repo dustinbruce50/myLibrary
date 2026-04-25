@@ -19,7 +19,7 @@ export type LocalAuthRecord = {
     version: number;
 
 }
-const KDF_ITERATIONS = 210_000
+const KDF_ITERATIONS = 1_000
 const KDF_KEY_LEN = 32
 
 function randomSalt(bytes=16 as number): string {
@@ -27,7 +27,8 @@ function randomSalt(bytes=16 as number): string {
 }
 
 function derivePasswordHash(password: string, salt: string, iterations: number, keyLen: number): string {
-    return QuickCrypto.pbkdf2Sync(password, salt, iterations, keyLen, 'sha256').toString('hex');
+    return password;
+    //return QuickCrypto.pbkdf2Sync(password, salt, iterations, keyLen, 'sha256').toString('hex');
 }
     
 export async function registerLocalAuth(username: string, password: string): Promise<LocalAuthRecord> {
