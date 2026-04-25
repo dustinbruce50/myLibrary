@@ -14,42 +14,38 @@ import { ArrowLeft, Check } from 'lucide-react-native';
 import { updateBook } from '../../utils/db';
 //import { setPrimaryCover } from '../../utils/db';
 
-
 const CoverPicker = (screenProps: any) => {
-  console.log("relevant data from cover picker: ", )
-  console.log(screenProps)
-  
   const goBack = async () => {
-    if(selected !== primary_cover_id){
-      setSaving(true)
-      await updateBook(book.id, {cover: {openLibraryCoverId: selected as number}})
-      setSaving(false)
-      screenProps.navigation.goBack()
+    if (selected !== primary_cover_id) {
+      setSaving(true);
+      await updateBook(book.id, {
+        cover: { openLibraryCoverId: selected as number },
+      });
+      setSaving(false);
+      screenProps.navigation.goBack();
     }
   };
-
 
   const book = screenProps.route.params.book as Book;
 
   let ids: number[] = JSON.parse(book.coverIds as unknown as string);
-  let primary_cover_id = Number(book.coverUri?.slice(book.coverUri.lastIndexOf('_')+1, book.coverUri.lastIndexOf('.jpg')).trim());
-  console.log("primary_cover_id: ", primary_cover_id)
-  console.log('primary covery id type: ', typeof(primary_cover_id))
-  console.log("ids: ", ids)
-  console.log("ids.type", typeof(ids))
+  let primary_cover_id = Number(
+    book.coverUri
+      ?.slice(
+        book.coverUri.lastIndexOf('_') + 1,
+        book.coverUri.lastIndexOf('.jpg'),
+      )
+      .trim(),
+  );
 
-  const [selected, setSelected] = React.useState<number | null>(primary_cover_id);
+  const [selected, setSelected] = React.useState<number | null>(
+    primary_cover_id,
+  );
   const [saving, setSaving] = React.useState(false);
 
-  
-  
   return (
     <View style={styles.screenContainer}>
-      <Pressable
-        onPress={goBack}
-        style={styles.backButton}
-        hitSlop={10}
-      >
+      <Pressable onPress={goBack} style={styles.backButton} hitSlop={10}>
         <ArrowLeft color={colors.titleText} size={28} />
       </Pressable>
 
@@ -62,23 +58,25 @@ const CoverPicker = (screenProps: any) => {
           const uri = `https://covers.openlibrary.org/b/id/${item}-M.jpg`;
           return (
             <View>
-              <Text style={{fontSize:36}}>{index+1}</Text>
+              <Text style={{ fontSize: 36 }}>{index + 1}</Text>
               <Pressable
                 onPress={() => {
                   setSelected(item);
-                  console.log('setting selected to: ', item);
                 }}
                 style={[
                   styles.coverTile,
                   selected === item && styles.coverTileSelected,
                 ]}
               >
-                <Image source={{ uri }} style={{
-                  alignSelf: 'center',
-                  margin: 10,
-                  height: 250,
-                  aspectRatio: 2 / 3,
-                }} />
+                <Image
+                  source={{ uri }}
+                  style={{
+                    alignSelf: 'center',
+                    margin: 10,
+                    height: 250,
+                    aspectRatio: 2 / 3,
+                  }}
+                />
                 {selected === item && (
                   <View style={styles.checkBadge}>
                     <Check color={colors.titleText} size={20} />
@@ -172,4 +170,3 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
 });
-

@@ -27,8 +27,8 @@ function randomSalt(bytes=16 as number): string {
 }
 
 function derivePasswordHash(password: string, salt: string, iterations: number, keyLen: number): string {
-    return password;
-    //return QuickCrypto.pbkdf2Sync(password, salt, iterations, keyLen, 'sha256').toString('hex');
+    //return password;
+return QuickCrypto.pbkdf2Sync(password, salt, iterations, keyLen, 'sha256').toString('hex');
 }
     
 export async function registerLocalAuth(username: string, password: string): Promise<LocalAuthRecord> {

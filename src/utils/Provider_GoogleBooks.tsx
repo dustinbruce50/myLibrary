@@ -20,11 +20,11 @@ export const Provider_GoogleBooks: BookProvider = {
         startIndex: (page - 1) * 10,
       },
     });
-    console.log('result: ', result);
-    const items = result.data?.items ?? [];
+
+    const items = result.data?.items;
 
     return items.map((item: any): CreateBookInput => {
-      const volume = item.volumeInfo ?? {};
+      const volume = item.volumeInfo;
       return {
         id: item.id,
         title: volume.title ?? 'Unknown title',
@@ -32,8 +32,8 @@ export const Provider_GoogleBooks: BookProvider = {
         author: volume.authors?.join(', ') ?? 'Unknown author',
         year: Number(String(volume.publishedDate).slice(0, 4)) || null,
         description: volume.description ?? null,
-        numPages: volume.pageCount ?? null,
-        cover: { url: volume.imageLinks?.smallThumbnail ?? null },
+        numPages: volume.pageCount,
+        cover: { url: volume.imageLinks?.smallThumbnail },
         coverIds: [],
         rating: volume.averageRating ?? null,
         tags: volume.categories ?? [],

@@ -74,7 +74,7 @@ export default function Home() {
         }}
         renderItem={data => {
           const book = data.item;
-          console.log('Inside Home FlatList Rendering book: ', book);
+
           return (
             <View style={styles.card}>
               <Text

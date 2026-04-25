@@ -34,11 +34,6 @@ const requestCameraPermission = async () => {
           buttonPositive: 'OK',
         },
       );
-      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        console.log('Camera permission granted');
-      } else {
-        console.log('Camera permission denied');
-      }
     } catch (err) {
       console.warn(err);
     }
@@ -54,10 +49,6 @@ const AddB = () => {
   }>({});
   const [isLoading, setIsLoading] = React.useState(false);
   const listRef = useRef<FlatList>(null);
-
-  React.useEffect(() => {
-    console.log('Search results updated: ', searchResults);
-  }, [searchResults]);
 
   return (
     <SafeAreaView style={[styles.screenContainer]}>
@@ -228,11 +219,6 @@ const AddB = () => {
 
                   <Pressable
                     onPress={async () => {
-                      console.log('Adding book with data:');
-                      console.log(
-                        `title: ${book.title}, author: ${book.author}, cover: ${book.cover.url}, year: ${book.year}`,
-                      );
-
                       try {
                         await createBook(
                           {

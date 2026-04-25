@@ -52,7 +52,7 @@ export type UpdateBookInput = {
 };
 
 export interface BookProvider {
-  search(query: string, page: number, action: string | null): Promise<Book[]>;
+  search(query: string, page: number, action?: string | null): Promise<Book[]>;
 }
 
 export type Note = {

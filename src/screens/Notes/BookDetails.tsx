@@ -23,8 +23,6 @@ const BookDetails = (item: any) => {
   const navigation = useNavigation<BookDetailsNavProp>();
   const local = item.route.params.book;
 
-  console.log('BookDetails local:', local);
-  console.log('BookDetails received item:', item);
   /**  
   useFocusEffect(
     React.useCallback(() => {
@@ -81,13 +79,7 @@ const BookDetails = (item: any) => {
             >
               <Text style={styles.notesButtonText}>Notes</Text>
             </Pressable>
-            <Pressable
-              onPress={() => {
-                //console.log("One more time, local" , local)
-                //navigation.navigate('CoverPicker', { book:local})
-              }}
-              style={styles.coverButton}
-            >
+            <Pressable onPress={() => {}} style={styles.coverButton}>
               <Text style={styles.notesButtonText}>Cover Art</Text>
             </Pressable>
           </View>

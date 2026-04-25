@@ -38,13 +38,9 @@ const NoteSection = ({ bookId, name, classOf }: NoteSectionProps) => {
   }, [bookId, classInt]);
 
   const fetchNotes = async (bookId: number, classOf: number) => {
-    console.log('data passed to fetchNotes');
-    console.log('bookId', bookId);
-    console.log('classOf', classOf);
     let local = await getNotesByBookAndClass(bookId, classOf);
-    console.log('Fetching from DB to notes');
+
     setNotes(local);
-    console.log('setting notes to local', local);
   };
 
   const updateNoteText = (index: number, text: string) => {

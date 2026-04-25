@@ -42,7 +42,7 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
       return;
     }
     const auth = await getAuthRecord();
-    console.log('global auth record: ', auth);
+
     if (!auth) {
       setErrorMessage('No account exists yet');
       return;

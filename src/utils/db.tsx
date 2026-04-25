@@ -8,8 +8,6 @@ import {
   UpsertNoteInput,
 } from './types';
 import { SqlParam, Note } from '../utils/types';
-import { LucideSquareArrowRightExit } from 'lucide-react-native';
-import { executeNativeBackPress } from 'react-native-screens';
 
 const db = SQLite.openDatabase('localsql');
 
@@ -44,11 +42,10 @@ function mapRows<T>(result: SQLResultSet): T[] {
 }
 
 function sanitizeTags(tags: string[] = []): string[] {
-  console.log('tags', tags);
   let local = Array.from(
     new Set(tags.map(tag => tag.trim()).filter(tag => tag.length > 0)),
   );
-  console.log('local ', local);
+
   return local;
 }
 
@@ -85,16 +82,13 @@ export async function downloadCoverFromUrl(
   filename: string,
 ): Promise<string> {
   const destinationPath = `${RNFS.DocumentDirectoryPath}/${filename}`;
-  console.log('AM I THE PROBLEM???');
-  console.log('Maybe Problem URL: ', url);
+
   try {
     await RNFS.downloadFile({
       fromUrl: url,
       toFile: destinationPath,
     }).promise;
-  } catch (e) {
-    console.log('Error where you are ', e);
-  }
+  } catch (e) {}
 
   return `file://${destinationPath}`;
 }
@@ -120,7 +114,6 @@ async function resolveCoverUri(cover?: BookCoverInput): Promise<string | null> {
   }
 
   if (cover.url && cover.filename) {
-    console.log('_____________TESTING______________');
     return downloadCoverFromUrl(cover.url, cover.filename);
   }
 
@@ -228,7 +221,6 @@ export async function seedDatabase(): Promise<void> {
 }
 
 export async function createBook(input: CreateBookInput) {
-  console.log('input ', input);
   if (input.cover?.assetFilename) {
     input.coverUri = await resolveCoverUri({
       assetFilename: input.cover.assetFilename,
@@ -296,7 +288,7 @@ export async function listBooks(): Promise<Book[]> {
     FROM books;`,
   );
   let data = mapRows<Book & { tags?: string | null }>(result).map(mapBookRow);
-  console.log('Data inside listBooks: ', data);
+
   return data;
 }
 
@@ -394,12 +386,6 @@ export async function getNotesByBookAndClass(
   bookId: number,
   classOf: number,
 ): Promise<Note[]> {
-  console.log('data passed to getNotesByBookAndClass');
-  console.log('bookId', bookId);
-  console.log('type of bookId', typeof bookId);
-  console.log('classOf', classOf);
-  console.log('type of classOf', typeof classOf);
-
   const result = await executeSql(
     `SELECT
       notes.id,
@@ -411,19 +397,12 @@ export async function getNotesByBookAndClass(
     WHERE notes.book_id = ? AND notes.class_of = ?;`,
     [bookId, classOf],
   );
-  console.log('should be returning data to notes from db');
-  console.log('result', result);
+
   let temp = mapRows<Note>(result);
-  console.log('temp', temp);
+
   return temp;
 }
 export async function upsertNote(input: UpsertNoteInput): Promise<number> {
-  console.log('__________________________TESTING_________________________');
-  console.log('input', input);
-  for (const key in input) {
-    console.log('key', key);
-    console.log('typeof value', typeof key);
-  }
   let local_book_id = Number(input.bookId);
   let local_class_of = Number(input.classOf);
   const result = await executeSql(
@@ -431,7 +410,6 @@ export async function upsertNote(input: UpsertNoteInput): Promise<number> {
      VALUES (?, ?, ?, ?, ?);`,
     [input.id ?? null, local_book_id, local_class_of, input.header, input.text],
   );
-  console.log('result', result);
 
   return result.insertId;
 }
@@ -439,3 +417,6 @@ export async function upsertNote(input: UpsertNoteInput): Promise<number> {
 export async function deleteNote(id: number): Promise<void> {
   await executeSql(`DELETE FROM notes WHERE id = ?;`, [id]);
 }
+
+//Book Club Functions===================================================================
+//=================================================================================
